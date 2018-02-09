@@ -1,6 +1,47 @@
 # FFT
+The math.NET libraries seem so much better than naudio or audition!
 
-## FFT from Double Array
+## FFT Low Pass Filter (Math.NET)
+```cs
+private double[] LowPassFilter2(double[] pcm, double cutOffFrequency = 60, double sampleRate = 44100)
+{
+    // it really should be a power of 2
+    int fft_size = pcm.Length;
+
+    // create a complex data object we will use to shuffle data around
+    MathNet.Numerics.Complex32[] complex = new MathNet.Numerics.Complex32[fft_size];
+
+    // load original PCM data into the complex array
+    for (int i = 0; i < fft_size; i++)
+    {
+        float val = (float)pcm[i]; // times hamming?
+        complex[i] = new MathNet.Numerics.Complex32(val,0);
+    }
+
+    // perform the forward FFT
+    MathNet.Numerics.IntegralTransforms.Fourier.Forward(complex);
+
+    // blank-out the high frequency stuff
+    double hzPerPoint = (double)fft_size / sampleRate;
+    for (int i = 0; i < fft_size/2; i++)
+    {
+        double freq = i * hzPerPoint;
+        if (freq < cutOffFrequency) continue;
+        complex[i] = new MathNet.Numerics.Complex32(0, 0);
+        complex[fft_size-i-1] = new MathNet.Numerics.Complex32(0, 0);
+    }
+
+    // perform the inverse FFT
+    MathNet.Numerics.IntegralTransforms.Fourier.Inverse(complex);
+
+    // extract the real component into the original PCM array and return it
+    for (int i = 0; i < fft_size; i++) pcm[i] = complex[i].Real;
+
+    return pcm;
+}
+```
+
+## FFT from Double Array (NAudio)
 ```cs
 private double[] FFT_from_PCM(double[] pcm, bool logScale=false)
 {
