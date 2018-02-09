@@ -1,5 +1,5 @@
 # FFT
-The math.NET libraries seem so much better than naudio or audition!
+The math.NET libraries seem so much better than naudio, especially for iFFT
 
 ## FFT Low Pass Filter (Math.NET)
 ```cs
