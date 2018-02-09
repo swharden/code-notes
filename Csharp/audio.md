@@ -6,9 +6,9 @@ Unless otherwise specified, audio access is provided by "NAudio". This can be in
 ```cs
 cmb_audio_device.Items.Clear();
 
-for (int waveInDevice = 0; waveInDevice < WaveIn.DeviceCount; waveInDevice++)
+for (int waveInDevice = 0; waveInDevice < NAudio.Wave.WaveIn.DeviceCount; waveInDevice++)
 {
-    WaveInCapabilities deviceInfo = WaveIn.GetCapabilities(waveInDevice);
+    NAudio.Wave.WaveInCapabilities deviceInfo = NAudio.Wave.WaveIn.GetCapabilities(waveInDevice);
     cmb_audio_device.Items.Add(deviceInfo.ProductName);
 }
 
