@@ -3,7 +3,7 @@ The math.NET libraries seem so much better than naudio or audition!
 
 ## FFT Low Pass Filter (Math.NET)
 ```cs
-private double[] LowPassFilter2(double[] pcm, double cutOffFrequency = 60, double sampleRate = 44100)
+private double[] LowPassFilter(double[] pcm, double cutOffFrequency = 60, double sampleRate = 44100)
 {
     // it really should be a power of 2
     int fft_size = pcm.Length;
@@ -22,10 +22,10 @@ private double[] LowPassFilter2(double[] pcm, double cutOffFrequency = 60, doubl
     MathNet.Numerics.IntegralTransforms.Fourier.Forward(complex);
 
     // blank-out the high frequency stuff
-    double hzPerPoint = (double)fft_size / sampleRate;
     for (int i = 0; i < fft_size/2; i++)
     {
-        double freq = i * hzPerPoint;
+        double freq = (double)(i * sampleRate * 2) / fft_size;
+        if (i == fft_size / 2 - 1) System.Console.WriteLine(freq);
         if (freq < cutOffFrequency) continue;
         complex[i] = new MathNet.Numerics.Complex32(0, 0);
         complex[fft_size-i-1] = new MathNet.Numerics.Complex32(0, 0);
