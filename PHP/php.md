@@ -181,7 +181,8 @@ $extension=pathinfo($fname, PATHINFO_EXTENSION);
 ```
 
 ```html
-<img style="margin: 5px; border: 1px solid black; background-color: black; box-shadow: 2px 2px 7px  rgba(0, 0, 0, 0.5); " src="test.jpg" />
+<img style="margin: 5px; border: 1px solid black; background-color: black;
+            box-shadow: 2px 2px 7px  rgba(0, 0, 0, 0.5); " src="test.jpg" />
 ```
 
 ## Display File Modified Time
