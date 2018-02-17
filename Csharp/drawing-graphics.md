@@ -2,8 +2,32 @@
 
 ## Drawing Anti-Aliased Graphics
 ```C#
+// lines
 gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+
+//text
+gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
+```
+
+## Drawing Text with Shadows
+Applied onto PictureBox1
+```
+Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+Graphics gfx = Graphics.FromImage(bmp);
+
+gfx.Clear(this.BackColor);
+gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+
+Font fnt = new Font("Segoe UI", 36, FontStyle.Bold);
+string str = "Shadow";
+
+gfx.DrawString(str, fnt, Brushes.Gray, 3, 3);
+gfx.DrawString(str, fnt, Brushes.Black, 0, 0);
+
+pictureBox1.Image = bmp;
 ```
 
 ## Drawing Rotated Text
