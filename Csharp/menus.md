@@ -1,6 +1,25 @@
 # Menus
 
-## Create a right-click menu dynamically
+## Right-click Menu with `ContextMenuStrip`
+```C#
+ContextMenuStrip cm = new ContextMenuStrip();
+cm.Items.Add("Save Image");
+cm.Items.Add("Auto-Axis");
+cm.Items.Add("Help");
+cm.Items.Add("About ScottPlot");
+cm.Show(pictureBox1, e.Location);
+cm.ItemClicked += new ToolStripItemClickedEventHandler(RightClickMenuItemSelected);
+```
+
+```C#
+private void RightClickMenuItemSelected(object sender, ToolStripItemClickedEventArgs e)
+{
+    ToolStripItem item = e.ClickedItem;
+    System.Console.WriteLine(item);
+}
+```
+
+## Right-click Menu with `ContextMenu`
 ```C#
 ContextMenu marker_right_click_menu = new ContextMenu();
 marker_right_click_menu.MenuItems.Add(new MenuItem("item one", new EventHandler(Clicked1)));
