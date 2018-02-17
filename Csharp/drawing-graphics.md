@@ -13,7 +13,7 @@ gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixel;
 
 ## Drawing Text with Shadows
 Applied onto PictureBox1
-```
+```C#
 Bitmap bmp = new Bitmap(pictureBox1.Width, pictureBox1.Height);
 Graphics gfx = Graphics.FromImage(bmp);
 
