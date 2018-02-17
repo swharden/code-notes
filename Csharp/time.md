@@ -1,5 +1,10 @@
 # Time Operations
 
+## Get System Time (milliseconds)
+```C#
+double t = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+```
+
 ## Timing things with high resolution
 ```C#
 System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
