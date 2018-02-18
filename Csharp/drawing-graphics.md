@@ -1,5 +1,30 @@
 # Drawing Graphics
 
+## Hex-to-Color
+```C#
+private Color HexToColor(string hex)
+{
+    int r=0, g=0, b=0, a=255;
+    hex = hex.Trim('#');
+    if (hex.Length == 6 || hex.Length == 8)
+    {
+        r = Convert.ToInt32(hex.Substring(0, 2), 16);
+        g = Convert.ToInt32(hex.Substring(2, 2), 16);
+        b = Convert.ToInt32(hex.Substring(4, 2), 16);
+    }
+    if (hex.Length == 8)
+    {
+        a = Convert.ToInt32(hex.Substring(6, 2), 16);
+    }
+    return Color.FromArgb(a, r, g, b);
+}
+
+private Brush HexToBrush(string hex)
+{
+    return new SolidBrush(HexToColor(hex));
+}
+```
+
 ## Drawing Anti-Aliased Graphics
 ```C#
 // lines
