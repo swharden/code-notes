@@ -1,5 +1,14 @@
 # Drawing Graphics
 
+## Preventing Sharp Elbows
+When DrawLines() has elbows they are triangular and sharp. This smooths them.
+```C#
+Pen pen = new Pen(lineBrush, lineWidth);
+pen.StartCap = System.Drawing.Drawing2D.LineCap.Round;
+pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
+```
+
 ## Hex-to-Color
 ```C#
 private Color HexToColor(string hex)
