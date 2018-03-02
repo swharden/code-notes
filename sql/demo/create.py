@@ -13,10 +13,15 @@ INSERT INTO `animals` (`id`,`animal`,`originalCage`,`gender`,`genotype`,`target`
        VALUES (12,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 """
-import collections
 
-if __name__=="__main__":
-    with open (R"X:\Data\surgeries\surgery_log.csv") as f:
+
+
+import collections
+import os
+import sqlite3
+
+def csvToTable(fname="surgery_log.csv"):
+    with open (os.path.join(fname)) as f:
         raw=f.read().split("\n")
     rows=[]
     for line in raw:
@@ -36,18 +41,54 @@ if __name__=="__main__":
         fields["dateSac"]=line[10]
         fields["notes"]=line[12]
         fields["hidden"]=0
-        rows.append(fields)
         keys=list(fields.keys())
         values=list(fields.values())
         for i,val in enumerate(values):
             if type(val)==int:
-                val=str(val)
-            elif len(val)==0:
-                val='NULL'
+                values[i]=str(val)
+            elif len(val.strip())==0:
+                values[i]='NULL'
             else:
-                val="`%s`"%val
-            print(val)
-        #sqlIns="INSERT INTO `animals` ()"
-        #print(sql)
-        print()
+                values[i]="`%s`"%val
+        rows.append([keys,values])
+    return rows
+
+def sqlInsertRow(row):
+    sqlKey,sqlVal=[],[]
+    for i in range(len(row[0])):
+        key,val=row[0][i],row[1][i]
+        sqlKey.append("`%s`"%key)
+        sqlVal.append(str(val))
+    sql="INSERT INTO `animals` (%s) \nVALUES (%s);"%(", ".join(sqlKey),", ".join(sqlVal))
+    return sql
+
+if __name__=="__main__":
+    # load data from the CSV file
+    rows=csvToTable()
+
+    # create an empty database    
+    conn = sqlite3.connect(r"surgeries.db")
+    c = conn.cursor()
+    c.execute("DROP TABLE `animals`") # delete the old data
+
+    # create the database structure
+    sql="""
+        CREATE TABLE "animals" ( `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+                                `animal` TEXT NOT NULL, `originalCage` TEXT, `gender` NUMERIC,
+                                `genotype` NUMERIC, `target` TEXT, `substance` TEXT, `volume` TEXT,
+                                `coords` TEXT, `dateSx` TEXT, `dateSac` TEXT, `notes` TEXT, `hidden` INTEGER );
+        """
+    c.execute(sql.strip())
+
+    # copy CSV data into the new database
+    for row in rows:
+        sql=sqlInsertRow(row)
+        sql=sql.replace("`","'")
+        print(sql)
+        conn.execute(sql)
+    print("DONE")
+
+    # save database to disk
+    conn.commit()
+    conn.close()
     print("DONE")
