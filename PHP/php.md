@@ -206,3 +206,11 @@ function file_age_string($fname){
     return $ageString;
 }
 ```
+
+## String Contains Substring
+You there isn't a `contains()` that I know of, so strpos works... but be careful because if the string starts with the substring then strpos will be zero and false will be returned. Notice the difference between `!=` and `!==`
+```
+if (strpos($fname,$matching)!==FALSE){
+  echo $fname."<br>";
+}
+```
