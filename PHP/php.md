@@ -215,7 +215,7 @@ if (strpos($fname,$matching)!==FALSE){
 }
 ```
 
-# HTML Redirect
+## HTML Redirect
 Put this in the head
 ```HTML
 <meta http-equiv="refresh" content="0; url=http://example.com/" />
