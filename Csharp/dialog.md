@@ -1,5 +1,10 @@
 # Dialog
 
+## Messagebox
+```cs
+MessageBox.Show("some long message here","WARNING!!!");
+```
+
 ## Save File
 ```cs
 SaveFileDialog savefile = new SaveFileDialog();
