@@ -4,6 +4,8 @@
 using System.IO.Ports;
 ```
 
+* http://codesamplez.com/programming/serial-port-communication-c-sharp
+
 ## List COM Ports
 ```cs
 void UpdateSerialPorts()
