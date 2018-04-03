@@ -220,3 +220,40 @@ Put this in the head
 ```HTML
 <meta http-equiv="refresh" content="0; url=http://example.com/" />
 ```
+
+## Convert TIF Images to PNG or JPG
+```php
+
+function tiff_convert_folder($folder, $putInSubFolder="/swhlab/"){
+    // given a folder with a bunch of TIF files, use python to make them JPGs.
+
+    if (!file_exists($folder)) return;
+
+    $folder_output=$folder.$putInSubFolder;
+    if (!file_exists($folder_output)) mkdir($folder_output);
+
+    $files = scandir($folder);
+    $files2 = scandir($folder_output);
+    $tifs_to_convert=[];
+    foreach ($files as $fname){
+        $extension=strtolower(pathinfo($fname, PATHINFO_EXTENSION));
+        if ($extension == "tif" || $extension == "tiff") {
+            if (!in_array($fname.".jpg",$files2)){
+                $tifs_to_convert[]=$fname;
+            }
+        }
+        
+    }
+
+    foreach ($tifs_to_convert as $tifFile){
+        $fileIn=$folder."/".$tifFile;
+        $fileOut=$folder_output.$tifFile.".png";
+        if (file_exists($fileOut)) continue;
+        $cmd="convert \"$fileIn\" -contrast-stretch 0.15x0.05% \"$fileOut\"";
+        echo "<div style='font-family: monospace;'>$cmd</div>";
+        exec($cmd);       
+        flush();ob_flush();
+    }
+    
+}
+```
