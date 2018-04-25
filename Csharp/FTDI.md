@@ -51,7 +51,6 @@ void Scan_ftdi_devices()
 
 ## Sending Data
 ```cs
-
 void Send_serial_data(string serialNumber)
 {
     ftdi.OpenBySerialNumber(serialNumber);
@@ -63,7 +62,11 @@ void Send_serial_data(string serialNumber)
     }
 
     ftdi.SetBaudRate(9600);
-    ftdi.SetDataCharacteristics(FTDI.FT_DATA_BITS.FT_BITS_8, FTDI.FT_STOP_BITS.FT_STOP_BITS_1, FTDI.FT_PARITY.FT_PARITY_NONE);
+    ftdi.SetDataCharacteristics(
+        FTDI.FT_DATA_BITS.FT_BITS_8, 
+        FTDI.FT_STOP_BITS.FT_STOP_BITS_1, 
+        FTDI.FT_PARITY.FT_PARITY_NONE
+        );
     ftdi.SetTimeouts(2000, 0); // 2 second timeout
 
     UInt32 bytesWritten = 0;
