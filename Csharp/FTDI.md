@@ -48,3 +48,27 @@ void Scan_ftdi_devices()
 }
 
 ```
+
+## Sending Data
+```cs
+
+void Send_serial_data(string serialNumber)
+{
+    ftdi.OpenBySerialNumber(serialNumber);
+
+    if (ft_status != FTDI.FT_STATUS.FT_OK)
+    {
+        MessageBox.Show("FTDI status is not OK", "ERROR!!!");
+        return;
+    }
+
+    ftdi.SetBaudRate(9600);
+    ftdi.SetDataCharacteristics(FTDI.FT_DATA_BITS.FT_BITS_8, FTDI.FT_STOP_BITS.FT_STOP_BITS_1, FTDI.FT_PARITY.FT_PARITY_NONE);
+    ftdi.SetTimeouts(2000, 0); // 2 second timeout
+
+    UInt32 bytesWritten = 0;
+    byte[] data = new byte[] { 1, 3, 7, 13, 21 };
+    ft_status = ftdi.Write(data, data.Length, ref bytesWritten);
+    Console.WriteLine(ft_status);
+}
+```
