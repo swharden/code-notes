@@ -72,6 +72,7 @@ void Send_serial_data(string serialNumber)
     UInt32 bytesWritten = 0;
     byte[] data = new byte[] { 1, 3, 7, 13, 21 };
     ft_status = ftdi.Write(data, data.Length, ref bytesWritten);
+    ft_status = ftdi.Close();
     Console.WriteLine(ft_status);
 }
 ```
