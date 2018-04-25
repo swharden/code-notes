@@ -12,6 +12,9 @@ using FTD2XX_NET; // installed with NuGet
 
 ## Quickstart
 ```cs
+FTDI ftdi = new FTDI();
+FTDI.FT_STATUS ft_status = FTDI.FT_STATUS.FT_OK;
+        
 // this function looks up details about every FTDI device
 void Scan_ftdi_devices()
 {
