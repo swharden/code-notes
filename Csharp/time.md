@@ -18,3 +18,8 @@ double timeMS = stopwatch.ElapsedTicks * 1000.0 / System.Diagnostics.Stopwatch.F
 
 System.Console.WriteLine(string.Format("loaded in {1:0.00} ms", timeMS));
 ```
+
+## Pause or Sleep
+```cs
+System.Threading.Thread.Sleep(5000); // sleep for 5 sec
+```
