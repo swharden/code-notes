@@ -37,6 +37,8 @@ namespace LearnFTDI3
 
 ```
 
+![](misc/usart.jpg)
+
 ## Quickstart (fancier)
 ```cs
 FTDI ftdi = new FTDI();
