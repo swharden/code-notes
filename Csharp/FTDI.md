@@ -5,12 +5,39 @@
 * [FTDI API Programmer's Guide](
 http://www.ftdichip.com/Support/Documents/ProgramGuides/D2XX_Programmer's_Guide(FT_000071).pdf)
 
-## Installation (NuGet)
+## Quickstart (console application)
 ```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using FTD2XX_NET; // installed with NuGet
+
+namespace LearnFTDI3
+{
+    class Program
+    {
+        public static FTDI ftdi = new FTDI();
+        public static FTDI.FT_STATUS ft_status = FTDI.FT_STATUS.FT_OK;
+
+        static void Main(string[] args)
+        {
+            ft_status = ftdi.OpenByIndex(0);
+            ft_status = ftdi.SetBaudRate(300);
+            UInt32 bytesWritten = 0;
+            string data = "some awesome text";
+            ft_status = ftdi.Write(data, data.Length, ref bytesWritten);
+            ft_status = ftdi.Close();
+            Console.WriteLine($"DONE ({ft_status})");
+        }
+    }
+}
+
 ```
 
-## Quickstart
+## Quickstart (fancier)
 ```cs
 FTDI ftdi = new FTDI();
 FTDI.FT_STATUS ft_status = FTDI.FT_STATUS.FT_OK;
