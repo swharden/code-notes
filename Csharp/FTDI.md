@@ -1,13 +1,7 @@
 # FTDI (USB/USART/etc) Programming
 
-#### Resources
-* [FT232R](http://www.ftdichip.com/Products/ICs/FT232R.htm) (USB<->USART)
-* [FT232H](http://www.ftdichip.com/Products/ICs/FT232R.htm) (USB<->USART/SPI/I2C/etc)
-* [FTDI API Programmer's Guide](
-http://www.ftdichip.com/Support/Documents/ProgramGuides/D2XX_Programmer's_Guide(FT_000071).pdf)
+***CHECK OUT THE [ALTERNATIVE PAGE FOR THIS CONCEPT](https://github.com/swharden/AVR-projects/tree/master/FTDI%202017-04-29%20bitbang%20max7219%207seg)***
 
-#### Concepts
-* every FTDI command returns a status code. I always capture it as "ft_status" and only check it when I'm interested. Good programmers will check it every time to ensure the program doesn't crash between FTDI calls.
 
 ## Quickstart (console application)
 ```cs
@@ -42,6 +36,16 @@ namespace LearnFTDI3
 ```
 
 ![](misc/usart.jpg)
+
+
+## Resources
+* [FT232R](http://www.ftdichip.com/Products/ICs/FT232R.htm) (USB<->USART)
+* [FT232H](http://www.ftdichip.com/Products/ICs/FT232R.htm) (USB<->USART/SPI/I2C/etc)
+* [FTDI API Programmer's Guide](
+http://www.ftdichip.com/Support/Documents/ProgramGuides/D2XX_Programmer's_Guide(FT_000071).pdf)
+
+## Concepts
+* every FTDI command returns a status code. I always capture it as "ft_status" and only check it when I'm interested. Good programmers will check it every time to ensure the program doesn't crash between FTDI calls.
 
 ## Quickstart (fancier)
 ```cs
