@@ -2,6 +2,8 @@
 
 ***CHECK OUT THE [ALTERNATIVE PAGE FOR THIS CONCEPT](https://github.com/swharden/AVR-projects/tree/master/FTDI%202017-04-29%20bitbang%20max7219%207seg)***
 
+* Bit-Banging FTDI GitHub page: https://github.com/swharden/AVR-projects/tree/master/FTDI%202018-05-30%20bit%20bang
+
 
 ## Quickstart (console application)
 ```cs
