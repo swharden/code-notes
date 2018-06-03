@@ -88,6 +88,18 @@ void Scan_ftdi_devices()
 
 ```
 
+### Output
+```
+Device Number: 1
+Description: FT232R USB UART
+Flags: 0
+ftHandle: 0
+ID: 67330049
+LocId: 4918
+SerialNumber: A501UZHG
+Type: FT_DEVICE_232R
+```
+
 ## Sending Data
 ```cs
 void Send_serial_data(string serialNumber)
