@@ -1,5 +1,13 @@
 # Paths and Filenames
 
+## Determine if file/folder exists
+```cs
+using System.IO; // provides File and Directory objects
+
+if (Directory.Exists(someFolder)) {}
+if (File.Exists(someFile)) {}
+```
+
 ## Get File Extension
 ```c#
 string extension = System.IO.Path.GetExtension(filename);
