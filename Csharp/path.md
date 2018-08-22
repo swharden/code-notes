@@ -36,8 +36,3 @@ public static void HTMLgen(string saveAs="output.html", bool launch=true)
 }
 ```
 
-## Reading/Writing Text Files
-
-```c#
-System.IO.File.WriteAllText(saveAs, html);
-```
