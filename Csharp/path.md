@@ -2,10 +2,8 @@
 
 ## Determine if file/folder exists
 ```cs
-using System.IO; // provides File and Directory objects
-
-if (Directory.Exists(someFolder)) {}
-if (File.Exists(someFile)) {}
+if (System.IO.Directory.Exists(someFolder)) {}
+if (System.IO.File.Exists(someFile)) {}
 ```
 
 ## Get File Extension
@@ -15,6 +13,11 @@ string everythingElse = System.IO.Path.GetFileNameWithoutExtension(filename);
 ```
 
 ## List Directories
+
+```cs
+string[] files = Directory.GetFiles(experimentFolder);
+```
+
 ```C#
 string[] filePaths = System.IO.Directory.GetFiles("./", "*.png", System.IO.SearchOption.TopDirectoryOnly);
 ```
