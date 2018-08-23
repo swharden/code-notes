@@ -37,7 +37,8 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
 		// skip folders we don't have access to
 		try
 		{
-		    System.Security.AccessControl.DirectorySecurity ds = System.IO.Directory.GetAccessControl(System.IO.Path.Combine(path, folderName));
+		    System.Security.AccessControl.DirectorySecurity ds;
+		    ds = System.IO.Directory.GetAccessControl(System.IO.Path.Combine(path, folderName));
 		}
 		catch
 		{
