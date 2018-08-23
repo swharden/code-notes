@@ -68,47 +68,52 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
 
 ## Interact with the TreeView
 ```cs
-
-
-
 /// <summary>
 /// clear the tree view directory browser and only display drive letters
 /// </summary>
 public void TreeViewDirInit()
 {
-	treeViewDir.Nodes.Clear();
-	treeViewDir.Nodes.AddRange(TreeViewDirScanFolder());
+    treeViewDir.Nodes.Clear();
+    treeViewDir.Nodes.AddRange(TreeViewDirScanFolder());
 }
+```
 
+```cs
 /// <summary>
 /// tree view item selected
 /// </summary>
 private void treeViewDir_AfterSelect(object sender, TreeViewEventArgs e)
 {
-	System.Console.WriteLine("NODE SELECTED");
+    System.Console.WriteLine("NODE SELECTED");
+    lblCurrentFolder.Text = treeViewDir_nodeToPath(e.Node);
 }
+```
 
+```cs
+/// <summary>
+/// walk up a node's parents and return its full path
+/// </summary>
+private string treeViewDir_nodeToPath(TreeNode clickedNode)
+{
+    string clickedNodePath = "";
+    while (clickedNode != null)
+    {
+	clickedNodePath = System.IO.Path.Combine(clickedNode.Text + "\\", clickedNodePath);
+	clickedNode = clickedNode.Parent;
+    }
+    clickedNodePath = clickedNodePath.Replace("\\\\", "\\");
+    return clickedNodePath;
+}
+```
+
+```cs
 /// <summary>
 /// when a node is selected determine its full path
 /// </summary>
 private void treeViewDir_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
 {
-
-	// dont scan folders being collapsed
-	if (e.Node.IsExpanded == false) return;
-
-	// walk up the node parents to get a full file path
-	TreeNode clickedNode = e.Node;
-	TreeNode clickedNodeParent = e.Node.Parent;
-	string clickedNodePath = clickedNode.Text;
-	while (clickedNodeParent != null)
-	{
-		clickedNodePath = System.IO.Path.Combine(clickedNodeParent.Text+"\\", clickedNodePath);
-		clickedNodeParent = clickedNodeParent.Parent;
-	}
-
-	// fill the clicked node with its folder contents
-	clickedNode.Nodes.Clear();
-	clickedNode.Nodes.AddRange(TreeViewDirScanFolder(clickedNodePath));
+    if (e.Node.IsExpanded == false) return;
+    e.Node.Nodes.Clear();
+    e.Node.Nodes.AddRange(TreeViewDirScanFolder(treeViewDir_nodeToPath(e.Node)));
 }
 ```
