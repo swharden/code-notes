@@ -9,42 +9,59 @@ To create an explorer-like file browser using TreeView, I did this:
 /// </summary>
 public TreeNode[] TreeViewDirScanFolder(string path=null)
 {
-	List<TreeNode> treeNodes = new List<TreeNode>();
-	if (path == null)
+    List<TreeNode> treeNodes = new List<TreeNode>();
+    if (path == null)
+    {
+	// no path is given, so return drive letters
+	foreach (System.IO.DriveInfo drive in System.IO.DriveInfo.GetDrives())
 	{
-		// no path is given, so return drive letters
-		foreach (System.IO.DriveInfo drive in System.IO.DriveInfo.GetDrives())
+	    if (!drive.IsReady) continue;
+	    TreeNode tn = new TreeNode(drive.Name);
+	    tn.Nodes.Add("");
+	    treeNodes.Add(tn);
+	}
+
+    } else
+    {
+	System.Console.WriteLine("Scanning folder: " + path);
+	try
+	{
+	    // a path is given, so return its contents
+	    string[] folderNames = System.IO.Directory.GetDirectories(path);
+	    string[] fileNames = System.IO.Directory.GetFiles(path);
+	    foreach (string folderName in folderNames)
+	    {
+		TreeNode tn = new TreeNode(System.IO.Path.GetFileName(folderName));
+		tn.Nodes.Add("");
+
+		// skip folders we don't have access to
+		try
 		{
-			if (!drive.IsReady) continue;
-			TreeNode tn = new TreeNode(drive.Name);
-			tn.Nodes.Add("");
-			treeNodes.Add(tn);
+		    System.Security.AccessControl.DirectorySecurity ds = System.IO.Directory.GetAccessControl(System.IO.Path.Combine(path, folderName));
+		}
+		catch
+		{
+		    continue;
 		}
 
-	} else
+		// skip folders starting with $
+		if (System.IO.Path.GetFileName(folderName).StartsWith("$")) continue;
+
+		treeNodes.Add(tn);
+	    }
+	    foreach (string fileName in fileNames)
+	    {
+		TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
+		treeNodes.Add(tn);
+	    }
+	} catch
 	{
-                // a path is given, so return its contents (if we have access to that folder)
-                try
-                {
-                    string[] folderNames = System.IO.Directory.GetDirectories(path);
-                    string[] fileNames = System.IO.Directory.GetFiles(path);
-                    foreach (string folderName in folderNames)
-                    {
-                        TreeNode tn = new TreeNode(System.IO.Path.GetFileName(folderName));
-                        tn.Nodes.Add("");
-                        treeNodes.Add(tn);
-                    }
-                    foreach (string fileName in fileNames)
-                    {
-                        TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
-                        treeNodes.Add(tn);
-                    }
-                } catch
-                {
-                    System.Console.WriteLine("DIRECTORY ACCESS ERROR");
-                }
+	    // we don't have access to the folder, so return what we can
+	    System.Console.WriteLine("DIRECTORY ACCESS ERROR");
+	    treeNodes.Add(new TreeNode(""));
 	}
-	return treeNodes.ToArray();
+    }
+    return treeNodes.ToArray();
 }
 ```
 
