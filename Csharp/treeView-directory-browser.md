@@ -110,9 +110,8 @@ private string treeViewDir_nodeToPath(TreeNode clickedNode)
 /// <summary>
 /// when a node is selected determine its full path
 /// </summary>
-private void treeViewDir_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
 {
-    if (e.Node.IsExpanded == false) return;
     e.Node.Nodes.Clear();
     e.Node.Nodes.AddRange(TreeViewDirScanFolder(treeViewDir_nodeToPath(e.Node)));
 }
