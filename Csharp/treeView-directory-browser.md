@@ -23,18 +23,26 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
 
 	} else
 	{
-		// a path is given, so return its contents
-		foreach (string folderName in System.IO.Directory.GetDirectories(path))
-		{
-			TreeNode tn = new TreeNode(System.IO.Path.GetFileName(folderName));
-			tn.Nodes.Add("");
-			treeNodes.Add(tn);
-		}
-		foreach (string fileName in System.IO.Directory.GetFiles(path))
-		{
-			TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
-			treeNodes.Add(tn);
-		}
+                // a path is given, so return its contents (if we have access to that folder)
+                try
+                {
+                    string[] folderNames = System.IO.Directory.GetDirectories(path);
+                    string[] fileNames = System.IO.Directory.GetFiles(path);
+                    foreach (string folderName in folderNames)
+                    {
+                        TreeNode tn = new TreeNode(System.IO.Path.GetFileName(folderName));
+                        tn.Nodes.Add("");
+                        treeNodes.Add(tn);
+                    }
+                    foreach (string fileName in fileNames)
+                    {
+                        TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
+                        treeNodes.Add(tn);
+                    }
+                } catch
+                {
+                    System.Console.WriteLine("DIRECTORY ACCESS ERROR");
+                }
 	}
 	return treeNodes.ToArray();
 }
