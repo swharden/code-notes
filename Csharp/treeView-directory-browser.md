@@ -108,7 +108,7 @@ private string treeViewDir_nodeToPath(TreeNode clickedNode)
 
 ```cs
 /// <summary>
-/// when a node is selected determine its full path
+/// when a node is expanded scan and display its contents
 /// </summary>
 private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
 {
