@@ -1,5 +1,10 @@
 # Paths and Filenames
 
+## Absolute File Path
+```cs
+System.IO.Path.GetFullPath(folder);
+```
+
 ## Determine if file/folder exists
 ```cs
 if (System.IO.Directory.Exists(someFolder)) {}
