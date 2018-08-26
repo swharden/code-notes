@@ -47,3 +47,25 @@ foreach (string parentID in ab.abfIDsByParent.Keys)
 
 }
 ```
+
+# Large Icons in ListView
+
+```cs
+string folder = @"C:\Users\scott\Documents\important\abfs\swhlab";
+ImageList imageList = new ImageList();
+int imageScale = 25;
+imageList.ImageSize = new Size(8* imageScale, 6* imageScale);
+listView1.LargeImageList = imageList;
+listView1.Clear();
+foreach (string imagePath in System.IO.Directory.GetFiles(folder))
+{
+    System.Console.WriteLine(imagePath);
+    Image image = Image.FromFile(imagePath);
+    imageList.Images.Add(image);
+    ListViewItem item = new ListViewItem();
+    item.Text = System.IO.Path.GetFileNameWithoutExtension(imagePath);
+    item.Text = item.Text.Replace("_", " ").Replace("-", " ");
+    item.ImageIndex = imageList.Images.Count - 1;
+    listView1.Items.Add(item);
+}
+```
