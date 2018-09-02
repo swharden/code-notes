@@ -116,3 +116,15 @@ private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
     e.Node.Nodes.AddRange(TreeViewDirScanFolder(treeViewDir_nodeToPath(e.Node)));
 }
 ```
+
+## Adding Icons
+Add an imagelist to your project and import the icons you want.
+Set `smallImageList` to your imagelist in the listView properties.
+```cs
+lvFolders.Items.Clear();
+ListViewItem item = new ListViewItem();
+item.ImageIndex = 1;
+item.Text = "C:/";
+item.ForeColor = Color.Blue;
+lvFolders.Items.Add(item);
+```
