@@ -12,3 +12,12 @@ savefile.FileName = "diyECG.jpg";
 savefile.Filter = "JPG Files (*.jpg)|*.jpg|All files (*.*)|*.*";
 if (savefile.ShowDialog() == DialogResult.OK) { /* do something */ }
 ```
+
+## Select Folder
+```cs
+var diag = new FolderBrowserDialog();
+if (diag.ShowDialog() == DialogResult.OK)
+{
+    ScanAbfFolder(diag.SelectedPath);
+}
+```
