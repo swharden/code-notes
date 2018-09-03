@@ -128,3 +128,32 @@ item.Text = "C:/";
 item.ForeColor = Color.Blue;
 lvFolders.Items.Add(item);
 ```
+
+## Adding Large (Image) Icons
+```cs
+public void SetFolder(string folder)
+{
+    // clear the old contents
+    listView1.Items.Clear();
+
+    // prepare the new image list
+    ImageList imageList = new ImageList();
+    int imageScale = 20;
+    imageList.ImageSize = new Size(8 * imageScale, 6 * imageScale);
+    listView1.LargeImageList = imageList;
+
+    // load the image files
+    foreach (string imagePath in ImageFilesInFolder(folder))
+    {
+	Image image = Image.FromFile(imagePath);
+	imageList.Images.Add(image);
+
+	ListViewItem item = new ListViewItem();
+	item.Text = Path.GetFileNameWithoutExtension(imagePath);
+	item.Text = item.Text.Replace("_", " ").Replace("-", " ");
+	item.ImageIndex = imageList.Images.Count - 1;
+	listView1.Items.Add(item);
+    }
+
+}
+```
