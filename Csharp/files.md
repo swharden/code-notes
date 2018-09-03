@@ -6,6 +6,11 @@
 System.IO.File.WriteAllText(saveAs, html);
 ```
 
+## Get File Size
+```cs
+sizeMB = new System.IO.FileInfo(path).Length/1e6;
+```
+
 ## Join (Combine) Dirname and Basename
 ```cs
 string cellsFilePath = System.IO.Path.Combine(folder, cellsFileName);
