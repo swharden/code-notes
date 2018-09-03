@@ -1,4 +1,4 @@
-# ListView
+## ListView
 ```cs
 listView1.Items.Clear();
 foreach (string parentID in ab.abfIDsByParent.Keys)
@@ -25,7 +25,7 @@ foreach (string parentID in ab.abfIDsByParent.Keys)
 }
 ```
 
-# TreeView
+## TreeView
 ```cs
 treeViewABFs.Nodes.Clear();
 foreach (string parentID in ab.abfIDsByParent.Keys)
@@ -48,7 +48,7 @@ foreach (string parentID in ab.abfIDsByParent.Keys)
 }
 ```
 
-# Large Icons in ListView
+## Large Icons in ListView
 
 ```cs
 string folder = @"C:\Users\scott\Documents\important\abfs\swhlab";
@@ -67,5 +67,22 @@ foreach (string imagePath in System.IO.Directory.GetFiles(folder))
     item.Text = item.Text.Replace("_", " ").Replace("-", " ");
     item.ImageIndex = imageList.Images.Count - 1;
     listView1.Items.Add(item);
+}
+```
+
+## Right-Clickable Large Icons
+```cs
+private void listView1_MouseClick(object sender, MouseEventArgs e)
+{
+    if (e.Button == MouseButtons.Right)
+    {
+
+        if (listView1.FocusedItem.Bounds.Contains(e.Location))
+        {
+            ContextMenu cm = new ContextMenu();
+            cm.MenuItems.Add(listView1.FocusedItem.Text);
+            cm.Show(listView1, e.Location);
+        } 
+    }
 }
 ```
