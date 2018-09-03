@@ -17,14 +17,12 @@ string extension = System.IO.Path.GetExtension(filename);
 string everythingElse = System.IO.Path.GetFileNameWithoutExtension(filename);
 ```
 
-## List Directories
+## List Files in a Directory
 
 ```cs
-string[] files = Directory.GetFiles(experimentFolder);
-```
-
-```C#
-string[] filePaths = System.IO.Directory.GetFiles("./", "*.png", System.IO.SearchOption.TopDirectoryOnly);
+string[] folders = Directory.GetDirectories(folderPath);
+string[] files = Directory.GetFiles(folderPath);
+string[] filesPng = Directory.GetFiles(folderPath, "*.png");
 ```
 
 ## Generating HTML for Image Folder
