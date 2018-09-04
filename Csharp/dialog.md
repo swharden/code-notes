@@ -18,6 +18,6 @@ if (savefile.ShowDialog() == DialogResult.OK) { /* do something */ }
 var diag = new FolderBrowserDialog();
 if (diag.ShowDialog() == DialogResult.OK)
 {
-    ScanAbfFolder(diag.SelectedPath);
+    string selectedPath = diag.SelectedPath;
 }
 ```
