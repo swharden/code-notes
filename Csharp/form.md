@@ -15,3 +15,13 @@ private void button2_Click(object sender, EventArgs e)
     this.Hide();
 }
 ```
+## Launch another form by default
+Edit `Program.cs`
+```cs
+static void Main()
+{
+    Application.EnableVisualStyles();
+    Application.SetCompatibleTextRenderingDefault(false);
+    Application.Run(new Form2());
+}
+```
