@@ -1,38 +1,59 @@
 # DataGridView
 
 ```cs
-dataGridView1.DataSource = AbfTable(abfFolder);
 
-public DataTable AbfTable(string abfFolder)
+/// <summary>
+/// Prepare a DataTable for all ABFs in the folder
+/// </summary>
+/// <returns></returns>
+public DataTable GetDataTable(bool parentsOnly=false, bool blankOrphans=true)
 {
-    if (!System.IO.Directory.Exists(abfFolder)){
-        return null;
-    }
-
     DataTable table = new DataTable();
     table.Columns.Add("abfID", typeof(string));
+    table.Columns.Add("parent", typeof(string));
     table.Columns.Add("path", typeof(string));
     table.Columns.Add("protocol", typeof(string));
-    table.Columns.Add("sweepCount", typeof(int));
-    table.Columns.Add("channelCount", typeof(int));
-    table.Columns.Add("lengthSec", typeof(double));
     table.Columns.Add("units", typeof(string));
+    table.Columns.Add("annotations", typeof(string));
+    table.Columns.Add("sweeps", typeof(int));
+    table.Columns.Add("channels", typeof(int));
+    table.Columns.Add("length (min)", typeof(double));
+    table.Columns.Add("size (Mb)", typeof(double));
+    table.Columns.Add("group", typeof(string));
     table.Columns.Add("tags", typeof(string));
+    table.Columns.Add("color", typeof(string));
 
-    string[] filePaths = System.IO.Directory.GetFiles(abfFolder, "*.abf");
-    foreach (string filePath in filePaths)
+    foreach (ABFinfo abf in abfs)
     {
-        ABF abf = new ABF(filePath, false);
-        string protocol = System.IO.Path.GetFileNameWithoutExtension(abf.protocolPath);
-        double lengthSec = abf.dataPointCount / abf.dataRate;
-        string units = String.Join(", ", abf.adcUnits);
-        string tags = String.Join(", ", abf.tagComments);
-        table.Rows.Add(abf.abfID, abf.abfFilePath, protocol, abf.sweepCount, abf.channelCount, lengthSec, units, tags);
+        if (parentsOnly && abf.abfID != abf.parent)
+            continue;
+        DataRow row = table.NewRow();
+        row.SetField(0, abf.abfID);
+        row.SetField(1, abf.parent);
+        row.SetField(2, abf.path);
+        row.SetField(3, abf.protocol);
+        row.SetField(4, abf.units);
+        row.SetField(5, abf.annotations);
+        row.SetField(6, abf.sweeps);
+        row.SetField(7, abf.channels);
+        row.SetField(8, abf.lengthMinutes);
+        row.SetField(9, abf.sizeMB);
+        row.SetField(10, abf.group);
+        row.SetField(11, abf.comments);
+        row.SetField(12, abf.color);
+
+        if (blankOrphans == true && abf.parent == "orphan")
+        {
+            row.SetField(1, "");
+        }
+
+        table.Rows.Add(row);
     }
 
     return table;
-
 }
+
+dataGridView1.DataSource = abfFolder.GetDataTable(cbParentsOnly.Checked);
 ```
 
 ## Right-Click Menu
