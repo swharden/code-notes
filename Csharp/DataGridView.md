@@ -34,3 +34,25 @@ public DataTable AbfTable(string abfFolder)
 
 }
 ```
+
+## Right-Click Menu
+```cs
+private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+{
+    if (e.Button == MouseButtons.Right)
+    {
+        int thisRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+        string abfFilePath = dataGridView1.Rows[thisRow].Cells[1].Value.ToString();
+        string abfFileName = System.IO.Path.GetFileName(abfFilePath);
+
+        dataGridView1.ClearSelection();
+        dataGridView1.Rows[thisRow].Selected = true;
+
+        ContextMenu m = new ContextMenu();
+        m.MenuItems.Add(new MenuItem($"Copy Path to {abfFileName}"));
+        m.MenuItems.Add(new MenuItem($"Launch {abfFileName} in ClampFit"));
+        m.Show(dataGridView1, new Point(e.X, e.Y));
+
+    }
+}
+```
