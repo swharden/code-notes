@@ -36,3 +36,8 @@ public string Info()
     return info;
 }
 ```
+
+```cs
+FieldInfo[] fields = this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
+foreach (FieldInfo x in fields){}
+```
