@@ -41,3 +41,15 @@ public string Info()
 FieldInfo[] fields = this.GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public);
 foreach (FieldInfo x in fields){}
 ```
+
+```cs
+string valStr=null;
+if (val == null)
+{
+    valStr = "null";
+}
+else if (val.GetType().IsArray)
+{
+    valStr = "[" + string.Join(", ", (string[])val) + "]";
+}
+```
