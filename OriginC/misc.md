@@ -22,6 +22,8 @@ This command edits `%Y/Origin.ini`
 ## Common Tasks
 ```c
 
+void swh_demo_common()
+{
 	// create some data
 	int points = 10;
 	vector<double> vX(points);
@@ -67,4 +69,6 @@ This command edits `%Y/Origin.ini`
 	dsX = vX;
 	dsY = vY;
 	dsYerr = vYerr;
-  ```
+	
+}
+```
