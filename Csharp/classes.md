@@ -43,13 +43,15 @@ foreach (FieldInfo x in fields){}
 ```
 
 ```cs
-string valStr=null;
-if (val == null)
+
+string valStr = "";
+if (val.GetType().IsArray)
 {
-    valStr = "null";
-}
-else if (val.GetType().IsArray)
-{
-    valStr = "[" + string.Join(", ", (string[])val) + "]";
-}
+    Array objects = (Array)val;
+    string[] strings = new string[objects.GetUpperBound(0)];
+    for (int i = 0; i < strings.Length; i++)
+    {
+        strings[i] += objects.GetValue(i).ToString();
+    }
+    valStr += "[" + string.Join(", ", strings.ToArray()) + "]";
 ```
