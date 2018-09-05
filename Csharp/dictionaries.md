@@ -1,7 +1,27 @@
 # dictionaries
 
+## Simple Example
 ```cs
-IDictionary<string, List<string>> abfIDsByParent = new Dictionary<string, List<string>>();
+Dictionary<string, string> dict = new Dictionary<string, string>();
+
+dict.Add("scott", "harden");
+dict.Add("bill", "gates");
+dict.Add("steve", "jobs");
+
+// print items in the order they were added
+foreach (string key in dict.Keys)
+    Console.WriteLine($"{key} = {dict[key]}\n");
+
+// print items in alphabetical order
+List<string> keyList = new List<string>(dict.Keys);
+keyList.Sort();
+foreach (string key in keyList)
+    Console.WriteLine($"{key} = {dict[key]}\n");
+```
+
+## Dictionary where the value is a list
+```cs
+Dictionary<string, List<string>> abfIDsByParent = new Dictionary<string, List<string>>();
 
 // add every ABF to its particular parent
 abfIDsByParent.Clear();
