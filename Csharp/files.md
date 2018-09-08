@@ -1,9 +1,10 @@
 # File Operations
+All of these assume ```using System.IO;```
 
 ## Reading/Writing Text Files
 
 ```c#
-System.IO.File.WriteAllText(saveAs, html);
+File.WriteAllText(saveAs, html);
 ```
 
 ## Get File Size
