@@ -1,39 +1,43 @@
 # TIF/TIFF File Analysis in Csharp
 
-```cs
-// add the "Presentation Core" assembly to access this
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-```
-
 ## TiffBitmapDecoder
 * [tiffbitmapdecoder](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.tiffbitmapdecoder?view=netframework-4.7.2)
 * [bitmapframe](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.bitmapframe?view=netframework-4.7.2)
 
 ```cs
+// add the "Presentation Core" assembly to access this
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
 string tifFilePath = splitDirView1.highlightedFile;
 lblFileName.Text = System.IO.Path.GetFileName(tifFilePath);
 
-Console.WriteLine($"\nLOADING TIF: {tifFilePath}");
+richTextBox1.Clear();
+log($"LOADING TIF: {tifFilePath}");
 
+// open a file stream and keep it open until we're done reading the file
+Stream stream = new FileStream(tifFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+// carefully open the file to see if it will decode
 TiffBitmapDecoder decoder;
-BitmapSource bitmapSource;
 try
 {
-    Stream stream;
-    stream = new FileStream(tifFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
     decoder = new TiffBitmapDecoder(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-    bitmapSource = decoder.Frames[0];
-    stream.Dispose();
 }
 catch
 {
-    Console.WriteLine($"crash while loading TIF");
+    log($"TiffBitmapDecoder crashed");
     return;
 }
 
-for (int i = 0; i < decoder.Frames.Count; i++)
-{
-    Console.WriteLine($"Slice {i} shape ({bitmapSource.PixelWidth},{bitmapSource.PixelHeight})");
-}
+// determine how many single images are in this TIF
+int nFrames = decoder.Frames.Count;
+log($"number of frames: {nFrames}");
+
+// pull the first frame and inspect it
+BitmapSource bitmapSource = decoder.Frames[0];
+log($"Image depth: {bitmapSource.Format.BitsPerPixel}");
+log($"image width: {bitmapSource.PixelWidth}");
+log($"image height: {bitmapSource.PixelHeight}");
+stream.Dispose();
 ```
