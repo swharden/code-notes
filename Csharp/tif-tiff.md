@@ -1,5 +1,7 @@
 # TIF/TIFF File Analysis in Csharp
 
+https://github.com/swharden/Csharp-Data-Visualization/blob/15efb63ef64754dd410e1c7bc1e28ba15a6558b6/projects/18-01-10_fast_pixel_bitmap/readme.md
+
 ## TiffBitmapDecoder
 * [tiffbitmapdecoder](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.tiffbitmapdecoder?view=netframework-4.7.2)
 * [bitmapframe](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.bitmapframe?view=netframework-4.7.2)
