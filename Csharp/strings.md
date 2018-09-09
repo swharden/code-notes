@@ -1,4 +1,8 @@
 # Strings
+### Strip non-ASCII characters from a string
+```cs
+Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(s))
+```
 
 ### Place variables in strings with `$` and `{}`
 
