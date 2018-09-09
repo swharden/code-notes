@@ -1,6 +1,13 @@
 # TIF/TIFF File Analysis in Csharp
 
 ## TiffBitmapDecoder
+
+```
+// add the "Presentation Core" assembly to access this
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+```
+
 * [tiffbitmapdecoder](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.tiffbitmapdecoder?view=netframework-4.7.2)
 * [bitmapframe](https://docs.microsoft.com/en-us/dotnet/api/system.windows.media.imaging.bitmapframe?view=netframework-4.7.2)
 
