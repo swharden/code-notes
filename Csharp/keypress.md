@@ -1,5 +1,6 @@
 # Capturing Keypresses
-bind to Form1 events, not individual control events
+* bind to Form1 events, not individual control events
+* must set Form1 keyPreview to TRUE
 
 ```cs
 private void Form1_KeyDown(object sender, KeyEventArgs e)
