@@ -42,7 +42,7 @@ stopwatch.Stop();
 
 double timeMS = stopwatch.ElapsedTicks * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
 
-System.Console.WriteLine(string.Format("loaded in {1:0.00} ms", timeMS));
+System.Console.WriteLine(string.Format("loaded in {0:0.00} ms", timeMS));
 ```
 
 ## Pause or Sleep
