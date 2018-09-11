@@ -1,7 +1,8 @@
 # strings
 
 ```c
-string str1 = "testing";
-char str2[50];
-int finalCharCount = sprintf( str2, "%s %f", str1, 12.345);
+char demo[50];
+sprintf(demo,"%.4f",1.23456789);
+out_str(demo);
+// 1.2346
 ```
