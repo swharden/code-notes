@@ -1,6 +1,7 @@
 # Workbooks
 * https://www.originlab.com/doc/OriginC/guide/Basic-Workbook-Operation
 * https://www.originlab.com/doc/OriginC/ref/WorksheetPage
+* https://www.originlab.com/doc/OriginC/ref/Page-AddLayer
 
 ## Loop Through Workbooks
 ```c
