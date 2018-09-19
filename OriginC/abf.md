@@ -5,7 +5,7 @@
 ```
 
 ## Read a sweep
-```
+```c
 pCLAMPFile pcFile(abfFilePath);
 vector <float> data;
 
