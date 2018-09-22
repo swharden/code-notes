@@ -1,5 +1,27 @@
 # Drawing Graphics
 
+## Draw Graphics in a Picturebox
+```cs
+public Bitmap TestBitmap(Size size)
+{
+    Bitmap bmp = new Bitmap(size.Width, size.Height);
+
+    Graphics gfx = Graphics.FromImage(bmp);
+    gfx.Clear(Color.White);      
+
+    Font font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular);
+    SolidBrush brush = new SolidBrush(Color.Black);
+    gfx.DrawString($"test", font, brush, new Point(2, 2));
+
+    return bmp;
+}
+
+private void button1_Click(object sender, EventArgs e)
+{
+    pictureBox1.Image = TestBitmap(pictureBox1.Size);
+}
+```
+
 ## Draw Graphics on a Panel
 ```cs
 private void button1_Click(object sender, EventArgs e)
