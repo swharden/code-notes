@@ -271,3 +271,47 @@ private void Bitmap_from_data()
 ```C#
 public Color randomColor{get{return Color.FromArgb(255, gen.rand.Next(256), gen.rand.Next(256), gen.rand.Next(256));}}
 ```
+
+## Quick and Dirty Histogram Bitmap
+```cs
+public Bitmap Histogram(Size size, double[] values)
+{
+    Bitmap bmp = new Bitmap(size.Width, size.Height);
+
+    Graphics gfx = Graphics.FromImage(bmp);
+    gfx.Clear(Color.White);
+
+    // bin the data into 1px columns
+    double dataMin = values.Min();
+    double dataMax = values.Max();
+    double dataSpan = dataMax - dataMin;
+    int nBins = size.Width;
+    double[] counts = new double[nBins];
+    double binSize = dataSpan / (nBins - 1);
+    for (int i = 0; i < values.Length; i++)
+    {
+        int bin = (int)((values[i] - dataMin) / binSize);
+        if (bin >= counts.Length)
+            bin = counts.Length - 1;
+        if (bin < 0)
+            bin = 0;
+        counts[bin] = counts[bin] + 1;
+    }
+
+    // determine what to normalize it to visually
+    double peakVal = counts.Max();
+    double heightMult = size.Height / peakVal;
+
+    // plot the binned data
+    Pen pen = new Pen(new SolidBrush(Color.Black));
+    for (int i = 0; i < nBins; i++)
+    {
+        int heightPx = (int)(counts[i] * heightMult);
+        Point pt1 = new Point(i, size.Height - 0);
+        Point pt2 = new Point(i, size.Height - heightPx);
+        gfx.DrawLine(pen, pt1, pt2);
+    }
+
+    return bmp;
+}
+```
