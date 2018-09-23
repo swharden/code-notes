@@ -1,5 +1,10 @@
 # Image Files
 
+## Open Any Image (fails at nonstandard bit depths)
+```cs
+Bitmap bmp = new Bitmap(filePath); // that's it!
+```
+
 ## Monitoring graphical output of console applications
 I often write console apps which generate graphics, but it's inconvenient to double-click them to view them every time they are overwritten. I found I can do this in a web browser! Auto-refreshing every 1 second saves the day.
 
