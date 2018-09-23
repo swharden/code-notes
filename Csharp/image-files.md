@@ -27,9 +27,9 @@ public byte[] BitmapToBytes(Bitmap bmp)
 /// <summary>
 /// create a bitmap given a byte array of raw data
 /// </summary>
-public Bitmap BitmapFromBytes(byte[] bytes, int width, int height, PixelFormat format = PixelFormat.Format8bppIndexed)
+public Bitmap BitmapFromBytes(byte[] bytes, Size size, PixelFormat format = PixelFormat.Format8bppIndexed)
 {
-    Bitmap bmp = new Bitmap(width, height, format);
+    Bitmap bmp = new Bitmap(size.Width, size.Height, format);
     Rectangle rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
     BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadWrite, bmp.PixelFormat);
     Marshal.Copy(bytes, 0, bmpData.Scan0, bytes.Length);
