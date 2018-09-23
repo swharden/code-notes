@@ -38,6 +38,33 @@ public Bitmap BitmapFromBytes(byte[] bytes, int width, int height, PixelFormat f
 }
 ```
 
+## Apply Color Palettes (LUTs) to 8-Bit Indexed Bitmaps
+```cs
+/// <summary>
+/// Apply red, green, blue, magenta, or gray LUT to an 8-bit indexed bitmap
+/// </summary>
+public void BitmapApplyPalette(Bitmap bmp, string color = "gray")
+{
+    ColorPalette pal = bmp.Palette;
+    for (int i = 0; i < 256; i++)
+    {
+        if (color == "red")
+            pal.Entries[i] = System.Drawing.Color.FromArgb(255, i, 0, 0);
+        else if (color == "green")
+            pal.Entries[i] = System.Drawing.Color.FromArgb(255, 0, i, 0);
+        else if (color == "blue")
+            pal.Entries[i] = System.Drawing.Color.FromArgb(255, 0, 0, i);
+        else if (color == "magenta")
+            pal.Entries[i] = System.Drawing.Color.FromArgb(255, i, 0, i);
+        else if (color == "gray")
+            pal.Entries[i] = System.Drawing.Color.FromArgb(255, i, i, i);
+        else
+            Console.WriteLine($"Unknown color pallette code: {color}");
+    }
+    bmp.Palette = pal;
+}
+```
+
 ## Use Marshal Copy to remove 1 channel of an RGBA image
 ```cs
 public Bitmap ExtractChannel(Bitmap bmpSource, int channel = 0)
