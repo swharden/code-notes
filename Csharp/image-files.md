@@ -38,6 +38,38 @@ public Bitmap BitmapFromBytes(byte[] bytes, int width, int height, PixelFormat f
 }
 ```
 
+## Get 1 channel of an RGB Image
+```cs
+public Bitmap ExtractChannelToGrayscale(Bitmap bmpSource, int channel = 0, bool grayscale = false)
+{
+    // copy our source image to a byte array (8-bits/pixel, 3 channel RGB)
+    byte[] bytesRGB = BitmapToBytes(bmpSource);
+    int nPixels = bytesRGB.Length / 3;
+
+    // create a byte array for out grayscale image (16-bits/pixel, 1 channel)
+    byte[] bytesGray = new byte[nPixels];
+
+    for (int pixel = 0; pixel < nPixels; pixel++)
+    {
+        bytesGray[pixel] = bytesRGB[3 * pixel + (2 - channel)];
+    }
+
+    // make a 16-bit grayscale image the same size as the source
+    Bitmap bmpGray = BitmapFromBytes(bytesGray, bmpSource.Width, bmpSource.Height);
+
+    if (grayscale)
+        BitmapApplyPalette(bmpGray, "gray");
+    else if (channel == 0)
+        BitmapApplyPalette(bmpGray, "red");
+    else if (channel == 1)
+        BitmapApplyPalette(bmpGray, "green");
+    else if (channel == 2)
+        BitmapApplyPalette(bmpGray, "blue");
+
+    return bmpGray;
+}
+```
+
 ## Apply Color Palettes (LUTs) to 8-Bit Indexed Bitmaps
 ```cs
 /// <summary>
