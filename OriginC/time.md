@@ -1,6 +1,15 @@
-## Timers
+## Access system time
+https://www.originlab.com/doc/OriginC/ref/GetTickCount
+```c
+DWORD dw1 = GetTickCount();
+```
 
-> _If you want to use built in timer in labtalk you can type ‘sec’ in the command window onces.  Then type ‘watch’. You can the run ‘watch’ repeatedly without typing sec each time to get time since last watch command. There is also a way to do that in C._
+## Seed Random Number Generator
+```c
+rnd(GetTickCount()); // seed the RNG
+```
+
+## Timers
 
 ```c
 // something like
