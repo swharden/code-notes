@@ -4,3 +4,13 @@ https://www.originlab.com/doc/OriginC/ref/rnd
 // rnd() generates a random double between 0 and 1
 printf("%f", rnd());
 ```
+
+https://www.originlab.com/doc/OriginC/ref/Random-Number-Generators
+https://www.originlab.com/doc/OriginC/ref/poissrnd#Examples
+```c
+// generate random Poisson distributions
+int n = 10;
+long v[10];
+double lamda=20.0;
+int nRet = poissrnd(v, n, lamda);
+```
