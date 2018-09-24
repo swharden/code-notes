@@ -6,6 +6,13 @@ printf("%f", rnd());
 ```
 
 https://www.originlab.com/doc/OriginC/ref/Random-Number-Generators
+```c
+// create 1000 random numbers from -100 to 100
+int sampleCount = 1000;
+vector<double> fullSample(sampleCount);
+unifrnd(fullSample, fullSample.GetSize(), -100, 100);    
+```
+
 https://www.originlab.com/doc/OriginC/ref/poissrnd#Examples
 ```c
 // generate random Poisson distributions
