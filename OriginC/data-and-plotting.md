@@ -1,7 +1,7 @@
 # Data and Plotting
 
 ## Create a workbook for a vector ready to plot
-```
+```c
 void ShowTrace(vector<double> vectorToGraph, double xOffset){
   // utility function to quickly create a new worksheet with data suitable for graphing.
 
