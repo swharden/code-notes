@@ -2,7 +2,7 @@
 
 ## Create a workbook for a vector ready to plot
 ```c
-void ShowTrace(vector<double> vectorToGraph, double xOffset){
+void ShowTrace(vector<double> vectorToGraph, double xOffset = 0){
   // utility function to quickly create a new worksheet with data suitable for graphing.
 
   // create a new worksheet
