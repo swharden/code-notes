@@ -3,6 +3,21 @@
 * https://www.originlab.com/doc/OriginC/ref/WorksheetPage
 * https://www.originlab.com/doc/OriginC/ref/Page-AddLayer
 
+## Creating
+https://www.originlab.com/doc/OriginC/ref/Page-Create
+
+```c
+// create an empty workbook with an empty sheet
+WorksheetPage wksPg;
+wksPg.Create("");
+```
+
+```c
+// create an empty workbook with a standard X and Y column
+WorksheetPage wksPg;
+wksPg.Create("Origin");
+```
+
 ## Loop Through Workbooks
 ```c
 foreach(WorksheetPage wksPage in Project.WorksheetPages)
