@@ -20,3 +20,6 @@ string workSheetName = wks.GetName();
 string workBookName = wksPage.GetName();
 printf("[%s]%s",workBookName,workSheetName);
 ```
+
+# Columns
+* https://www.originlab.com/doc/OriginC/guide/Worksheet-Column-Operation
