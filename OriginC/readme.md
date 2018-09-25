@@ -1,7 +1,7 @@
 # OriginC Code Examples
 
 ## Workbook Operations
-* Workbooks are `WorkSheetPage` objects
+* Workbooks are `WorksheetPage` objects
 * Duplicate long names are OK but short names must be unique project wide
 
 ### Links
