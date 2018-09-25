@@ -3,6 +3,11 @@
 * https://www.originlab.com/doc/OriginC/ref/WorksheetPage
 * https://www.originlab.com/doc/OriginC/ref/Page-AddLayer
 
+## Concepts
+* A workbook is a `WorksheetPage`
+* workbooks can have duplicate long names
+* workbooks must have unique names (project wide!)
+
 ## Creating
 https://www.originlab.com/doc/OriginC/ref/Page-Create
 
