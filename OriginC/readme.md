@@ -167,6 +167,23 @@ void ColumnFillRandom(Column col, int count=100, double low=0, double high=1){
 }
 ```
 
+## Notes Pages
+
+### Links
+* https://www.originlab.com/doc/OriginC/ref/Note
+* https://www.originlab.com/doc/OriginC/ref/Note-Note
+
+### Code Examples
+
+```c
+// create a new notes page and fill it with text
+Note note;
+note.Create();
+note.SetLongName("this note is too cool for you", true, true);
+note.TitleShow = WIN_TITLE_SHOW_BOTH;  
+note.Text = "are you noting this?";
+```
+
 ## Misc
 
 ```c
