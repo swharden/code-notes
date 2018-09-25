@@ -31,6 +31,13 @@ foreach(WorksheetPage wksPage in Project.WorksheetPages)
 }
 ```
 
+```c
+void DeleteAllWorkbooks(){
+	foreach(WorksheetPage wksPage in Project.WorksheetPages)
+		wksPage.Destroy();
+}
+```
+
 ## Get Active WorkBook/WorkSheet
 ```
 Worksheet wks = Project.ActiveLayer();
