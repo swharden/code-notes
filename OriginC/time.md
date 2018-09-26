@@ -1,7 +1,13 @@
 ## Access system time
 https://www.originlab.com/doc/OriginC/ref/GetTickCount
+
+## Timers
+
 ```c
-DWORD dw1 = GetTickCount();
+DWORD timerStart=GetTickCount();
+/* do stuff */
+DWORD timerEnd=GetTickCount();
+printf("Timer took: %3.3f seconds.\n",(timerEnd-timerStart)/1000.00);
 ```
 
 ## Seed Random Number Generator
@@ -9,11 +15,3 @@ DWORD dw1 = GetTickCount();
 rnd(GetTickCount()); // seed the RNG
 ```
 
-## Timers
-
-```c
-// something like
-DWORD dwBegin=GetTickCount();
-DWORD dwEnd=GetTickCount();
-printf("\n  Total RunTime: %3.2f seconds.\n",(dwEnd-dwBegin)/1000.00);
-```
