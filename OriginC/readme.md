@@ -138,7 +138,7 @@ void ColumnsClear(Worksheet wks){
 ```
 
 ```c
-void ColumnAdd(Worksheet wks, string longName="", string units="", string comments="", string type="Y"){
+Column ColumnAdd(Worksheet wks, string longName="", string units="", string comments="", string type="Y"){
 	// add a column to the given worksheet
 	int columnIndex = wks.AddCol();
 	Column col = wks.Columns(columnIndex);
@@ -152,6 +152,7 @@ void ColumnAdd(Worksheet wks, string longName="", string units="", string commen
 		col.SetType(OKDATAOBJ_DESIGNATION_Y);
 	else if (type=="ERR")
 		col.SetType(OKDATAOBJ_DESIGNATION_ERROR);
+	return col;
 }
 ```
 
