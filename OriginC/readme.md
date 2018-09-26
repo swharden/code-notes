@@ -187,7 +187,7 @@ note.Text = "are you noting this?";
 ## Misc
 
 ```c
-void SwhMemtest_test2(){
+void DemoEverything(){
 	BooksDeleteAll();
 	WorksheetPage wksPage = BookGetOrCreate("demoBook");
 	Worksheet wks = SheetGetOrCreate(wksPage, "demoSheet");
