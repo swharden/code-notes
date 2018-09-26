@@ -199,6 +199,7 @@ note.Text = "are you noting this?";
 
 ```c
 void DemoEverything(){
+	// demonstrate uses of many of the functions on this page
 	BooksDeleteAll();
 	WorksheetPage wksPage = BookGetOrCreate("demoBook");
 	Worksheet wks = SheetGetOrCreate(wksPage, "demoSheet");
@@ -206,5 +207,40 @@ void DemoEverything(){
 	Column colY = wks.Columns(1);
 	ColumnFillAscending(colX, 20, 5, -110);
 	ColumnFillRandom(colY, 20, -10, 10);
+}
+```
+
+```c
+void CreateFakeMemtestBook(int sheetCount = 10){
+	// use functions on this page to create something that looks like a thick book of memtests
+	
+	DWORD timerStart=GetTickCount();
+	
+	WorksheetPage wksPage = BookGetOrCreate("FakeMemtest");
+	
+	for (int sheetNumber = 0; sheetNumber < sheetCount; sheetNumber++){
+		string abfID = StringRandomNumbers(8);
+		Worksheet wks = SheetGetOrCreate(wksPage, abfID);
+		ColumnsClear(wks);
+		
+		double sweepLength = 1.0/30;
+		int sweepCount = 20;
+		
+		Column colTime = ColumnAdd(wks, "Time", "min", "", "X");
+		ColumnFillAscending(colTime, sweepCount, sweepLength);
+		
+		Column colIh = ColumnAdd(wks, "Ih", "pA");
+		ColumnFillRandom(colIh, sweepCount, sweepLength);
+			
+		Column colRa = ColumnAdd(wks, "Ra", "MOhm");
+		ColumnFillRandom(colRa, sweepCount, sweepLength);
+		
+		Column colRm = ColumnAdd(wks, "Rm", "MOhm");
+		ColumnFillRandom(colRm, sweepCount, sweepLength);
+	}
+	
+	DWORD timerEnd=GetTickCount();
+	printf("Timer took: %3.3f seconds.\n",(timerEnd-timerStart)/1000.00);
+
 }
 ```
