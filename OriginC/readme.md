@@ -22,7 +22,7 @@ printf("[%s]%s",workBookName,workSheetName);
 ```
 
 ```c
-void BooksDeleteAll(){
+void BooksClear(){
 	// delete every workbook in the project
 	foreach(WorksheetPage wksPage in Project.WorksheetPages){
 		wksPage.Destroy();
@@ -123,6 +123,16 @@ void ColumnsEnsureCount(Worksheet wks, int columnCount){
 	int columnsNeeded = columnCount - wks.Columns.Count();
 	while (columnsNeeded--){
 		wks.AddCol();
+	}
+}
+```
+
+```c
+void ColumnsClear(Worksheet wks){
+	// delete all columns in the worksheet
+	int colsToDelete = wks.Columns.Count();
+	while (colsToDelete--){
+		wks.Columns(0).Destroy();
 	}
 }
 ```
