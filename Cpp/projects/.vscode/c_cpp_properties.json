@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Users\\scott\\Documents\\important\\mingw\\include\\c++\\4.8.3",
+                "C:\\Users\\scott\\Documents\\important\\mingw\\include\\c++\\4.8.3\\bits"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 4
+}
