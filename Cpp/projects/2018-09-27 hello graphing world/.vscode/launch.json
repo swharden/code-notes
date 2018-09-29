@@ -8,7 +8,7 @@
             "program": "${workspaceFolder}/bin/main.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/data/",
+            "cwd": "${workspaceFolder}/run/",
             "environment": [],
             "externalConsole": false,
         }

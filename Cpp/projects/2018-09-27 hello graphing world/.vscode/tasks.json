@@ -2,32 +2,16 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build",
+            "label": "build and run",
             "type": "shell",
-            "command": "g++",
-            "args": [
-                "-g",
-                "${workspaceFolder}/src/main.cpp",
-                "-o",
-                "${workspaceFolder}/bin/main.exe"
-            ],
+            "command": "./buildAndRun.bat",
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
-        },
-        {
-            "label": "run",
-            "type": "shell",
-            "command": "../bin/main.exe",
+            },
             "options": {
-                "cwd": "${workspaceFolder}/data"
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
-            "problemMatcher": []
+                "cwd": "${workspaceFolder}/run"
+            }
         }
     ]
 }
