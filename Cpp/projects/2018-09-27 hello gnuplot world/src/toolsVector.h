@@ -20,6 +20,7 @@ vector<double> NoisySin(int points, int cycles = 3, double noiseLevel=.2){
     vector<double> data(points);
     for (int i=0; i<points; i++){
         float noise = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        noise = noise * 2 - 1;
         double sinThis = (double)i / points;
         sinThis *= 3.14159 * 2;
         sinThis *= cycles;
