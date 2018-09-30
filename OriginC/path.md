@@ -35,14 +35,11 @@ string dirname(string path){
 
 ## Path is file, folder, or doesn't exist
 ```c
-
-	if (path.IsFile()){
-		out_str("is a file");
-	} 
-	else if (path.IsPath()){
-		out_str("is a directory");
-	} 
-	else {
-		out_str("does not exist");
-	}
+if (path.IsFile()) {
+    out_str("is a file");
+} else if (path.IsPath()) {
+    out_str("is a directory");
+} else {
+    out_str("does not exist");
+}
 ```
