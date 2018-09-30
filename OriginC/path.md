@@ -43,3 +43,13 @@ if (path.IsFile()) {
     out_str("does not exist");
 }
 ```
+
+## List Files in a Folder
+```c
+StringArray saABFs;
+FindFiles(saABFs, folderPath, "abf");
+saABFs.Sort();	
+for (int i=0; i<saABFs.GetSize(); i++){
+  printf("[%d] %s\n", i, saABFs[i]);
+}
+```
