@@ -195,6 +195,54 @@ note.TitleShow = WIN_TITLE_SHOW_BOTH;
 note.Text = "are you noting this?";
 ```
 
+```c
+Note NoteWithName(string noteName){
+	// return the note whose long name matches the string
+	foreach (Note note in Project.Notes){
+		if (note.GetLongName()==noteName){
+			return note;
+		}
+	}
+	
+	// return a null note if no match is found
+	Note noteNull;
+	return noteNull;
+}
+```
+
+```c
+Note NoteGetOrCreate(string noteName){
+	// return the note page with the given name, creating it if it doesn't exist
+	Note note = NoteWithName(noteName);
+	if (note){
+		return note;
+	} else {
+		note.Create();
+		note.SetLongName(noteName, true, true);
+		note.TitleShow = WIN_TITLE_SHOW_BOTH;
+		return note;
+	}	
+}
+```
+
+```c
+void NoteClear(string noteName){
+	// clear the contents of a note page
+	Note note = NoteWithName(noteName);
+	note.Text = "";
+}
+```
+
+```c
+void NoteAppend(string noteName, string message, bool breakBefore = true){
+	// append a string to the end of a note page
+	Note note = NoteWithName(noteName);
+	if (breakBefore)
+		message = "\n"+message;
+	note.Text += message;
+}
+```
+
 ## Misc
 
 ```c
