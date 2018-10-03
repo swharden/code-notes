@@ -10,7 +10,9 @@
 * Enable build-and-run with CTRL + SHIFT + B
   * Press CTRL + SHIFT + B to start a `tasks.json` file
   * Edit `tasks.json` to be like the one below
-
+* Add include path to `c_cpp_properties.json`
+  * My include path string (note escale characters) is:\
+  `"C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\lib\\gcc\\i686-w64-mingw32\\8.1.0\\include\\c++"`
 ### build-and-run.bat
 ```bat
 @echo off
