@@ -1,6 +1,6 @@
 # C++ Code Notes
 
-## Configuring GCC (GPP) with Visual Studio Code
+## Configuring GCC to Compile C++ from Visual Studio Code
 * Install [MinGW-64](https://sourceforge.net/projects/mingw-w64/) (_Minimalist GNU for Windows_)
 * Install the [C/C++ extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) in VS Code
 * Add path to `g++.exe` to PATH in your environment variables
