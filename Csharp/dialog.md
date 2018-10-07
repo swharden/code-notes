@@ -22,3 +22,16 @@ if (diag.ShowDialog() == DialogResult.OK)
     string selectedPath = diag.SelectedPath;
 }
 ```
+
+## Select Image
+```cs
+OpenFileDialog diag = new OpenFileDialog();
+diag.Filter = "TIF files (*.tif, *.tiff)|*.tif;*.tiff";
+diag.Filter += "|JPG Files (*.jpg, *.jpeg)|*.jpg;*.jpeg";
+diag.Filter += "|PNG Files (*.png)|*.png;*.png";
+diag.Filter += "|BMP Files (*.bmp)|*.bmp;*.bmp";
+diag.Filter  += "|All files (*.*)|*.*";
+if (diag.ShowDialog() == DialogResult.OK) {
+    SetImage(diag.FileName);
+}
+```
