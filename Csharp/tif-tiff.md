@@ -22,70 +22,51 @@ public int GuessDepth(double whitestPixelValue)
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-string tifFilePath = splitDirView1.highlightedFile;
-lblFileName.Text = System.IO.Path.GetFileName(tifFilePath);
-
-richTextBox1.Clear();
-log($"LOADING TIF: {tifFilePath}");
-
-// open a file stream and keep it open until we're done reading the file
-Stream stream = new FileStream(tifFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-// carefully open the file to see if it will decode
-TiffBitmapDecoder decoder;
-try
-{
-    decoder = new TiffBitmapDecoder(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
-}
-catch
-{
-    log($"TiffBitmapDecoder crashed");
-    return;
-}
-
-// determine how many single images are in this TIF
-int nFrames = decoder.Frames.Count;
-log($"number of frames: {nFrames}");
-
-// pull the first frame and inspect it
-BitmapSource bitmapSource = decoder.Frames[0];
-log($"Image depth: {bitmapSource.Format.BitsPerPixel}");
-log($"image width: {bitmapSource.PixelWidth}");
-log($"image height: {bitmapSource.PixelHeight}");
-stream.Dispose();
-```
-
-### Arbitrary Bit Depths
-```cs
 /// <summary>
-/// Generate an 8-bit grayscale image suitable for display.
-/// Returned data may be degraded due to quantization error.
+/// This function takes a TIFF frame of any bit depth and returns a proper 8-bit bitmap
 /// </summary>
-public Bitmap GetBitmapForDisplay(int frameNumber = 0)
+private Bitmap LoadImageTiff(string path, int frameNumber = 0)
 {
-    // ensure a TIF is loaded
-    if (decoder == null) return null;
+    //bmpPreview = new Bitmap(path);
 
-    // select the frame (channel or slice) we want
-    if (frameNumber >= decoder.Frames.Count) return null;
+    // open a file stream and keep it open until we're done reading the file
+    Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
 
-    // prepare variables which will be useful later
+    // carefully open the file to see if it will decode
+    TiffBitmapDecoder decoder;
+    try
+    {
+        decoder = new TiffBitmapDecoder(stream,
+            BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
+    }
+    catch
+    {
+        Console.WriteLine("TiffBitmapDecoder crashed");
+        stream.Dispose();
+        return null;
+    }
+
+    // access information about the image
+    int imageFrames = decoder.Frames.Count;
+    BitmapSource bitmapSource = decoder.Frames[frameNumber];
     int sourceImageDepth = bitmapSource.Format.BitsPerPixel;
     int bytesPerPixel = sourceImageDepth / 8;
-    int width = bitmapSource.PixelWidth;
-    int height = bitmapSource.PixelHeight;
-    int stride = width * bytesPerPixel;
-    int imageByteCount = height * width * bytesPerPixel;
-    int pixelCount = width * height;
+    Size imageSize = new Size(bitmapSource.PixelWidth, bitmapSource.PixelHeight);
+    int pixelCount = imageSize.Width * imageSize.Height;
 
-    // fill our byte array with source data
+    // fill a byte array with source data bytes from the file
+    int imageByteCount = pixelCount * bytesPerPixel;
     byte[] bytesSource = new byte[imageByteCount];
-    bitmapSource.CopyPixels(bytesSource, stride, 0);
+    bitmapSource.CopyPixels(bytesSource, imageSize.Width * bytesPerPixel, 0);
 
-    // Fill an int array with data from the byte array according to bytesPerPixel
+    // we can now close the original file
+    stream.Dispose();
+
+    // now convert the byte array to an int array (with 1 int per pixel)
     int[] valuesSource = new int[pixelCount];
     for (int i = 0; i < valuesSource.Length; i++)
     {
+        // this loop is great because it works on any number of bytes per pixel
         int bytePosition = i * bytesPerPixel;
         for (int byteNumber = 0; byteNumber < bytesPerPixel; byteNumber++)
         {
@@ -96,14 +77,11 @@ public Bitmap GetBitmapForDisplay(int frameNumber = 0)
     // determine the range of intensity data
     int pixelValueMax = valuesSource.Max();
     int pixelValueMin = valuesSource.Min();
-    log.Debug($"pixel value max: {pixelValueMax}");
-    log.Debug($"pixel value min: {pixelValueMin}");
 
     // predict what bit depth we have based upon pixelValueMax
     int dataDepth = 1;
     while (Math.Pow(2, dataDepth) < pixelValueMax)
-        dataDepth++;                
-    log.Debug($"detected data depth: {dataDepth}-bit");
+        dataDepth++;
 
     // determine if we will use the original bit depth or our guessed bit depth
     bool use_detected_camera_depth = true; // should this be an argument?
@@ -111,7 +89,7 @@ public Bitmap GetBitmapForDisplay(int frameNumber = 0)
         dataDepth = sourceImageDepth;
 
     // create and fill a pixel array for the 8-bit final image
-    byte[] pixelsOutput = new byte[height * width];
+    byte[] pixelsOutput = new byte[pixelCount];
     for (int i = 0; i < pixelsOutput.Length; i++)
     {
         // start by loading the pixel value of the source
@@ -121,7 +99,7 @@ public Bitmap GetBitmapForDisplay(int frameNumber = 0)
         pixelValue = pixelValue << (sourceImageDepth - dataDepth);
 
         // downshift it as needed to ensure the MSB is in the lowest 8 bytes
-        pixelValue = pixelValue >> (sourceImageDepth-8);
+        pixelValue = pixelValue >> (sourceImageDepth - 8);
 
         // conversion to 8-bit should be now nondestructive
         pixelsOutput[i] = (byte)(pixelValue);
@@ -129,7 +107,7 @@ public Bitmap GetBitmapForDisplay(int frameNumber = 0)
 
     // create the output bitmap (8-bit indexed color)
     var format = System.Drawing.Imaging.PixelFormat.Format8bppIndexed;
-    Bitmap bmp = new Bitmap(width, height, format);
+    Bitmap bmp = new Bitmap(imageSize.Width, imageSize.Height, format);
 
     // Create a grayscale palette, although other colors and LUTs could go here
     ColorPalette pal = bmp.Palette;
@@ -138,7 +116,7 @@ public Bitmap GetBitmapForDisplay(int frameNumber = 0)
     bmp.Palette = pal;
 
     // copy the new pixel data into the data of our output bitmap
-    var rect = new Rectangle(0, 0, width, height);
+    var rect = new Rectangle(0, 0, imageSize.Width, imageSize.Height);
     BitmapData bmpData = bmp.LockBits(rect, ImageLockMode.ReadOnly, format);
     Marshal.Copy(pixelsOutput, 0, bmpData.Scan0, pixelsOutput.Length);
     bmp.UnlockBits(bmpData);
