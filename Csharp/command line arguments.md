@@ -1,5 +1,6 @@
 # Command Line Arguments
 
+## Capture with `Main()` in console applications
 ```cs
 static void Main(string[] args)
 {
@@ -13,4 +14,13 @@ static void Main(string[] args)
         }
     }
 }
+```
+
+## Capture anywhere (good for Forms)
+```cs
+string[] args = Environment.GetCommandLineArgs();
+string argsString = "";
+for (int i=0; i<args.Length; i++)
+    argsString += $"\n  [{i}] \"{args[i]}\"";
+Log($"Command line arguments: {argsString}");
 ```
