@@ -13,6 +13,23 @@
 ### Code Examples
 
 ```c
+void BookActivate(string bookName, bool inActiveFolder = true){
+	// activate a workbook by name (partial matches supported)
+	foreach(WorksheetPage wksPage in Project.WorksheetPages){
+		if (stringContains(wksPage.GetLongName(), bookName, false)){
+			if (inActiveFolder){
+				string folderPathActive = FolderFullPath(FolderActive());
+				string folderPathThisNote = FolderFullPath(wksPage.GetFolder());
+				if (folderPathActive != folderPathThisNote)
+					continue;
+			} 
+			wksPage.SetShow(PAGE_ACTIVATE);  // Activate the workbook
+		}
+	}
+}
+```
+
+```c
 // display the active workbook and worksheet
 Worksheet wks = Project.ActiveLayer();
 WorksheetPage wksPage = wks.GetPage();
@@ -196,10 +213,16 @@ note.Text = "are you noting this?";
 ```
 
 ```c
-Note NoteWithName(string noteName){
+Note NoteWithName(string noteName, bool inActiveFolder = true){
 	// return the note whose long name matches the string
 	foreach (Note note in Project.Notes){
 		if (note.GetLongName()==noteName){
+			if (inActiveFolder){
+				string folderPathActive = FolderFullPath(FolderActive());
+				string folderPathThisNote = FolderFullPath(note.GetFolder());
+				if (folderPathActive != folderPathThisNote)
+					continue;
+			}
 			return note;
 		}
 	}
@@ -211,9 +234,9 @@ Note NoteWithName(string noteName){
 ```
 
 ```c
-Note NoteGetOrCreate(string noteName){
+Note NoteGetOrCreate(string noteName, bool inActiveFolder = true){
 	// return the note page with the given name, creating it if it doesn't exist
-	Note note = NoteWithName(noteName);
+	Note note = NoteWithName(noteName, inActiveFolder);
 	if (note){
 		return note;
 	} else {
@@ -221,7 +244,7 @@ Note NoteGetOrCreate(string noteName){
 		note.SetLongName(noteName, true, true);
 		note.TitleShow = WIN_TITLE_SHOW_BOTH;
 		return note;
-	}	
+	}
 }
 ```
 
