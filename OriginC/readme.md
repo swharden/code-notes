@@ -39,9 +39,15 @@ printf("[%s]%s",workBookName,workSheetName);
 ```
 
 ```c
-void BooksClear(){
-	// delete every workbook in the project
+void BooksClear(bool inActiveFolder = true){
+	// delete every workbook in the active folder or project
 	foreach(WorksheetPage wksPage in Project.WorksheetPages){
+		if (inActiveFolder){
+			string folderPathActive = FolderFullPath(FolderActive());
+			string folderPathThisBook = FolderFullPath(wksPage.GetFolder());
+			if (folderPathActive != folderPathThisBook)
+				continue;
+		}
 		wksPage.Destroy();
 	}
 }
