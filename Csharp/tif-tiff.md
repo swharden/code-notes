@@ -105,6 +105,23 @@ private Bitmap LoadImageTiff(string path, int frameNumber = 0)
         pixelsOutput[i] = (byte)(pixelValue);
     }
 
+    // input bytes are padded such that stide is a multiple of 4 bytes, so trim it off
+    int strideByteMultiple = 4;
+    int strideOverhang = imageSize.Width % strideByteMultiple;
+    Log($"Width-stride overhang: {strideOverhang} bytes");
+    if (strideOverhang > 0)
+    {
+        int strideBytesNeededPerRow = strideByteMultiple - (strideOverhang);
+        Log($"Trimming {strideBytesNeededPerRow} extra bytes from the end of each row");
+        byte[] pixelsOutputOriginal = new byte[pixelCount];
+        Array.Copy(pixelsOutput, pixelsOutputOriginal, pixelCount);
+        pixelsOutput = new byte[pixelCount + strideBytesNeededPerRow * imageSize.Height];
+        int newStrideWidth = imageSize.Width + strideBytesNeededPerRow;
+        for (int row = 0; row < imageSize.Height; row++)
+            for (int col = 0; col < imageSize.Width; col++)
+                pixelsOutput[row * newStrideWidth + col] = pixelsOutputOriginal[row * imageSize.Width + col];
+    }
+            
     // create the output bitmap (8-bit indexed color)
     var format = System.Drawing.Imaging.PixelFormat.Format8bppIndexed;
     Bitmap bmp = new Bitmap(imageSize.Width, imageSize.Height, format);
