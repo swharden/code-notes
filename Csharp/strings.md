@@ -36,6 +36,10 @@ String.Format("{0:0.00}", 123.4);         // "123.40"
 String.Format("{0:0.00}", 123.0);         // "123.00"
 String.Format("{0:n}", 1234);             // 1,234.00
 string.Format("{0:n0}", 9876);            // 9,876
+
+// or this
+i.ToString("0000"); - pad with zeros
+i.ToString("D4"); - pad with zeros
 ```
 
 ### String contains substring
