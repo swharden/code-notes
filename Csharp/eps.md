@@ -2,7 +2,7 @@
 
 ## Experiment Organizer DataTable
 Just create a dataTable and let this code fill it with dummy data.
-```
+```cs
 // fill the experiment organizer
 DataTable dataTable = new DataTable();
 var expOrgColumns = new List<string>() { "ABF ID", "Group", "Notes" };
