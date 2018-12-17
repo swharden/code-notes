@@ -40,6 +40,9 @@ string.Format("{0:n0}", 9876);            // 9,876
 // or this
 i.ToString("0000"); - pad with zeros
 i.ToString("D4"); - pad with zeros
+
+// or double up
+string.Format(String.Format("{0:0000000000.0000}", 123)); // 0000000123.0000
 ```
 
 ### String contains substring
