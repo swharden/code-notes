@@ -9,6 +9,20 @@ class Axis1d
 }
 ```
 
+## Override ToString()
+```cs
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public override string ToString()
+    {
+        return "Person: " + Name + " " + Age;
+    }
+}
+```
+
 ## Listing Every Object in a Class
 ```cs
 public string Info()
