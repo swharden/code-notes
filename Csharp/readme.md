@@ -4,3 +4,4 @@
 * format selection: `CTRL+K`, `CTRL+F`
 * comment: `CTRL+K`, `CTRL+C`
 * uncomment: `CTRL+K`, `CTRL+U`
+* full screen: `ALT+SHIFT+ENTER`
