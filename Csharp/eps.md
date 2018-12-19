@@ -36,3 +36,33 @@ dataGridView1.DataSource = dataTable;
 // adjust the width of a column to fit its contents
 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 ```
+
+## Random ABF filenames
+```cs
+/// <summary>
+/// Return a string array containing random ABF filenames
+/// </summary>
+private string[] RandomABFnames(int days = 10, int abfsPerDay = 25, bool randomAbfsPerDay = true)
+{
+    if (days > 30)
+        days = 30;
+
+    var names = new List<string>();
+
+    for (int dayOfMonth = 1; dayOfMonth < days; dayOfMonth++)
+    {
+        int abfsThisDay;
+        if (randomAbfsPerDay)
+            abfsThisDay = (int)(random.NextDouble() * abfsPerDay);
+        else
+            abfsThisDay = abfsPerDay;
+
+        for (int abfNumber = 0; abfNumber < abfsThisDay; abfNumber++)
+        {
+            string abfFileName = string.Format("2018_12_{0:00}_{1:0000}.abf", dayOfMonth, abfNumber);
+            names.Add(abfFileName);
+        }
+    }
+    return names.ToArray();
+}
+```
