@@ -10,3 +10,16 @@
 ```cs
 comboChannel.Enabled = (channelCount > 1) ? true : false;
 ```
+
+### String to integer
+
+If you are sure it will parse:
+```cs
+int.Parse(string)
+```
+
+If you are not sure it will parse:
+```cs
+int i;
+bool success = int.TryParse(string, out i);
+```
