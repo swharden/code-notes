@@ -35,3 +35,25 @@ if (diag.ShowDialog() == DialogResult.OK) {
     SetImage(diag.FileName);
 }
 ```
+
+## Dialog from scratch (get an int)
+```cs
+public double DialogGetInt(string text, string caption, int valMin=1, int valMax=1000)
+{
+    Form prompt = new Form();
+    prompt.Width = 250;
+    prompt.Height = 150;
+    prompt.Text = caption;
+    Label textLabel = new Label() { Left = 10, Top = 10, Text = text };
+    NumericUpDown nudVal = new NumericUpDown() { Left = 10, Top = 40, Width = 100 };
+    nudVal.Minimum = valMin;
+    nudVal.Maximum = valMax;
+    Button btnOk = new Button() { Text = "Ok", Left = 120, Top = 40, Width = 50 };
+    btnOk.Click += (sender, e) => { prompt.Close(); };
+    prompt.Controls.Add(btnOk);
+    prompt.Controls.Add(textLabel);
+    prompt.Controls.Add(nudVal);
+    prompt.ShowDialog();
+    return (int)nudVal.Value;
+}
+```
