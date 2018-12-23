@@ -36,9 +36,9 @@ if (diag.ShowDialog() == DialogResult.OK) {
 }
 ```
 
-## Dialog from scratch (get an int)
+## Dialog from scratch (get a double)
 ```cs
-public double DialogGetInt(string text, string caption, int valMin=1, int valMax=1000)
+public double DialogGetNumber(string text, string caption, int valMin=1, int valMax=1000)
 {
     Form prompt = new Form();
     prompt.Width = 250;
@@ -54,6 +54,6 @@ public double DialogGetInt(string text, string caption, int valMin=1, int valMax
     prompt.Controls.Add(textLabel);
     prompt.Controls.Add(nudVal);
     prompt.ShowDialog();
-    return (int)nudVal.Value;
+    return (double)nudVal.Value;
 }
 ```
