@@ -3,13 +3,18 @@
 You could use a third party library. Or this.
 
 ```cs
-public enum LogLevel { DEBUG, INFO, WARN, CRITICAL };
 public class ScottLog
 {
+    private enum LogLevel { DEBUG, INFO, WARN, CRITICAL };
     public static bool silent = false;
     public static string logText = "";
     public string logName;
-    public ScottLog(string logName) { this.logName = logName; }
+    private static long timeStart = 0;
+    public ScottLog(string logName)
+    {
+        this.logName = logName;
+        if (timeStart == 0) timeStart = DateTime.Now.Ticks;
+    }
     public string GetLogText() { return logText.Trim(); }
     public void Debug(string message) { Log(message, logName, LogLevel.DEBUG); }
     public void Info(string message) { Log(message, logName, LogLevel.INFO); }
@@ -17,13 +22,15 @@ public class ScottLog
     public void Critical(string message) { Log(message, logName, LogLevel.CRITICAL); }
     private static void Log(string message, string logName, LogLevel logLevel)
     {
-        string timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        string dateAndTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         string[] logLevelNames = { "DEBUG", "INFO", "WARN", "CRITICAL" };
         string logLevelName = logLevelNames[(int)logLevel];
-        string logLine = $"[{timestamp}] {logName} ({logLevelName}): {message}";
+        double timeElapsed = (double)(DateTime.Now.Ticks - timeStart) / TimeSpan.TicksPerMillisecond;
+        string timeElapsedStr = string.Format("{0:0.00} ms", timeElapsed);
+        //string logLine = $"[{dateAndTime}] {logName} ({logLevelName}): {message}";
+        string logLine = $"[{timeElapsedStr}] {logName} ({logLevelName}): {message}";
         logText = logText + logLine + "\n";
-        if (!silent)
-            System.Console.WriteLine(logLine);
+        if (!silent) System.Console.WriteLine(logLine);
     }
 }
 ```
