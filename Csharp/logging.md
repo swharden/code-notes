@@ -10,6 +10,7 @@ public class ScottLog
     public static string logText = "";
     public string logName;
     private static long timeStart = 0;
+    public static long timeLast = 0;
     public ScottLog(string logName)
     {
         this.logName = logName;
@@ -25,12 +26,16 @@ public class ScottLog
         string dateAndTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         string[] logLevelNames = { "DEBUG", "INFO", "WARN", "CRITICAL" };
         string logLevelName = logLevelNames[(int)logLevel];
-        double timeElapsed = (double)(DateTime.Now.Ticks - timeStart) / TimeSpan.TicksPerMillisecond;
-        string timeElapsedStr = string.Format("{0:0.00} ms", timeElapsed);
+        double timeFromStart = (double)(DateTime.Now.Ticks - timeStart) / TimeSpan.TicksPerMillisecond;
+        string timeFromStartStr = string.Format("{0:0.00} ms", timeFromStart);
+        double timeFromLast = (double)(DateTime.Now.Ticks - timeLast) / TimeSpan.TicksPerMillisecond;
+        string timeFromlastStr = string.Format("{0:0.00} ms", timeFromLast);
+        message = (message == "benchmark") ? $"completed in {timeFromlastStr}" : message;
         //string logLine = $"[{dateAndTime}] {logName} ({logLevelName}): {message}";
-        string logLine = $"[{timeElapsedStr}] {logName} ({logLevelName}): {message}";
+        string logLine = $"[{timeFromStartStr}] {logName} ({logLevelName}): {message}";
         logText = logText + logLine + "\n";
         if (!silent) System.Console.WriteLine(logLine);
+        timeLast = DateTime.Now.Ticks;
     }
 }
 ```
