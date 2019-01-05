@@ -121,6 +121,24 @@ axis1 = new FigureAxis(mouse_right_down_axis.xAxis.min - dX, mouse_right_down_ax
 		       mouse_right_down_axis.xAxis.pxSize, mouse_right_down_axis.yAxis.pxSize);
 ```
 
+##### With better class design, this simplified to
+```cs
+public void Zoom(double zoomFrac)
+{
+    double newSpan = span / zoomFrac;
+    x1 = center - newSpan / 2;
+    x2 = center + newSpan / 2;
+    RecalculateScale();
+}
+
+public void ZoomPx(int px)
+{
+    double dX = px * unitsPerPx;
+    double dXFrac = dX / (Math.Abs(dX) + span);
+    Zoom(Math.Pow(10, dXFrac));
+}
+```
+
 #### Right-Click-Drag Zooming (v1)
 This one feels pretty natural. It gets the dX as a fraction of the original window size (dXunits / axisWidthUnits) then applies the zoom function with 10^dX. That's a magical number that feels really nice, and it automatically slows down at extremes.
 ```C#
