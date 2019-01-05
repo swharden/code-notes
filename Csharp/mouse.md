@@ -139,3 +139,73 @@ axis1.Zoom(Math.Pow(10, dXFrac), Math.Pow(10, dYFrac)); // THE MAGIC HAPPENS HER
 Clear();
 RedrawFrame();
 ```
+
+### Pan-and-Zoom Mouse Tracker
+This class is helpful to track the mouse for left-click-pan / right-click-zoom applications. I instantiate it at a form level, then call its down/up/move methods from within down/up/move events.
+```cs
+public class MouseTracker
+{
+    Point posDown;
+    Point posUp;
+    Point posMove;
+    Point dragDelta;
+    Point dropDelta;
+    bool panning = false;
+    bool zooming = false;
+
+    public void Down()
+    {
+	posDown = new Point(Cursor.Position.X, Cursor.Position.Y);
+	if (Control.MouseButtons == MouseButtons.Left)
+	{
+	    panning = true;
+	    Console.WriteLine($"pan started at: ({posDown.X}, {posDown.Y})");
+	}
+	else if (Control.MouseButtons == MouseButtons.Right)
+	{
+	    zooming = true;
+	    Console.WriteLine($"zoom started at: ({posDown.X}, {posDown.Y})");
+	}
+    }
+
+    public void Up()
+    {
+	posUp = new Point(Cursor.Position.X, Cursor.Position.Y);
+	dropDelta = dragDelta;
+	if (panning)
+	{
+	    Console.WriteLine($"pan ended at: ({dropDelta.X}, {dropDelta.Y})");
+	    panning = false;
+	}
+	if (zooming)
+	{
+	    Console.WriteLine($"zoom ended at: ({dropDelta.X}, {dropDelta.Y})");
+	    zooming = false;
+	}
+    }
+
+    public void Move()
+    {
+	posMove = new Point(Cursor.Position.X, Cursor.Position.Y);
+	if (panning || zooming)
+	    Drag();
+    }
+
+    private void Drag()
+    {
+	dragDelta = new Point(posMove.X - posDown.X, posMove.Y - posDown.Y);
+	if (panning)
+	{
+	    Console.WriteLine($"  pan drag: ({dragDelta.X}, {dragDelta.Y})");
+	}
+	else if (zooming)
+	{
+	    Console.WriteLine($"zoom drag: ({dragDelta.X}, {dragDelta.Y})");
+	}
+    }
+}
+
+private void pb_MouseDown(object sender, MouseEventArgs e) { mouseTracker.Down(); }
+private void pb_MouseUp(object sender, MouseEventArgs e) { mouseTracker.Up(); }
+private void pb_MouseMove(object sender, MouseEventArgs e) { mouseTracker.Move(); }
+```
