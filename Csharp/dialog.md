@@ -9,9 +9,11 @@ MessageBox.Show(msg, "Source Folder Help", MessageBoxButtons.OK, MessageBoxIcon.
 ## Save File
 ```cs
 SaveFileDialog savefile = new SaveFileDialog();
-savefile.FileName = "diyECG.jpg";
-savefile.Filter = "JPG Files (*.jpg)|*.jpg|All files (*.*)|*.*";
-if (savefile.ShowDialog() == DialogResult.OK) { /* do something */ }
+savefile.FileName = "demo.png";
+savefile.Filter = "PNG Files (*.png)|*.png|All files (*.*)|*.*";
+if (savefile.ShowDialog() == DialogResult.OK) {
+    string saveFilePath = savefile.FileName;
+}
 ```
 
 ## Select Folder
