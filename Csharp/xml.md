@@ -55,3 +55,16 @@ string xmlText = doc.OuterXml;
 System.IO.File.WriteAllText(pathFile, xmlText);
 System.Console.WriteLine($"Saved: {pathFile}");
 ```
+
+```xml
+<Experiment created="2018-01-01" modified="2019-09-29">
+  <notes>experiment worked so awesomely</notes>
+  <tags>
+    <tag timeSec="0" frame="0">fancy drug 1</tag>
+    <tag timeSec="60" frame="5">fancy drug 2</tag>
+    <tag timeSec="120" frame="10">fancy drug 3</tag>
+    <tag timeSec="180" frame="15">fancy drug 4</tag>
+    <tag timeSec="240" frame="20">fancy drug 5</tag>
+  </tags>
+</Experiment>
+```
