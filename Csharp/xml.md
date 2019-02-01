@@ -69,3 +69,33 @@ Output:
   </tags>
 </Experiment>
 ```
+
+### Creating XML with `XDocument`
+```cs
+
+XDocument doc = new XDocument();
+
+XElement experiment = new XElement("Experiment");
+experiment.SetAttributeValue("created", $"2018-01-01");
+experiment.SetAttributeValue("modified", $"2019-09-29");
+doc.Add(experiment);
+
+XElement notes = new XElement("notes");
+notes.Value = "experiment worked so awesomely";
+experiment.Add(notes);
+
+XElement tags = new XElement("tags");
+for (int i = 0; i < 5; i++)
+{
+	XElement tag = new XElement("tag");
+	tag.Value = $"fancy drug {i + 1}";
+	tag.SetAttributeValue("timeSec", $"{i * 60}");
+	tag.SetAttributeValue("frame", $"{i * 5}");
+	tags.Add(tag);
+}
+experiment.Add(tags);
+
+System.Console.WriteLine(doc.ToString());
+System.IO.File.WriteAllText(pathFile, doc.ToString());
+System.Console.WriteLine($"Saved: {pathFile}");
+```
