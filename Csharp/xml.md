@@ -37,11 +37,11 @@ notes.InnerText = "experiment worked so awesomely";
 XmlElement tags = doc.CreateElement("tags");
 for (int i = 0; i < 5; i++)
 {
-XmlElement tag = doc.CreateElement("tag");
-tag.SetAttribute("timeSec", $"{i * 60}");
-tag.SetAttribute("frame", $"{i * 5}");
-tag.InnerText = $"fancy drug {i + 1}";
-tags.AppendChild(tag);
+	XmlElement tag = doc.CreateElement("tag");
+	tag.SetAttribute("timeSec", $"{i * 60}");
+	tag.SetAttribute("frame", $"{i * 5}");
+	tag.InnerText = $"fancy drug {i + 1}";
+	tags.AppendChild(tag);
 }
 
 XmlElement xmlExperiment = doc.CreateElement("Experiment");
@@ -56,6 +56,7 @@ System.IO.File.WriteAllText(pathFile, xmlText);
 System.Console.WriteLine($"Saved: {pathFile}");
 ```
 
+Output:
 ```xml
 <Experiment created="2018-01-01" modified="2019-09-29">
   <notes>experiment worked so awesomely</notes>
