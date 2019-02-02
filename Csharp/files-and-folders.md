@@ -29,3 +29,15 @@ string firstFewStr = System.Text.Encoding.Default.GetString(firstFew);
 ```cs
 string[] abfFilePaths = Directory.GetFiles(folderPath, "*.abf", SearchOption.TopDirectoryOnly);
 ```
+
+## List Directories Ordered by Creation Date
+```cs
+var di = new System.IO.DirectoryInfo(PathOutputFolder);
+var folderNames = di.EnumerateDirectories()
+                    .OrderBy(d => d.CreationTime)
+                    .Select(d => d.Name)
+                    .ToList();
+folderNames.Reverse();
+for (int i=0; i<folderNames.Count; i++)
+    folderNames[i] = System.IO.Path.GetFileName(folderNames[i]);
+```
