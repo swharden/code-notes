@@ -44,3 +44,8 @@ foreach (string imagePath in imagePaths)
     Console.WriteLine($"{pb.Location} {imageFileName} ({bmp.Width}, {bmp.Height})");
 }
 ```
+
+## Remove all Controls from a Panel
+```cs
+panel1.Controls.Clear();
+```
