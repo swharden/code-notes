@@ -41,3 +41,17 @@ private void OnDataAvailable(object sender, WaveInEventArgs args)
     int lastBufferAmplitude = lastBuffer.Max() - lastBuffer.Min();
 }
 ```
+
+## Linearize a Circular Buffer
+```cs
+public double[] GetLinearPcmData()
+{
+    int indexSplit = nextBufferToFill * bufferSampleCount;
+    double[] data = new double[pcmDataCircular.Length];
+    for (int i = 0; i < indexSplit; i++)
+        data[pcmDataCircular.Length - indexSplit + i] = pcmDataCircular[i];
+    for (int i = 0; i < data.Length - indexSplit; i++)
+        data[i] = pcmDataCircular[i + indexSplit];
+    return data;
+}
+```
