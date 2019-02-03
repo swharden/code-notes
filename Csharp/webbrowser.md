@@ -1,5 +1,10 @@
 # WebBrowser Control
 
+## Launch the default web browser
+```cs
+System.Diagnostics.Process.Start("http://google.com");
+```
+
 ## Assigning Content
 ```cs
 string html="<html><body>hello world</body></html>";
