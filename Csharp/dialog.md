@@ -6,6 +6,15 @@ MessageBox.Show("some long message here","WARNING!!!");
 MessageBox.Show(msg, "Source Folder Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
 ```
 
+## Yes/No Prompt
+```cs
+DialogResult dialogResult = MessageBox.Show("Do you really want to do this?", "Window title", MessageBoxButtons.YesNo);
+if (dialogResult == DialogResult.Yes)
+{
+    //do something
+}
+```
+
 ## Save File
 ```cs
 SaveFileDialog savefile = new SaveFileDialog();
