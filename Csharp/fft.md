@@ -43,36 +43,31 @@ private double[] LowPassFilter(double[] pcm, double cutOffFrequency = 60, double
 
 ## FFT from Double Array (NAudio)
 ```cs
-private double[] FFT_from_PCM(double[] pcm, bool logScale=false)
+private double[] FFT_from_PCM(double[] pcm)
 {
 
-    // use the largest FFT size we can given the data
-    int fft_size = 2;
-    while (fft_size * 2 <= pcm.Length) fft_size *= 2;
+    // use the largest FFT size we can given the data (must be a power of 2)
+    int fftPoints = 2;
+    while (fftPoints * 2 <= pcm.Length)
+        fftPoints *= 2;
 
-    // prepare the complex data which will be FFT'd
-    NAudio.Dsp.Complex[] fft_buffer = new NAudio.Dsp.Complex[fft_size];
-    for (int i = 0; i < fft_size; i++)
-    {
-        fft_buffer[i].X = (float)(pcm[i] * NAudio.Dsp.FastFourierTransform.HammingWindow(i, fft_size));
-        fft_buffer[i].Y = 0;
-    }
+    // prepare the complex data which will be FFT'd (using a window function)
+    NAudio.Dsp.Complex[] fftFull = new NAudio.Dsp.Complex[fftPoints];
+    for (int i = 0; i < fftPoints; i++)
+        fftFull[i].X = (float)(pcm[i] * NAudio.Dsp.FastFourierTransform.HammingWindow(i, fftPoints));
 
     // perform the FFT
-    NAudio.Dsp.FastFourierTransform.FFT(true, (int)Math.Log(fft_size, 2.0), fft_buffer);
+    NAudio.Dsp.FastFourierTransform.FFT(true, (int)Math.Log(fftPoints, 2.0), fftFull);
 
-    // a list with FFT values
-    List<double> fft = new List<double>();
-    for (int i = 0; i < fft_size; i++)
+    // average (sum) the mirror image frequency powers
+    double[] fft = new double[fftPoints/2];
+    for (int i = 0; i < fftPoints/2; i++)
     {
-        // should this be sqrt(X^2+Y^2)?
-        double val;
-        val = (double)fft_buffer[i].X + (double)fft_buffer[i].Y;
-        val = Math.Abs(val);
-        if (logScale) val = Math.Log(val);
-        fft.Add(val);
+        double fftLeft = Math.Abs(fftFull[i].X + fftFull[i].Y);
+        double fftRight = Math.Abs(fftFull[fftPoints-i-1].X + fftFull[fftPoints-i-1].Y);
+        fft[i] = fftLeft+ fftRight;
     }
 
-    return fft.ToArray();
+    return fft;
 }
 ```
