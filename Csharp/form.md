@@ -1,5 +1,8 @@
 # Forms
 
+## Passing data between forms
+I like to pass reference types on the initializer of new forms. This lets them share variables.
+
 ## Create/Launch a new Form
 ```cs
 Form2 f2 = new Form2();
