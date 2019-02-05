@@ -25,9 +25,10 @@ byte[] firstFew = br.ReadBytes(4);
 string firstFewStr = System.Text.Encoding.Default.GetString(firstFew);
 ```
 
-## List Files in a Directory
+## List Files or Folders
 ```cs
-string[] abfFilePaths = Directory.GetFiles(folderPath, "*.abf", SearchOption.TopDirectoryOnly);
+string[] pathsFiles = System.IO.Directory.GetFiles(pathFolder, "*.tif");
+string[] pathsFolders = System.IO.Directory.GetDirectories(pathFolder);
 ```
 
 ## List Directories Ordered by Creation Date
