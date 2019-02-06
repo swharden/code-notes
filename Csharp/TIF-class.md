@@ -1,6 +1,14 @@
 # TIF Class
 This is a work in progress. It is designed to handle tifs which contain odd bit depths (e.g., 12-bit data in a 16-bit TIF) which look dark when loaded with other libraries.
 
+## Usage
+```cs
+ImageData im = new ImageData(imagePath16bit);
+im.AutoContrast();
+pictureBox1.BackgroundImage = im.GetBitmap();
+```
+
+## Code
 ```cs
 public class ImageData
 {
