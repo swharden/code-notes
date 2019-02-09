@@ -1,74 +1,61 @@
 # Filtering
 
-## Low-Pass Gaussian
+## Discrete 1D Gaussian Filter
 ```C#
-
-private double[] LowPassGauss(double[] pcm, int sigma=100)
+/// <summary>
+/// Return a filtered version of the input array (with the same number of points)
+/// </summary>
+public double[] GaussianFilter1d(double[] data, int degree = 5)
 {
-    int windowSize = (int)(sigma * 2 - 1);
-    if (pcm.Length <= windowSize || sigma <= 0) return pcm;
+if (degree < 2)
+    return data;
 
-    // create the bell curve (kernel)
-    double[] kernel = new double[windowSize];
-    for (int i = 0; i < windowSize; i++)
-    {
-        double j = i - sigma + 1;
-        double frac = j / windowSize;
-        double val = 1 / (Math.Exp(Math.Pow((4 * (frac)), 2)));
-        kernel[i] = val;
-    }
+double[] smooth = new double[data.Length];
 
-    double[] smoothed = new double[pcm.Length - kernel.Length];
-    for (int i=0; i<pcm.Length-kernel.Length; i++)
-    {
-        double sum = 0;
-        for (int j=0; j<kernel.Length; j++)
-        {
-            sum += pcm[i + j]*kernel[j];
-        }
-        smoothed[i] = sum / kernel.Length;
-    }
-    return smoothed;
+// create a gaussian windowing function
+int windowSize = degree * 2 - 1;
+double[] kernel = new double[windowSize];
+for (int i = 0; i < windowSize; i++)
+{
+    int pos = i - degree + 1;
+    double frac = i / (double)windowSize;
+    double gauss = 1.0 / Math.Exp(Math.Pow(4 * frac, 2)); // TODO: why 4?
+    kernel[i] = gauss * windowSize;
 }
-```
 
-## Recreated (doh!)
-```cs
-public double[] GaussianFilter1d(double[] data, int degree = 10)
+// normalize the kernel (so area is 1)
+double weightSum = kernel.Sum();
+for (int i = 0; i < windowSize; i++)
+    kernel[i] = kernel[i] / weightSum;
+
+// apply the window
+for (int i = 0; i < smooth.Length; i++)
 {
-    double[] smooth = new double[data.Length];
-
-    // create a gaussian windowing function
-    int windowSize = degree * 2 - 1;
-    double[] kernel = new double[windowSize];
-    for (int i = 0; i < windowSize; i++)
+    if (i > kernel.Length && i < smooth.Length - kernel.Length)
     {
-        int pos = i - degree + 1;
-        double frac = i / (double)windowSize;
-        double gauss = 1.0 / Math.Exp(Math.Pow(4 * frac, 2)); // TODO: why 4?
-        kernel[i] = gauss * windowSize;
+        double smoothedValue = 0;
+        for (int j = 0; j < kernel.Length; j++)
+        {
+            smoothedValue += kernel[j] * data[i + j];
+        }
+        smooth[i] = smoothedValue;
     }
-
-    // normalize the kernel (so area is 1)
-    double weightSum = kernel.Sum();
-    for (int i = 0; i < windowSize; i++)
-        kernel[i] = kernel[i] / weightSum;
-
-    // applt the window
-    for (int i = 0; i < smooth.Length; i++)
+    else
     {
         smooth[i] = data[i];
-        if (i > kernel.Length && i < smooth.Length - kernel.Length)
-        {
-            double smoothedValue = 0;
-            for (int j = 0; j<kernel.Length; j++)
-            {
-                smoothedValue += kernel[j] * data[i + j];
-            }
-            smooth[i] = smoothedValue;
-        }
     }
+}
 
-    return smooth;
+// blank-out values outside the smoothing range
+int firstValidPoint = kernel.Length;
+int lastValidPoint = smooth.Length - kernel.Length;
+
+for (int i = 0; i < firstValidPoint; i++)
+    smooth[i] = smooth[firstValidPoint];
+
+for (int i = lastValidPoint; i < smooth.Length; i++)
+    smooth[i] = smooth[lastValidPoint];
+
+return smooth;
 }
 ```
