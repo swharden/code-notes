@@ -82,3 +82,27 @@ private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
     }
 }
 ```
+
+```cs
+private void TreeBrowserSelectPath(string path)
+{
+    path = System.IO.Path.GetFullPath(path);
+    List<string> folderNames = new List<string>(path.Split(System.IO.Path.DirectorySeparatorChar));
+    TreeBrowserExpandChildren(treeView1.Nodes[0], folderNames);
+}
+
+private void TreeBrowserExpandChildren(TreeNode node, List<string> children)
+{
+    children.RemoveAt(0);
+    node.Expand();
+    if (children.Count == 0)
+        return;
+    foreach (TreeNode mynode in node.Nodes)
+        if (mynode.Text == children[0])
+        {
+            treeView1.SelectedNode = mynode;
+            TreeBrowserExpandChildren(mynode, children);
+            break;
+        }
+}
+```
