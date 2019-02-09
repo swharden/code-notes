@@ -1,10 +1,11 @@
 # File Operations
-All of these assume ```using System.IO;```
 
 ## Reading/Writing Text Files
 
 ```c#
-File.WriteAllText(saveAs, html);
+System.IO.File.WriteAllText(saveAs, html);
+string xml = System.IO.File.ReadAllText(pathLinescanXML);
+string[] xmlLines = System.IO.File.ReadAllLines(pathLinescanXML);
 ```
 
 ## Get File Size
