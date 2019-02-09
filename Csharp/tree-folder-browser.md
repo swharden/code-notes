@@ -93,16 +93,33 @@ private void TreeBrowserSelectPath(string path)
 
 private void TreeBrowserExpandChildren(TreeNode node, List<string> children)
 {
-    children.RemoveAt(0);
-    node.Expand();
-    if (children.Count == 0)
-        return;
-    foreach (TreeNode mynode in node.Nodes)
-        if (mynode.Text == children[0])
-        {
-            treeView1.SelectedNode = mynode;
-            TreeBrowserExpandChildren(mynode, children);
-            break;
-        }
+children.RemoveAt(0);
+node.Expand();
+if (children.Count == 0)
+    return;
+foreach (TreeNode mynode in node.Nodes)
+    if (mynode.Text == children[0])
+    {
+        treeView1.SelectedNode = mynode;
+        TreeBrowserExpandChildren(mynode, children);
+        break;
+    }
 }
+```
+
+```
+
+    private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+    {
+        string path = "";
+        var mynode = e.Node;
+        while (mynode != null)
+        {
+            path = mynode.Text + "/" + path;
+            mynode = mynode.Parent;
+        }
+        path = path.Insert(1, ":");
+        path = System.IO.Path.GetFullPath(path);
+        Console.WriteLine(path);
+    }
 ```
