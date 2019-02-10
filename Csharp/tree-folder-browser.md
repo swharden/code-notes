@@ -88,7 +88,9 @@ private void TreeBrowserSelectPath(string path)
 {
     path = System.IO.Path.GetFullPath(path);
     List<string> folderNames = new List<string>(path.Split(System.IO.Path.DirectorySeparatorChar));
-    TreeBrowserExpandChildren(treeView1.Nodes[0], folderNames);
+    foreach (TreeNode driveNode in treeView1.Nodes)
+        if (driveNode.Text+":" == folderNames[0])
+            TreeBrowserExpandChildren(driveNode, folderNames);
 }
 
 private void TreeBrowserExpandChildren(TreeNode node, List<string> children)
