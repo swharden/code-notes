@@ -1,3 +1,6 @@
+### Latest .NET Framework
+https://www.microsoft.com/net/download/dotnet-framework-runtime
+
 ### Keyboard Shortcuts
 
 * format document: `CTRL+K`, `CTRL+D`
