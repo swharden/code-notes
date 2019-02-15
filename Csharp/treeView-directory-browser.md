@@ -1,13 +1,24 @@
 # TreeView Directory Browser
 
-To create an explorer-like file browser using TreeView, I did this:
+To create an explorer-like file browser using TreeView:
 
-## Return Folder Contents as a TreeNode
+* Create a tree view (named `treeViewDir`)
+* Copy/paste this code block into your form
+* Bind functions to events `AfterSelect`, `BeforeExpand`
+* Call `TreeViewDirInit()` in your initialization routine
+
 ```cs
-/// <summary>
-/// Scan the given path and return its contents as treenodes for a treeview
-/// </summary>
-public TreeNode[] TreeViewDirScanFolder(string path=null)
+#region tree directory browser
+
+// call this when your program loads
+public void TreeViewDirInit()
+{
+    treeViewDir.Nodes.Clear();
+    treeViewDir.Nodes.AddRange(TreeViewDirScanFolder());
+}
+
+// return path contents as treenodes for a treeview
+public TreeNode[] TreeViewDirScanFolder(string path = null)
 {
     List<TreeNode> treeNodes = new List<TreeNode>();
     if (path == null)
@@ -21,9 +32,9 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
 	    treeNodes.Add(tn);
 	}
 
-    } else
+    }
+    else
     {
-	System.Console.WriteLine("Scanning folder: " + path);
 	try
 	{
 	    // a path is given, so return its contents
@@ -55,7 +66,8 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
 		TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
 		treeNodes.Add(tn);
 	    }
-	} catch
+	}
+	catch
 	{
 	    // we don't have access to the folder, so return what we can
 	    System.Console.WriteLine("DIRECTORY ACCESS ERROR");
@@ -64,36 +76,15 @@ public TreeNode[] TreeViewDirScanFolder(string path=null)
     }
     return treeNodes.ToArray();
 }
-```
 
-## Interact with the TreeView
-```cs
-/// <summary>
-/// clear the tree view directory browser and only display drive letters
-/// </summary>
-public void TreeViewDirInit()
+private void TreeViewDir_AfterSelect(object sender, TreeViewEventArgs e)
 {
-    treeViewDir.Nodes.Clear();
-    treeViewDir.Nodes.AddRange(TreeViewDirScanFolder());
+    string selectedFolder = TreeViewDir_nodeToPath(e.Node);
+    System.Console.WriteLine($"SELECTED FOLDER: {selectedFolder}");
 }
-```
 
-```cs
-/// <summary>
-/// tree view item selected
-/// </summary>
-private void treeViewDir_AfterSelect(object sender, TreeViewEventArgs e)
-{
-    System.Console.WriteLine("NODE SELECTED");
-    lblCurrentFolder.Text = treeViewDir_nodeToPath(e.Node);
-}
-```
-
-```cs
-/// <summary>
-/// walk up a node's parents and return its full path
-/// </summary>
-private string treeViewDir_nodeToPath(TreeNode clickedNode)
+// walk up a node's parents and return its full path
+private string TreeViewDir_nodeToPath(TreeNode clickedNode)
 {
     string clickedNodePath = "";
     while (clickedNode != null)
@@ -104,17 +95,14 @@ private string treeViewDir_nodeToPath(TreeNode clickedNode)
     clickedNodePath = clickedNodePath.Replace("\\\\", "\\");
     return clickedNodePath;
 }
-```
 
-```cs
-/// <summary>
-/// when a node is expanded scan and display its contents
-/// </summary>
-private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+// when a node is expanded scan and display its contents
+private void TreeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
 {
     e.Node.Nodes.Clear();
-    e.Node.Nodes.AddRange(TreeViewDirScanFolder(treeViewDir_nodeToPath(e.Node)));
+    e.Node.Nodes.AddRange(TreeViewDirScanFolder(TreeViewDir_nodeToPath(e.Node)));
 }
+#endregion
 ```
 
 ## Adding Icons
