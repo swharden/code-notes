@@ -70,7 +70,7 @@ public TreeNode[] TreeViewDirScanFolder(string path = null)
 	catch
 	{
 	    // we don't have access to the folder, so return what we can
-	    System.Console.WriteLine("DIRECTORY ACCESS ERROR");
+	    System.Console.WriteLine($"DIRECTORY ACCESS ERROR: {path}");
 	    treeNodes.Add(new TreeNode(""));
 	}
     }
