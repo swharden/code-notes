@@ -102,6 +102,20 @@ private void TreeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
     e.Node.Nodes.Clear();
     e.Node.Nodes.AddRange(TreeViewDirScanFolder(TreeViewDir_nodeToPath(e.Node)));
 }
+
+// select a path programmatically
+private void TreeBrowserSelectPath(string path)
+{
+    path = System.IO.Path.GetFullPath(path);
+    List<string> folderNames = new List<string>(path.Split(System.IO.Path.DirectorySeparatorChar));
+    foreach (TreeNode driveNode in treeView1.Nodes)
+    {
+	if (folderNames.Count() == 0)
+	    return;
+	if (driveNode.Text + ":" == folderNames[0])
+	    TreeBrowserExpandChildren(driveNode, folderNames);
+    }
+}
 #endregion
 ```
 
