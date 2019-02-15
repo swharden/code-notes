@@ -8,102 +8,8 @@ To create an explorer-like file browser using TreeView:
 * Call `TreeViewDirInit()` in your initialization routine
 
 ```cs
-#region tree directory browser
+#region filesystem browser tree
 
-// call this when your program loads
-public void TreeViewDirInit()
-{
-    treeViewDir.Nodes.Clear();
-    treeViewDir.Nodes.AddRange(TreeViewDirScanFolder());
-}
-
-// return path contents as treenodes for a treeview
-public TreeNode[] TreeViewDirScanFolder(string path = null)
-{
-    List<TreeNode> treeNodes = new List<TreeNode>();
-    if (path == null)
-    {
-	// no path is given, so return drive letters
-	foreach (System.IO.DriveInfo drive in System.IO.DriveInfo.GetDrives())
-	{
-	    if (!drive.IsReady) continue;
-	    TreeNode tn = new TreeNode(drive.Name);
-	    tn.Nodes.Add("");
-	    treeNodes.Add(tn);
-	}
-
-    }
-    else
-    {
-	try
-	{
-	    // a path is given, so return its contents
-	    string[] folderNames = System.IO.Directory.GetDirectories(path);
-	    string[] fileNames = System.IO.Directory.GetFiles(path);
-	    foreach (string folderName in folderNames)
-	    {
-		TreeNode tn = new TreeNode(System.IO.Path.GetFileName(folderName));
-		tn.Nodes.Add("");
-
-		// skip folders we don't have access to
-		try
-		{
-		    System.Security.AccessControl.DirectorySecurity ds;
-		    ds = System.IO.Directory.GetAccessControl(System.IO.Path.Combine(path, folderName));
-		}
-		catch
-		{
-		    continue;
-		}
-
-		// skip folders starting with $
-		if (System.IO.Path.GetFileName(folderName).StartsWith("$")) continue;
-
-		treeNodes.Add(tn);
-	    }
-	    foreach (string fileName in fileNames)
-	    {
-		TreeNode tn = new TreeNode(System.IO.Path.GetFileName(fileName));
-		treeNodes.Add(tn);
-	    }
-	}
-	catch
-	{
-	    // we don't have access to the folder, so return what we can
-	    System.Console.WriteLine($"DIRECTORY ACCESS ERROR: {path}");
-	    treeNodes.Add(new TreeNode(""));
-	}
-    }
-    return treeNodes.ToArray();
-}
-
-private void TreeViewDir_AfterSelect(object sender, TreeViewEventArgs e)
-{
-    string selectedFolder = TreeViewDir_nodeToPath(e.Node);
-    System.Console.WriteLine($"SELECTED FOLDER: {selectedFolder}");
-}
-
-// walk up a node's parents and return its full path
-private string TreeViewDir_nodeToPath(TreeNode clickedNode)
-{
-    string clickedNodePath = "";
-    while (clickedNode != null)
-    {
-	clickedNodePath = System.IO.Path.Combine(clickedNode.Text + "\\", clickedNodePath);
-	clickedNode = clickedNode.Parent;
-    }
-    clickedNodePath = clickedNodePath.Replace("\\\\", "\\");
-    return clickedNodePath;
-}
-
-// when a node is expanded scan and display its contents
-private void TreeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
-{
-    e.Node.Nodes.Clear();
-    e.Node.Nodes.AddRange(TreeViewDirScanFolder(TreeViewDir_nodeToPath(e.Node)));
-}
-
-// select a path programmatically
 private void TreeBrowserSelectPath(string path)
 {
     path = System.IO.Path.GetFullPath(path);
@@ -115,6 +21,126 @@ private void TreeBrowserSelectPath(string path)
 	if (driveNode.Text + ":" == folderNames[0])
 	    TreeBrowserExpandChildren(driveNode, folderNames);
     }
+}
+
+private void TreeBrowserExpandChildren(TreeNode node, List<string> children)
+{
+    children.RemoveAt(0);
+    node.Expand();
+    if (children.Count == 0)
+	return;
+    foreach (TreeNode mynode in node.Nodes)
+	if (mynode.Text == children[0])
+	{
+	    treeView1.SelectedNode = mynode;
+	    TreeBrowserExpandChildren(mynode, children);
+	    break;
+	}
+}
+
+private void TreeBrowserLoad()
+{
+    string[] drives = Environment.GetLogicalDrives();
+    foreach (string drive in drives)
+    {
+	System.IO.DriveInfo di = new System.IO.DriveInfo(drive);
+	int driveImage;
+
+	// define icon based on drive type
+	switch (di.DriveType)
+	{
+	    case System.IO.DriveType.CDRom:
+		driveImage = 3;
+		break;
+	    case System.IO.DriveType.Network:
+		driveImage = 6;
+		break;
+	    case System.IO.DriveType.NoRootDirectory:
+		driveImage = 8;
+		break;
+	    case System.IO.DriveType.Unknown:
+		driveImage = 8;
+		break;
+	    default:
+		driveImage = 2;
+		break;
+	}
+
+	TreeNode node = new TreeNode(drive.Substring(0, 1), driveImage, driveImage);
+	node.Tag = drive;
+	if (di.IsReady == true)
+	    node.Nodes.Add("...");
+	treeView1.Nodes.Add(node);
+    }
+}
+
+private void treeView1_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+{
+    if (e.Node.Nodes.Count > 0)
+    {
+	if (e.Node.Nodes[0].Text == "..." && e.Node.Nodes[0].Tag == null)
+	{
+	    e.Node.Nodes.Clear();
+
+	    //get the list of sub direcotires
+	    string[] dirs = System.IO.Directory.GetDirectories(e.Node.Tag.ToString());
+
+	    foreach (string dir in dirs)
+	    {
+		System.IO.DirectoryInfo di = new System.IO.DirectoryInfo(dir);
+		TreeNode node = new TreeNode(di.Name, 0, 1);
+
+		try
+		{
+		    //keep the directory's full path in the tag for use later
+		    node.Tag = dir;
+
+		    //if the directory has sub directories add the place holder
+		    if (di.GetDirectories().Count() > 0)
+			node.Nodes.Add(null, "...", 0, 0);
+		}
+		catch (UnauthorizedAccessException)
+		{
+		    //display a locked folder icon
+		    node.ImageIndex = 12;
+		    node.SelectedImageIndex = 12;
+		}
+		catch (Exception ex)
+		{
+		    MessageBox.Show(ex.Message, "DirectoryLister",
+			MessageBoxButtons.OK, MessageBoxIcon.Error);
+		}
+		finally
+		{
+		    e.Node.Nodes.Add(node);
+		}
+	    }
+	}
+    }
+}
+
+public event EventHandler PathSelected;
+protected virtual void OnPathSelected(EventArgs e)
+{
+    var handler = PathSelected;
+    if (handler != null)
+	handler(this, e);
+}
+
+public string selectedPath = "C:";
+private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+{
+    string path = "";
+    var mynode = e.Node;
+    while (mynode != null)
+    {
+	path = mynode.Text + "/" + path;
+	mynode = mynode.Parent;
+    }
+    path = path.Insert(1, ":");
+    selectedPath = System.IO.Path.GetFullPath(path);
+    Console.WriteLine($"PATH SELECTED: {selectedPath}");
+    OnPathSelected(EventArgs.Empty);
 }
 #endregion
 ```
