@@ -34,6 +34,18 @@ if (diag.ShowDialog() == DialogResult.OK)
 }
 ```
 
+## Select Folder Hack
+You may want to use the save dialog to select the folder because it's better than the folder browser dialog
+```cs
+SaveFileDialog sf = new SaveFileDialog();
+sf.FileName = "Load this folder";
+if (sf.ShowDialog() == DialogResult.OK)
+{
+    string pathFolder = System.IO.Path.GetDirectoryName(sf.FileName);
+    SetFolder(pathFolder);
+}
+```
+
 ## Select Image
 ```cs
 OpenFileDialog diag = new OpenFileDialog();
