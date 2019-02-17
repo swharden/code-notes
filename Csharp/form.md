@@ -9,6 +9,15 @@ Form2 f2 = new Form2();
 f2.Show();
 ```
 
+## Accessing form data
+```cs
+using (FormSoundCard frm = new FormSoundCard())
+{
+    frm.ShowDialog();
+    Console.WriteLine(frm.deviceNumber);
+}
+```
+
 ## Switch to another form
 ```cs
 private void button2_Click(object sender, EventArgs e)
@@ -18,6 +27,7 @@ private void button2_Click(object sender, EventArgs e)
     this.Hide();
 }
 ```
+
 ## Launch another form by default
 Edit `Program.cs`
 ```cs
