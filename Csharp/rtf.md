@@ -18,6 +18,9 @@ Download: [RTF RichTextBox tester.exe](rtf%20RichTextBox%20tester.exe)
 ![](rtf%20RichTextBox%20tester.png)
 
 ### RTF in a RichTextBox
+
+Note that even if you pre-load a color table, the RichTextBox controll will DELETE color entries which aren't immediately used. This isn't good for creating a color table then using the colors later. I end-up using the webbrowser controller rather than the richtextbox controller for displaying formatted text.
+
 ```cs
 // prepare the RichTextBox with a header (and colors) to accept RTF text
 rtbConsole.Clear();
