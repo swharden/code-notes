@@ -3,10 +3,16 @@
 ### Sample RTF
 ```rtf
 {\rtf1\ansi\deff0
-{\colortbl;\red0\green0\blue0;\red255\green0\blue0;\red0\green255\blue0;}
-This line is the default color\line
-This \cf2WORD \cf1 is red\line
-This \b\cf3WORD \b0\cf1 is green and bold\line
-This line is the default color
+{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red255\green255\blue0;\red0\green150\blue0;}
+Let's start with a {\highlight1 highlighted} word.\line
+Maybe we will get {\b bold} with it?\line
+This is {\ul very} important you know...\line
+I'm {\cf2 green} with envy!\line
+This is a {\fs60 big} deal.
 }
 ```
+
+### RichTextBox RTF Tester
+Download: [RTF RichTextBox tester.exe](rtf%20RichTextBox%20tester.exe)
+![](rtf%20RichTextBox%20tester.png)
