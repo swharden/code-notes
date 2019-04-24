@@ -19,13 +19,11 @@ Download: [RTF RichTextBox tester.exe](rtf%20RichTextBox%20tester.exe)
 
 ### RTF in a RichTextBox
 ```cs
+// prepare the RichTextBox with a header (and colors) to accept RTF text
 rtbConsole.Clear();
-string rtfBody = @"{\rtf1\ansi\deff0}";
-rtfBody = rtfBody.Insert(rtfBody.Length - 1, @"{\fonttbl{\f0\fnil\fcharset0 Calibri;}}");
-rtfBody = rtfBody.Insert(rtfBody.Length - 1, @"{\colortbl ;\red255\green255\blue0;\red0\green150\blue0;}");
-rtbConsole.Rtf = rtfBody;
-```
+rtbConsole.Rtf = @"{\rtf1\ansi\deff0{\colortbl ;\red255\green255\blue0;\red0\green150\blue0;}}";
+string message = "this is a {\b bold} example";
 
-```cs
-rtbConsole.SelectedRtf = @"{\rtf1\ansi Adding some {\b bold text} as a new line...\line}";
+// appending text
+rtbConsole.SelectedRtf = "{\\rtf1\\ansi "+ message.Replace("\n", "\\line") + "}";
 ```
