@@ -5,10 +5,53 @@
 System.Diagnostics.Process.Start("http://google.com");
 ```
 
-## Assigning Content
+## Assign Content to a WebBrowser control
 ```cs
-string html="<html><body>hello world</body></html>";
-webBrowser2.DocumentText = key;
+private void BrowserClear()
+{
+    string html =
+        "<html><head><style>" +
+        "body {font-family: consolas; font-size: .8em; background-color: controlColorHex; margin-top: 5px;}" +
+        ".title {font-weight: bold; text-decoration: underline;}" +
+        ".pass {font-weight: bold; color: green;}" +
+        ".fail {font-weight: bold; color: red; background-color: yellow; border: 1px solid black; padding: 0px 5px 0px 5px;}" +
+        "</style></head><body>" +
+        "<div class='title'>SOFTWARE TEST SUITE</div>" +
+        "</body></html>";
+
+    string controlColorHex = ColorTranslator.ToHtml(Color.FromArgb(SystemColors.Control.ToArgb()));
+    html = html.Replace("controlColorHex", controlColorHex);
+
+    webBrowser1.Navigate("about:blank");
+    webBrowser1.Refresh();
+    webBrowser1.Document.OpenNew(true);
+    webBrowser1.Document.Write(html);
+}
+```
+
+```cs
+private void BrowserAppend(string message, bool newLine = true, bool specialFormat = true)
+{
+    if (specialFormat)
+    {
+        message = message.Replace("PASS", "<span class='pass'>PASS</span>");
+        message = message.Replace("FAIL", "<span class='fail'>FAIL</span>");
+    }
+
+    int insertPosition;
+    if (newLine)
+    {
+        message = $"<div>{message}</div>";
+        insertPosition = webBrowser1.DocumentText.LastIndexOf("</body>");
+    }
+    else
+    {
+        insertPosition = webBrowser1.DocumentText.LastIndexOf("</div>");
+    }                
+
+    webBrowser1.DocumentText = webBrowser1.DocumentText.Insert(insertPosition, message);
+    Application.DoEvents();
+}
 ```
 
 ## Clicking Links
