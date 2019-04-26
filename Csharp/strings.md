@@ -49,3 +49,8 @@ string.Format(String.Format("{0:0000000000.0000}", 123)); // 0000000123.0000
 ```cs
 if (s.contains("substr")) {/* stuff */}
 ```
+
+### Integer to Binary string
+```cs
+lblBinaryByte1.Text = Convert.ToString((int)nudByte1.Value, 2).PadLeft(8, '0'); 
+```
