@@ -12,7 +12,11 @@ This screenshot shows ASCII line art drawn by a C# console application.
 ![](console-fonts-and-ascii.png)
 
 ## Available Characters
-The following are unicode character values which render well with Consolas font.
+The following are unicode character values which render well with Consolas font. Note that these codes are decimal (not hex) values. This lets you do things like:
+
+```cs
+string elbow = Encoding.Unicode.GetString(BitConverter.GetBytes(9484));
+```
 
 code | code | code | code | code | code | code | code | code | code
 -------|--------|--------|--------|--------|--------|--------|--------|--------|--------
