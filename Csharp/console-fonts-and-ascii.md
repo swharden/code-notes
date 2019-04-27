@@ -6,6 +6,11 @@ The best way I found to render things like ASCII line art is to create a class t
 
 Monospace fonts which support ASCII line art are `Consolas` and `Courier New`.
 
+## Screenshot
+This screenshot shows ASCII line art drawn by a C# console application.
+
+![](console-fonts-and-ascii.png)
+
 ## ConsoleStyler.cs
 ```cs
 public class ConsoleStyler
@@ -14,7 +19,7 @@ public class ConsoleStyler
     {
     }
     
-    public void SetConsoleFont(string fontName = "Arial") // Lucida Console
+    public void SetConsoleFont(string fontName = "Consolas")
     {
         unsafe
         {
@@ -85,4 +90,10 @@ public class ConsoleStyler
         uint dwFontNum
         );
 }
+```
+
+### Usage
+```cs
+var styler = new ConsoleStyler();
+styler.SetConsoleFont("Consolas");
 ```
