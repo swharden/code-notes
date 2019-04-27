@@ -11,6 +11,35 @@ This screenshot shows ASCII line art drawn by a C# console application.
 
 ![](console-fonts-and-ascii.png)
 
+## Available Characters
+The following are unicode character values which render well with Consolas font.
+
+code | code | code | code | code | code | code | code | code | code
+-------|--------|--------|--------|--------|--------|--------|--------|--------|--------
+9472 ─ | 9474 │ | 9484 ┌ | 9488 ┐ | 9492 └ | 9496 ┘ | 9500 ├ | 9508 ┤ | 9516 ┬ | 9524 ┴ | 
+9532 ┼ | 9552 ═ | 9553 ║ | 9554 ╒ | 9555 ╓ | 9556 ╔ | 9557 ╕ | 9558 ╖ | 9559 ╗ | 9560 ╘ | 
+9561 ╙ | 9562 ╚ | 9563 ╛ | 9564 ╜ | 9565 ╝ | 9566 ╞ | 9567 ╟ | 9568 ╠ | 9569 ╡ | 9570 ╢ | 
+9571 ╣ | 9572 ╤ | 9573 ╥ | 9574 ╦ | 9575 ╧ | 9576 ╨ | 9577 ╩ | 9578 ╪ | 9579 ╫ | 9580 ╬ | 
+9600 ▀ | 9604 ▄ | 9608 █ | 9612 ▌ | 9616 ▐ | 9617 ░ | 9618 ▒ | 9619 ▓ | 9632 ■ | 10003 √ | 
+
+```cs
+var styler = new ConsoleStyler();
+styler.SetConsoleFont("Consolas");
+
+int[] interestingUnicodeChars = { 9472, 9474, 9484, 9488, 9492, 9496, 9500, 9508, 9516,
+    9524, 9532, 9552, 9553, 9554, 9555, 9556, 9557, 9558, 9559, 9560, 9561, 9562, 9563,
+    9564, 9565, 9566, 9567, 9568, 9569, 9570, 9571, 9572, 9573, 9574, 9575, 9576, 9577,
+    9578, 9579, 9580, 9600, 9604, 9608, 9612, 9616, 9617, 9618, 9619, 9632, 9644, 9650,
+    9658, 9660, 9668, 9786, 9787, 9788, 9824, 9827, 9829, 9830, 9835, 10003, 10072 };
+
+foreach (int i in interestingUnicodeChars)
+{
+    byte[] unicodeBytes = BitConverter.GetBytes(i);
+    string unicodeString = Encoding.Unicode.GetString(unicodeBytes);
+    Console.WriteLine($"{i} {unicodeString}");
+}
+```
+
 ## ConsoleStyler.cs
 ```cs
 public class ConsoleStyler
