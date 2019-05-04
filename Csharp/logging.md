@@ -1,5 +1,15 @@
 # Logging
 
+## Console Messages
+
+```cs
+System.Console.WriteLine("asdf");
+System.Diagnostics.Trace.WriteLine("asdf"); // different how?
+System.Diagnostics.Debug.WriteLine("asdf"); // different how?
+```
+
+## Logger Class
+
 You could use a third party library. Or this.
 
 ```cs
