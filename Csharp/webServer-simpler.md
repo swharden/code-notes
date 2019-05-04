@@ -10,7 +10,7 @@ Put this code in your Windows Forms or Console Application.
 ```cs
 public void ServerStart(bool launchToo = true)
 {
-    webServer = new WebServer("http://localhost:8080/", requestHandler);
+    webServer = new WebServer("http://localhost:8080/", RequestHandler);
     if (launchToo)
         System.Diagnostics.Process.Start(webServer.url);
 }
@@ -24,7 +24,7 @@ public void ServerStop()
 ```
 
 ```cs
-public static string requestHandler(HttpListenerRequest request)
+public static string RequestHandler(HttpListenerRequest request)
 {
     string timestamp = DateTime.Now.ToString("HH':'mm':'ss.fff");
     string html = $@"
