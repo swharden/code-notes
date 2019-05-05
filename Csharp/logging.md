@@ -1,6 +1,6 @@
 # Logging
 
-## Override `Debug.WriteLine()` with a Logging Version
+## Override Debug.WriteLine() with a Logging Version
 This is my preferred method for debug logging. I create a custom trace listening class and use it to intercept `Debug.WriteLine()`. The custom class records messages for easy retrieval later.
 
 ```cs
