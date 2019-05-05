@@ -6,13 +6,19 @@ enum LineStyle { solid, dashed, dotted };
 enum MarkerShape { circleSolid, circleOutline };
 ```
 
-## Access by String Name
+## Access Enum by String Name
 ```cs
+// raw
+LineStyle ls = (LineStyle)Enum.Parse(typeof(LineStyle), "dashed");
+```
+
+```cs
+// safer
 LineStyle ls;
 Enum.TryParse("dashed", true, out ls);
 ```
 
-## Access by Index
+## Access Enum by Index
 ```cs
 string firstLineStyle = (LineStyle)0;
 string secondLineStyle = (LineStyle)1;
