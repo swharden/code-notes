@@ -46,16 +46,22 @@ RegisteredUsers.Add(new Person() { PersonID = 3, Name = "Adrian Martinson", Regi
 ## Prettify Json
 
 ```cs
-public static string prettify(string json, int indentCount = 4, char indentChar = ' ')
+public static string prettifyJson(string json, int indentCount = 4, char indentChar = ' ')
 {
     json = json.Replace("\\,", "~EscapedComma~");
     json = json.Replace(":{", "~ColonStartBracket~\n");
     json = json.Replace("},", "~EndBracketComma~");
+    json = json.Replace(":[", "~ColonStartSquareBracket~\n");
+    json = json.Replace("],", "~EndSquareBracketComma~");
     json = json.Replace(",", ",\n");
     json = json.Replace("{", "\n{\n");
     json = json.Replace("}", "\n}\n");
-    json = json.Replace("~EndBracketComma~", "\n},\n");
+    json = json.Replace("[", "\n[\n");
+    json = json.Replace("]", "\n]\n");
     json = json.Replace("~ColonStartBracket~", ": {");
+    json = json.Replace("~EndBracketComma~", "\n},\n");
+    json = json.Replace("~ColonStartSquareBracket~", ": [");
+    json = json.Replace("~EndSquareBracketComma~", "\n],\n");
     json = json.Trim();
     string[] lines = json.Split('\n');
 
@@ -64,12 +70,12 @@ public static string prettify(string json, int indentCount = 4, char indentChar 
     {
         string line = lines[i].Trim();
         int indentLevel = bracketsDeep;
-        if (line.StartsWith("{") || line.EndsWith("{"))
+        if (line.StartsWith("{") || line.EndsWith("{") || line.StartsWith("[") || line.EndsWith("["))
         {
             bracketsDeep += 1;
             indentLevel = bracketsDeep - 1;
         }
-        else if (line.EndsWith("}") || line.EndsWith("},"))
+        else if (line.EndsWith("}") || line.EndsWith("},") || line.EndsWith("]") || line.EndsWith("],"))
         {
             bracketsDeep -= 1;
             indentLevel = bracketsDeep;
