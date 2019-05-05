@@ -1,16 +1,27 @@
 # Logging
 
-## Preferred Method: Override `Debug.WriteLine()`
-User this code to intercept `Debug.WriteLine()` and _record_ messages for easy retrieval later.
-```cs
-// put this in your top level
-debugListener = new LoggingTraceListener();
+## Override `Debug.WriteLine()` with a Logging Version
+This is my preferred method for debug logging. I create a custom trace listening class and use it to intercept `Debug.WriteLine()`. The custom class records messages for easy retrieval later.
 
+```cs
+// define this as a class-level object
+public AbfBrowser.LoggingTraceListener debugListener; 
+```
+
+```cs
+// put this in your initializer
+debugListener = new AbfBrowser.LoggingTraceListener();
+System.Diagnostics.Debug.Listeners.Add(debugListener);
+```
+
+```cs
 // log like you regularly do
 Debug.WriteLine("line one");
 Debug.Indent();
 Debug.WriteLine("line two");
+```
 
+```cs
 // access historical messages like this
 textbox1.Text = debugListener.GetLogAsString();
 ```
