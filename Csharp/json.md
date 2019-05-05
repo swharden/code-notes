@@ -85,28 +85,28 @@ public static string prettify(string json, int indentCount = 4, char indentChar 
 
 #### Example Input
 ```
-[{"PersonID":1,"Name":"Bryon Hetrick","Registered":true},{"PersonID":2,"Name":"Nicole Wilcox","Registered":true},{"PersonID":3,"Name":"Adrian Martinson","Registered":false}]
+{"messageType":"response","request":{"messageType":"request","action":"scanFolderFast","path":"D:\\demoData\\abfs-real","identifier":"17703011.abf","value":"1234","elapsedMsec":7.9362},"AbfFolder":{"path":"D:\\demoData\\abfs-real","fileNames":null,"folderNames":null},"elapsedMsec":4.5174}
 ```
 
 #### Example Output
 ```
-[
-  {
-    "PersonID":1,
-    "Name":"Bryon Hetrick",
-    "Registered":true
-  },
-  {
-    "PersonID":2,
-    "Name":"Nicole Wilcox",
-    "Registered":true
-  },
-  {
-    "PersonID":3,
-    "Name":"Adrian Martinson",
-    "Registered":false
-  }
-]
+{
+    "messageType":"response",
+    "request": {
+        "messageType":"request",
+        "action":"scanFolderFast",
+        "path":"D:\\demoData\\abfs-real",
+        "identifier":"17703011.abf",
+        "value":"1234",
+        "elapsedMsec":7.2797
+    },
+    "AbfFolder": {
+        "path":"D:\\demoData\\abfs-real",
+        "fileNames":null,
+        "folderNames":null
+    },
+    "elapsedMsec":4.0363
+}
 ```
 
 ## Nesting JSON
