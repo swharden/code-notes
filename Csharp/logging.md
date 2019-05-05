@@ -3,12 +3,16 @@
 ## Preferred Method: Override `Debug.WriteLine()`
 User this code to intercept `Debug.WriteLine()` and _record_ messages for easy retrieval later.
 ```cs
-debugListener = new LoggingTraceListener(); // make this a class-level variable
-Debug.Listeners.Add(debugListener); // put this in your constructor
+// put theis in your initialization sequence
+var debugListener = (LoggingTraceListener)System.Diagnostics.Debug.Listeners[0];
 
+// log like you regularly do
 Debug.WriteLine("line one");
 Debug.Indent();
 Debug.WriteLine("line two");
+
+// access historical messages like this
+textbox1.Text = debugListener.GetLogAsString();
 ```
 
 ### LoggingTraceListener.cs
