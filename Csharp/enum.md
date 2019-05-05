@@ -10,6 +10,6 @@ enum MarkerShape { circleSolid, circleOutline };
 ```cs
 public string[] RequestStrings()
 {
-    return Enum.GetNames(typeof(Request));
+    return Enum.GetNames(typeof(YourSpecialEnum));
 }
 ```
