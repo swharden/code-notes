@@ -129,7 +129,7 @@ public class Request
 #### Then serialize the top class...
 ```cs
 JavaScriptSerializer serializer = new JavaScriptSerializer();
-string json = serializer.Serialize(this);
+string json = serializer.Serialize(this); // a class can serialize itself!!!
 Console.WriteLine(json);
 ```
 
