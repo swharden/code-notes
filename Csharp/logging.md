@@ -1,11 +1,69 @@
 # Logging
 
+## Preferred Method: Override `Debug.WriteLine()`
+User this code to intercept `Debug.WriteLine()` and _record_ messages for easy retrieval later.
+```cs
+debugListener = new LoggingTraceListener(); // make this a class-level variable
+Debug.Listeners.Add(debugListener); // put this in your constructor
+
+Debug.WriteLine("line one");
+Debug.Indent();
+Debug.WriteLine("line two");
+```
+
+### LoggingTraceListener.cs
+```cs
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AbfBrowser
+{
+
+    public class LoggingTraceListener : TraceListener
+    {
+        private List<string> Log;
+        public new readonly string Name;
+
+        public LoggingTraceListener(string name = "unnamed LoggingTraceListener")
+        {
+            Name = name;
+            Log = new List<string>();
+        }
+
+        public override void Write(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void WriteLine(string message)
+        {
+            string timestamp = string.Format("[{0}] ", DateTime.Now.ToString());
+            Log.Add($"{timestamp} | {Name} | {message}");
+        }
+
+        public string[] GetLogAsArray()
+        {
+            return Log.ToArray();
+        }
+
+        public string GetLogAsString(string joiner = "\r\n")
+        {
+            return string.Join(joiner, Log.ToArray());
+        }
+    }
+}
+```
+
 ## Console Messages
 
 ```cs
-System.Console.WriteLine("asdf");
-System.Diagnostics.Trace.WriteLine("asdf"); // different how?
-System.Diagnostics.Debug.WriteLine("asdf"); // different how?
+System.Console.WriteLine("just writes to console");
+System.Diagnostics.Trace.WriteLine("trace listener catches these");
+System.Diagnostics.Debug.WriteLine("trace listener catches these");
 ```
 
 ## Logger Class
