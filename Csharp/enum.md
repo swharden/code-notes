@@ -6,10 +6,18 @@ enum LineStyle { solid, dashed, dotted };
 enum MarkerShape { circleSolid, circleOutline };
 ```
 
-## Getting Names as Strings
+## Access, Index, Loop, and Assign by Name or Index
 ```cs
-public string[] RequestStrings()
+public enum Action { actionOne, actionTwo, actionThree, error };
+
+public static Action GetActionByName(string actionName)
 {
-    return Enum.GetNames(typeof(YourSpecialEnum));
+    string[] enumNames = Enum.GetNames(typeof(Action));
+    for (int i = 0; i < enumNames.Length; i++)
+    {
+        if (actionName == enumNames[i])
+            return (Action)i;
+    }
+    return Action.error;
 }
 ```
