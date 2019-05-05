@@ -46,23 +46,40 @@ RegisteredUsers.Add(new Person() { PersonID = 3, Name = "Adrian Martinson", Regi
 ## Prettify Json
 
 ```cs
-static string JsonPrettify(string json, int indentation = 2)
+public static string prettify(string json, int indentCount = 4, char indentChar = ' ')
 {
-    string indentString = String.Concat(Enumerable.Repeat(" ", indentation));
-    int indentLevel = 0;
-    int quoteCount = 0;
-    var result =
-        from ch in json
-        let quotes = ch == '"' ? quoteCount++ : quoteCount
-        let lineBreak = ch == ',' && quotes % 2 == 0 ? ch + Environment.NewLine + String.Concat(Enumerable.Repeat(indentString, indentLevel)) : null
-        let openChar = ch == '{' || ch == '[' ? ch + Environment.NewLine + String.Concat(Enumerable.Repeat(indentString, ++indentLevel)) : ch.ToString()
-        let closeChar = ch == '}' || ch == ']' ? Environment.NewLine + String.Concat(Enumerable.Repeat(indentString, --indentLevel)) + ch : ch.ToString()
-        select lineBreak == null
-                    ? openChar.Length > 1
-                        ? openChar
-                        : closeChar
-                    : lineBreak;
-    return String.Concat(result);
+    json = json.Replace("\\,", "~EscapedComma~");
+    json = json.Replace(":{", "~ColonStartBracket~\n");
+    json = json.Replace("},", "~EndBracketComma~");
+    json = json.Replace(",", ",\n");
+    json = json.Replace("{", "\n{\n");
+    json = json.Replace("}", "\n}\n");
+    json = json.Replace("~EndBracketComma~", "\n},\n");
+    json = json.Replace("~ColonStartBracket~", ": {");
+    json = json.Trim();
+    string[] lines = json.Split('\n');
+
+    int bracketsDeep = 0;
+    for (int i = 0; i < lines.Length; i++)
+    {
+        string line = lines[i].Trim();
+        int indentLevel = bracketsDeep;
+        if (line.StartsWith("{") || line.EndsWith("{"))
+        {
+            bracketsDeep += 1;
+            indentLevel = bracketsDeep - 1;
+        }
+        else if (line.EndsWith("}") || line.EndsWith("},"))
+        {
+            bracketsDeep -= 1;
+            indentLevel = bracketsDeep;
+        }
+        string padding = String.Concat(Enumerable.Repeat(indentChar, indentLevel * indentCount));
+        lines[i] = padding + line;
+    }
+    json = String.Join("\r\n", lines);
+
+    return json;
 }
 ```
 
