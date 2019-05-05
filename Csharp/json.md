@@ -18,7 +18,6 @@ Console.WriteLine(serializedResult);
 
 ### Decoding JSON
 ```cs
-// this might not be the best for nested JSON...
 List<Person> deserializedObjects = serializer.Deserialize<List<Person>>(serializedResult);
 foreach (Person person in deserializedObjects)
     Console.WriteLine(person.Name);
@@ -91,4 +90,62 @@ static string JsonPrettify(string json, int indentation = 2)
     "Registered":false
   }
 ]
+```
+
+## Nesting JSON
+The serializer is a simple way to turn a class into a JSON string. To create nested JSON, put classes inside other classes and serialize the whole thing.
+
+#### First create nested classes...
+```cs
+public class Names
+{
+    public string name1 = "alpha";
+    public string name2 = "bravo";
+    public string name3 = "charley";
+    public string name4 = "delta";
+}
+
+public class Request
+{
+    public readonly Action action;
+    public readonly string path;
+    public readonly string identifier;
+    public readonly string value;
+    public readonly Names names;
+    public readonly int coolNumber;
+
+    public Request(Action action, string path = null, string identifier = null, string value = null)
+    {
+        this.action = action;
+        this.path = path;
+        this.identifier = identifier;
+        this.value = value;
+        names = new Names();
+        coolNumber = 12345;
+    }
+}
+```
+
+#### Then serialize the top class...
+```cs
+JavaScriptSerializer serializer = new JavaScriptSerializer();
+string json = serializer.Serialize(this);
+Console.WriteLine(json);
+```
+
+#### Output
+```
+{
+  "action":0,
+  "path":"Path",
+  "identifier":"17703011.abf",
+  "value":"1234",
+  "names":{
+    "name1":"alpha",
+    "name2":"bravo",
+    "name3":"charley",
+    "name4":"delta"
+  },
+  "coolNumber":12345
+}
 ```
