@@ -3,8 +3,8 @@
 ## Preferred Method: Override `Debug.WriteLine()`
 User this code to intercept `Debug.WriteLine()` and _record_ messages for easy retrieval later.
 ```cs
-// put theis in your initialization sequence
-var debugListener = (LoggingTraceListener)System.Diagnostics.Debug.Listeners[0];
+// put this in your top level
+debugListener = new LoggingTraceListener();
 
 // log like you regularly do
 Debug.WriteLine("line one");
