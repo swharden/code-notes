@@ -56,8 +56,12 @@ namespace AbfBrowser
 
         public override void WriteLine(string message)
         {
-            string timestamp = string.Format("[{0}] ", DateTime.Now.ToString());
-            Log.Add($"{timestamp} | {Name} | {message}");
+            message = message.Trim();
+            double elapsedMsec = stopwatch.ElapsedTicks * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
+            string elapsedMsecString = string.Format("{0:00.000}", elapsedMsec);
+            string calledFrom = new StackTrace().GetFrame(3).GetMethod().ReflectedType.Name;
+            Log.Add($"{elapsedMsecString} ms | {calledFrom}: {message}");
+            Console.WriteLine($"{Log.Count()} {this.Name}");
         }
 
         public string[] GetLogAsArray()
