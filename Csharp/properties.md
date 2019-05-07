@@ -1,5 +1,27 @@
 # Class Properties
 
+## Streamlined Get
+```cs
+ class Demo
+ {
+     public string firstName = "Scott";
+     public string lastName = "Harden";
+     
+     // look how nice this is
+     public string fullNameStreamlined => $"{firstName}-{lastName}";
+     
+     // this does the same thing
+     public string fullNameBulky
+     {
+         get
+         {
+             return $"{firstName}-{lastName}";
+         }
+     }
+ }
+```
+
+## Get and Set
 ```cs
 // Declare a Code property of type string:
 public string Code {
