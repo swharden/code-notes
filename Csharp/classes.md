@@ -1,5 +1,39 @@
 # Classes
 
+## Creating Disposable Classes
+This allows your class to have the `Dispose()` method called automatically if instantiated with a `using` statement. This is helpful for classes which must only be run one at a time, or to ensure the user doesn't forget to call the `Dispose()` method manually after using the class.
+
+```cs
+public class AbfReader : IDisposable
+{
+    public vsABF.ABF abf;
+
+    public AbfReader(string abfFilePath)
+    {
+        abf = new vsABF.ABF(abfFilePath);
+    }
+
+    public void Dispose()
+    {
+        abf.Close();
+    }
+}
+```
+
+```cs
+using (AbfReader abf = new AbfReader(childAbfFilePath))
+{
+    details = abf.GetOneLineSummary();
+}
+```
+
+```cs
+using (AbfReader abf = new AbfReader(childAbfFilePath))
+{
+    details = abf.GetOneLineSummary();
+}
+```
+
 ## Making properties read-only
 ```C#
 class Axis1d
