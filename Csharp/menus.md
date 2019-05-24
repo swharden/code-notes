@@ -1,40 +1,27 @@
 # Menus
 
 ## Right-click Menu with `ContextMenuStrip`
-```C#
-ContextMenuStrip cm = new ContextMenuStrip();
-cm.Items.Add("Save Image");
-cm.Items.Add("Auto-Axis");
-cm.Items.Add("Help");
-cm.Items.Add("About ScottPlot");
-cm.Show(pictureBox1, e.Location);
-cm.ItemClicked += new ToolStripItemClickedEventHandler(RightClickMenuItemSelected);
-```
+```c#
+private ContextMenuStrip cmRightClickMenu;
 
-```C#
-private void RightClickMenuItemSelected(object sender, ToolStripItemClickedEventArgs e)
+private void RightClickMenuSetup()
+{
+    cmRightClickMenu = new ContextMenuStrip();
+    cmRightClickMenu.Items.Add("Save Image");
+    cmRightClickMenu.Items.Add("Auto-Axis");
+    cmRightClickMenu.Items.Add("Help");
+    cmRightClickMenu.Items.Add("About ScottPlot");
+}
+
+private void RightClickMenu()
+{
+    cmRightClickMenu.Show(pbPlot, PointToClient(Cursor.Position));
+    cmRightClickMenu.ItemClicked += new ToolStripItemClickedEventHandler(RightClickMenu_SaveImage);
+}
+
+private void RightClickMenuItemClicked(object sender, ToolStripItemClickedEventArgs e)
 {
     ToolStripItem item = e.ClickedItem;
     System.Console.WriteLine(item);
-}
-```
-
-## Right-click Menu with `ContextMenu`
-```C#
-ContextMenu marker_right_click_menu = new ContextMenu();
-marker_right_click_menu.MenuItems.Add(new MenuItem("item one", new EventHandler(Clicked1)));
-marker_right_click_menu.MenuItems.Add(new MenuItem("item two", new EventHandler(Clicked2)));
-marker_right_click_menu.Show(panel_dataView, mouse_position);
-```
-
-```
-private void Clicked1(object sender, EventArgs e)
-{
-    System.Console.WriteLine("clicked number 1");
-}
-
-private void Clicked2(object sender, EventArgs e)
-{
-    System.Console.WriteLine("clicked number 2");
 }
 ```
