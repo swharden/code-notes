@@ -41,7 +41,37 @@ private double[] LowPassFilter(double[] pcm, double cutOffFrequency = 60, double
 }
 ```
 
-## FFT from Double Array (NAudio)
+## Update FFT from PCM
+Assumes a class-level `dataPcm` and `dataFft` double arrays are present.
+```cs
+private void updateFFT()
+{
+    if (dataPcm == null)
+        return;
+
+    int fftPoints = 2;
+    while (fftPoints * 2 <= dataPcm.Length)
+        fftPoints *= 2;
+
+    NAudio.Dsp.Complex[] fftFull = new NAudio.Dsp.Complex[fftPoints];
+    for (int i = 0; i < fftPoints; i++)
+        fftFull[i].X = (float)(dataPcm[i] * NAudio.Dsp.FastFourierTransform.HammingWindow(i, fftPoints));
+
+    NAudio.Dsp.FastFourierTransform.FFT(true, (int)Math.Log(fftPoints, 2.0), fftFull);
+
+    if (dataFft == null)
+        dataFft = new double[fftPoints / 2];
+    for (int i = 0; i < fftPoints / 2; i++)
+    {
+        double fftLeft = Math.Abs(fftFull[i].X + fftFull[i].Y);
+        double fftRight = Math.Abs(fftFull[fftPoints - i - 1].X + fftFull[fftPoints - i - 1].Y);
+        dataFft[i] = fftLeft + fftRight;
+    }
+}
+```
+
+
+## FFT from Double Array (NAudio) - COPIES DATA = SLOW
 ```cs
 private double[] FFT_from_PCM(double[] pcm)
 {
