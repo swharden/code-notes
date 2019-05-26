@@ -10,4 +10,9 @@ while (t.IsAlive)
 ```cs
 readerThread = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(ReadForever));
 readerThread.Start(adc1);
+
+private void ReadForever(object adc1)
+{
+    double[] data = (double[])adc1;
+}
 ```
