@@ -18,27 +18,46 @@ private void ScanSoundCards()
 
 ## Recording Audio data with NAudio
 ```cs
-// do the setup only once
-wvin = new WaveInEvent();
-wvin.DeviceNumber = DeviceIndex;
-wvin.WaveFormat = new NAudio.Wave.WaveFormat(SampleRate, BitRate, MicrophoneChannels);
-wvin.DataAvailable += OnDataAvailable;
-wvin.BufferMilliseconds = BufferMilliseconds;
+private NAudio.Wave.WaveInEvent wvin;
 
-// elsewhere
-wvin.StartRecording();
-```
-
-```cs
-private void OnDataAvailable(object sender, WaveInEventArgs args)
+private void OnDataAvailable(object sender, NAudio.Wave.WaveInEventArgs args)
 {
-    // convert byte array to Int16 array
-    int bytesPerSample = BitRate / 8;
+    int bytesPerSample = wvin.WaveFormat.BitsPerSample / 8;
     int samplesRecorded = args.BytesRecorded / bytesPerSample;
     Int16[] lastBuffer = new Int16[samplesRecorded];
     for (int i = 0; i < samplesRecorded; i++)
         lastBuffer[i] = BitConverter.ToInt16(args.Buffer, i * bytesPerSample);
     int lastBufferAmplitude = lastBuffer.Max() - lastBuffer.Min();
+    Console.WriteLine(lastBufferAmplitude);
+}
+
+private void AudioMonitorInitialize(int DeviceIndex, int sampleRate = 8000, int bitRate = 16, 
+    int channels = 1, int bufferMilliseconds = 100, bool start = true)
+{
+    if (wvin == null)
+    {
+        wvin = new NAudio.Wave.WaveInEvent();
+        wvin.DeviceNumber = DeviceIndex;
+        wvin.WaveFormat = new NAudio.Wave.WaveFormat(sampleRate, bitRate, channels);
+        wvin.DataAvailable += OnDataAvailable;
+        wvin.BufferMilliseconds = bufferMilliseconds;
+        if (start)
+            wvin.StartRecording();
+    }
+}
+
+private void BtnStart_Click(object sender, EventArgs e)
+{
+    AudioMonitorInitialize(cbDevice.SelectedIndex);
+}
+
+private void BtnStop_Click(object sender, EventArgs e)
+{
+    if (wvin!= null)
+    {
+        wvin.StopRecording();
+        wvin = null;
+    }
 }
 ```
 
