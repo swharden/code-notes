@@ -6,3 +6,8 @@ t.Start();
 while (t.IsAlive)
     Application.DoEvents();
 ```
+
+```cs
+readerThread = new System.Threading.Thread(new System.Threading.ParameterizedThreadStart(ReadForever));
+readerThread.Start(adc1);
+```
