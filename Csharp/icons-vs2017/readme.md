@@ -16,6 +16,14 @@ These icons are my selected favorites from the [VS 2017](/Csharp/icons.md) zip
 ![](FolderOffline_16x.png) FolderOffline_16x.png\
 ![](TriggeredFolder_16x.png) TriggeredFolder_16x.png
 
+### Refresh
+![](CloudRefresh_16x.png) CloudRefresh_16x.png\
+![](ProjectSystemModelRefresh_16x.png) ProjectSystemModelRefresh_16x.png\
+![](Refresh_16x.png) Refresh_16x.png\
+![](Refresh_greyThin_16x.png) Refresh_greyThin_16x.png\
+![](Refresh_grey_16x.png) Refresh_grey_16x.png\
+![](VirtualMachineRefresh_16x.png) VirtualMachineRefresh_16x.png\
+
 ### Line and Scatter Plots
 ![](FastLineChart_16x.png) FastLineChart_16x.png\
 ![](LineChart_16x.png) LineChart_16x.png\
