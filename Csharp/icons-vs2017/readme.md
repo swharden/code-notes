@@ -75,7 +75,7 @@ These icons are my selected favorites from the [VS 2017](/Csharp/icons.md) zip
 ![](ShowAllConfigurations_16x.png) ShowAllConfigurations_16x.png\
 ![](TestConfiguration_16x.png) TestConfiguration_16x.png\
 ![](TestRunConfigurationFile_16x.png) TestRunConfigurationFile_16x.png\
-![](WebConfiguration_16x.png) WebConfiguration_16x.png\
+![](WebConfiguration_16x.png) WebConfiguration_16x.png
 
 ### Settings
 ![](Settings_16x.png) Settings_16x.png\
