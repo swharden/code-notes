@@ -1,8 +1,9 @@
 # Icons
 
 ## Icon Packs
-* [Material Icons](https://material.io/tools/icons/) <-- START HERE!
+* [Material Icons](https://material.io/tools/icons/)
 * [Open Iconic](https://useiconic.com/open)
+* [Modern UI Icons](http://modernuiicons.com/)
 * [Icons8 Flat Color Icons](https://github.com/icons8/flat-color-icons)
 * [Icons8 Windows 10 Icons](https://github.com/icons8/windows-10-icons)
 
