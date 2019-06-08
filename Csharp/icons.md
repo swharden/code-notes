@@ -1,7 +1,12 @@
 # Icons
 
+## Icon Packs
+* [Material Icons](https://material.io/tools/icons/) <-- START HERE!
+* [Icons8 Flat Color Icons](https://github.com/icons8/flat-color-icons)
+* [Icons8 Windows 10 Icons](https://github.com/icons8/windows-10-icons)
+
 ## System Icons
-http://csharphelper.com/blog/2015/09/display-the-predefined-system-icons-in-c/
+There are very few and they're kind of awful. [link](http://csharphelper.com/blog/2015/09/display-the-predefined-system-icons-in-c/)
 
 ```cs
 ImageList images = new ImageList();
