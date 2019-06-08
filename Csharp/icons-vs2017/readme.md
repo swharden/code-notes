@@ -107,6 +107,34 @@ These icons are my selected favorites from the [VS 2017](/Csharp/icons.md) zip
 ![](BoxPlotChart_16x.png) BoxPlotChart_16x.png\
 ![](ColumnChart_16x.png) ColumnChart_16x.png
 
+### Information
+![](AssemblyInfoFile_16x.png) AssemblyInfoFile_16x.png\
+![](FolderInformation_16x.png) FolderInformation_16x.png\
+![](StatusInformation_12x_16x.png) StatusInformation_12x_16x.png\
+![](StatusInformation_16x.png) StatusInformation_16x.png\
+![](StatusInformation_16xMD.png) StatusInformation_16xMD.png\
+![](StatusInformation_16xSM.png) StatusInformation_16xSM.png\
+![](StatusInformation_cyan_12x_16x.png) StatusInformation_cyan_12x_16x.png\
+![](StatusInformation_cyan_16x.png) StatusInformation_cyan_16x.png\
+![](StatusInformation_exp_12x_16x.png) StatusInformation_exp_12x_16x.png\
+![](StatusInformation_exp_16x.png) StatusInformation_exp_16x.png\
+![](StatusInformation_grey_12x_16x.png) StatusInformation_grey_12x_16x.png\
+![](StatusInformation_grey_16x.png) StatusInformation_grey_16x.png\
+![](StatusInformation_grey_16xMD.png) StatusInformation_grey_16xMD.png\
+![](StatusInformation_grey_16xSM.png) StatusInformation_grey_16xSM.png\
+![](StatusInformation_grey_disabled_16x.png) StatusInformation_grey_disabled_16x.png\
+![](StatusInfoTip_16x.png) StatusInfoTip_16x.png\
+![](StatusInfoTip_16xMD.png) StatusInfoTip_16xMD.png\
+![](StatusInfoTip_cyan_16x.png) StatusInfoTip_cyan_16x.png\
+![](StatusInfoTip_grey_16x.png) StatusInfoTip_grey_16x.png
+
+### Tag (Note)
+![](EditDataGridRowLeft_16x.png) EditDataGridRowLeft_16x.png\
+![](EditDataGridRowRight_16x.png) EditDataGridRowRight_16x.png\
+![](EditSelectedTag_16x.png) EditSelectedTag_16x.png\
+![](EditTag_16x.png) EditTag_16x.png\
+![](Tag_16x.png) Tag_16x.png
+
 ### Beaker
 ![](AddTestGroup_16x.png) AddTestGroup_16x.png\
 ![](AddTest_16x.png) AddTest_16x.png\
