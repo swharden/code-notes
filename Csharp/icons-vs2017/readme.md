@@ -150,4 +150,4 @@ These icons are my selected favorites from the [VS 2017](/Csharp/icons.md) zip
 ![](VBTestProject_16x.png) VBTestProject_16x.png\
 ![](VBTest_16x.png) VBTest_16x.png\
 ![](WebTestPlugin_16x.png) WebTestPlugin_16x.png\
-![](WebTest_16x.png) WebTest_16x.png\
+![](WebTest_16x.png) WebTest_16x.png
