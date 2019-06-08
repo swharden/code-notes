@@ -25,6 +25,19 @@ if (savefile.ShowDialog() == DialogResult.OK) {
 }
 ```
 
+## Select File
+```cs
+OpenFileDialog diag = new OpenFileDialog();
+diag.Filter = "TIF files (*.tif, *.tiff)|*.tif;*.tiff";
+diag.Filter += "|JPG Files (*.jpg, *.jpeg)|*.jpg;*.jpeg";
+diag.Filter += "|PNG Files (*.png)|*.png;*.png";
+diag.Filter += "|BMP Files (*.bmp)|*.bmp;*.bmp";
+diag.Filter  += "|All files (*.*)|*.*";
+if (diag.ShowDialog() == DialogResult.OK) {
+    SetImage(diag.FileName);
+}
+```
+
 ## Select Folder
 ```cs
 var diag = new FolderBrowserDialog();
@@ -43,19 +56,6 @@ if (sf.ShowDialog() == DialogResult.OK)
 {
     string pathFolder = System.IO.Path.GetDirectoryName(sf.FileName);
     SetFolder(pathFolder);
-}
-```
-
-## Select Image
-```cs
-OpenFileDialog diag = new OpenFileDialog();
-diag.Filter = "TIF files (*.tif, *.tiff)|*.tif;*.tiff";
-diag.Filter += "|JPG Files (*.jpg, *.jpeg)|*.jpg;*.jpeg";
-diag.Filter += "|PNG Files (*.png)|*.png;*.png";
-diag.Filter += "|BMP Files (*.bmp)|*.bmp;*.bmp";
-diag.Filter  += "|All files (*.*)|*.*";
-if (diag.ShowDialog() == DialogResult.OK) {
-    SetImage(diag.FileName);
 }
 ```
 
