@@ -90,3 +90,29 @@ dataGridView1.AutoResizeColumn(0);
 // resize all columns
 dataGridView1.AutoResizeColumns();
 ```
+
+## Lots of stuff programmatically
+
+This method is SLOW! 2 columns with 10,000 rows takes almost 2 full seconds to populate this way.
+
+```cs
+Random rand = new Random();
+
+int rowCount = 10_000;
+DataGridViewRow[] rows = new DataGridViewRow[rowCount];
+var view = new DataGridView();
+
+for (int i = 0; i < rowCount; i++)
+{
+    double valueA = rand.NextDouble() * 1000;
+    double valueB = rand.NextDouble() * 1000;
+    rows[i] = new DataGridViewRow();
+    rows[i].HeaderCell.Value = i.ToString();
+    rows[i].CreateCells(dataGridView1, valueA.ToString(), valueB.ToString());
+}
+dataGridView1.Rows.Clear();
+dataGridView1.Rows.AddRange(rows);
+dataGridView1.TopLeftHeaderCell.Value = "#";
+dataGridView1.AutoResizeRowHeadersWidth(DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders);
+dataGridView1.AutoResizeColumns();
+```
