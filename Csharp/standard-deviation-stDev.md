@@ -1,5 +1,5 @@
 # Standard Deviation in C#
-I often find that a discrete standard deviation calculation function is much easier than relying on an extra library (and the DLL/license that comes with it).
+I often find that a discrete standard deviation calculation function is much easier than relying on an external library (and the DLL/license that comes with it).
 
 ```cs
 public static double GetStDev(double[] values)
