@@ -2,9 +2,14 @@
 I often find that a discrete standard deviation calculation function is much easier than relying on an external library (and the DLL/license that comes with it).
 
 ```cs
+public static double GetMean(double[] values)
+{
+    return values.Sum() / values.Length;
+}
+
 public static double GetStDev(double[] values)
 {
-    double mean = values.Sum() / values.Length;
+    double mean = GetMean(values);
     double sumVarianceSquared = 0;
     for (int i = 0; i < values.Length; i++)
     {
