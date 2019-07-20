@@ -38,6 +38,12 @@ if (diag.ShowDialog() == DialogResult.OK) {
 }
 ```
 
+You can also:
+
+```cs
+diag.Multiselect = true;
+```
+
 ## Select Folder
 ```cs
 var diag = new FolderBrowserDialog();
