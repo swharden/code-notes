@@ -24,6 +24,12 @@ string firstLineStyle = (LineStyle)0;
 string secondLineStyle = (LineStyle)1;
 ```
 
+## Get an enum from its string name
+```cs
+enum Colors {Red, Green, Blue}
+Colors color = (Colors)System.Enum.Parse(typeof(Colors), "Green");
+```
+
 ## Access, Index, Loop, and Assign by Name or Index
 ```cs
 public enum Action { actionOne, actionTwo, actionThree, error };
