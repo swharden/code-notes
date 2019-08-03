@@ -8,7 +8,7 @@ private double[] ReadWavFile(string wavFilePath)
     double[] pcm = new double[bytes.Length / 2];
     int firstDataByte = 44;
     for (int i = firstDataByte; i < bytes.Length - 2; i += 2)
-        pcm[i] = BitConverter.ToInt16(bytes, i);
+        pcm[i / 2] = BitConverter.ToInt16(bytes, i);
     return pcm;
 }
 ```
