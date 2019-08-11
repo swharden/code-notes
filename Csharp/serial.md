@@ -21,27 +21,26 @@ string[] serialPortNames = SerialPort.GetPortNames();
 ### Handling Incoming Data
 ```cs
 ser = new SerialPort(com, baud);
+ser.Open();
 ser.ReadLine();
 ser.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
-ser.Open();
 ```
 
 ```cs
+static List<string> lines = new List<string>();
+        
 private static void DataReceivedHandler(object sender, SerialDataReceivedEventArgs e)
 {
-    SerialPort sp = (SerialPort)sender;
-    string line;
-    line = sp.ReadExisting();
-    line += sp.ReadLine();
-    line = line.Trim();
-
-    // parse CSV data
-    string[] parts = line.Split(',');
-    double[] values = new double[parts.Length];
-    for (int i = 0; i < parts.Length; i++)
-        double.TryParse(parts[i], out values[i]);
-
-    Console.WriteLine($"Data Received ({values.Length} values): {line}");
-
+    try
+    {
+        SerialPort sp = (SerialPort)sender;
+        string line = (sp.ReadExisting() + sp.ReadLine()).Trim();
+        lines.Add(line);
+    }
+    catch (System.IO.IOException exc)
+    {
+        Console.WriteLine("IOException in serial data handler");
+        Console.WriteLine(exc);
+    }
 }
 ```
