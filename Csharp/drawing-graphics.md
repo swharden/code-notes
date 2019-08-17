@@ -315,3 +315,23 @@ public Bitmap Histogram(Size size, double[] values)
     return bmp;
 }
 ```
+
+## Rotate a Bitmap
+```cs
+public static Bitmap Rotate(Bitmap bmpIn, float angle = 90)
+{
+    // TODO: this could be faster with byte manipulation since it's 90 degrees
+
+    if (bmpIn == null)
+        return null;
+
+    Bitmap bmp = new Bitmap(bmpIn);
+    Bitmap bmpRotated = new Bitmap(bmp.Height, bmp.Width);
+
+    Graphics gfx = Graphics.FromImage(bmpRotated);
+    gfx.RotateTransform(angle);
+    gfx.DrawImage(bmp, new Point(0, -bmp.Height));
+
+    return bmpRotated;
+}
+```
