@@ -5,19 +5,23 @@ I like making a class which starts timing in the initializer and stops the clock
 ```cs
 public class Benchmark : IDisposable
 {
-    System.Diagnostics.Stopwatch stopwatch;
+	Stopwatch stopwatch;
+	bool silent;
 
-    public Benchmark()
-    {
-        stopwatch = System.Diagnostics.Stopwatch.StartNew();
-    }
+	public double elapsedMilliseconds { get { return stopwatch.ElapsedTicks * 1000.0 / Stopwatch.Frequency; } }
 
-    public void Dispose()
-    {
-        stopwatch.Stop();
-        double elapsedMsec = stopwatch.ElapsedTicks * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
-        System.Console.WriteLine(string.Format("completed in {0:0.00} ms", elapsedMsec));
-    }
+	public Benchmark(bool silent = false)
+	{
+		stopwatch = Stopwatch.StartNew();
+		this.silent = silent;
+	}
+
+	public void Dispose()
+	{
+		stopwatch.Stop();
+		if (!silent)
+			Console.WriteLine(string.Format("completed in {0:0.00} ms", elapsedMilliseconds));
+	}
 }
 ```
 
