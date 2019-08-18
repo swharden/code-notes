@@ -1,5 +1,7 @@
 # Benchmarking in C#
 
+I like making a class which starts timing in the initializer and stops the clock and displays the elapsed time in the destructor.
+
 ```cs
 public class Benchmark : IDisposable
 {
