@@ -335,3 +335,12 @@ public static Bitmap Rotate(Bitmap bmpIn, float angle = 90)
     return bmpRotated;
 }
 ```
+
+## Measure a String without a Graphics
+```cs
+Graphics gfx = Graphics.FromHwnd(IntPtr.Zero);
+FontFamily fmly = new FontFamily("impact");
+FontStyle style = (bold) ? FontStyle.Bold : FontStyle.Regular;
+Font fnt = new Font(fmly, fontSize, style);
+SizeF textSize = gfx.MeasureString(text, fnt);
+```
