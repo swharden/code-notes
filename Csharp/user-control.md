@@ -8,6 +8,6 @@ if (!isInFormsDesignerMode)
     timerInitialScan.Enabled = true;
 ```
 
-``cs
+```cs
 private bool InsideVisualStudio { get { return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv"); } }
-``
+```
