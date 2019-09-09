@@ -7,3 +7,7 @@ bool isInFormsDesignerMode = (System.Diagnostics.Process.GetCurrentProcess().Pro
 if (!isInFormsDesignerMode)
     timerInitialScan.Enabled = true;
 ```
+
+``cs
+private bool InsideVisualStudio { get { return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv"); } }
+``
