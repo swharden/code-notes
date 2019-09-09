@@ -18,10 +18,10 @@ public static string GetDateTimestamp()
 
 ### Stopwatches Help Time Things
 ```cs
-System.Diagnostics.Stopwatch stopwatch = System.Diagnostics.Stopwatch.StartNew();
+Stopwatch stopwatch = Stopwatch.StartNew();
 /* do stuff */
-double elapsedMsec = stopwatch.ElapsedTicks * 1000.0 / System.Diagnostics.Stopwatch.Frequency;
-System.Console.WriteLine(string.Format("completed in {0:0.00} ms", elapsedMsec));
+double elapsedSec = (double)stopwatch.ElapsedTicks / Stopwatch.Frequency;
+string message = string.Format("completed in {0:0.00} ms ({1:0.00} Hz)", elapsedSec * 1000.0, 1 / elapsedSec);
 ```
 
 ### Keyboard Shortcuts
