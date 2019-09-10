@@ -36,9 +36,9 @@ public void PlotDemo()
         canvas.DrawLine(x1, y1, x2, y2, paint);
     }
 
-    SKImage image = surface.Snapshot();
-    SKData data = image.Encode();
-
+    // apply the canvas to a picturebox as a Bitmap
+    using (SKImage image = surface.Snapshot())
+    using (SKData data = image.Encode())
     using (System.IO.MemoryStream mStream = new System.IO.MemoryStream(data.ToArray()))
     {
         Bitmap bm = new Bitmap(mStream, false);
