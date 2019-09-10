@@ -3,11 +3,16 @@
 ## Execute code on load (only in an application, not in VS design mode)
 
 ```cs
-bool isInFormsDesignerMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
-if (!isInFormsDesignerMode)
-    timerInitialScan.Enabled = true;
+if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+{
+    // in Visual Studio
+}
+else
+{
+    // in the wild
+}
 ```
 
 ```cs
-private bool InsideVisualStudio { get { return (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv"); } }
+bool isInFormsDesignerMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
 ```
