@@ -16,3 +16,8 @@ else
 ```cs
 bool isInFormsDesignerMode = (System.Diagnostics.Process.GetCurrentProcess().ProcessName == "devenv");
 ```
+
+## Actually, this seems to work better
+```cs
+if (Process.GetCurrentProcess().ProcessName == "devenv")
+```
