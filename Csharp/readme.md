@@ -64,3 +64,8 @@ If you are not sure it will parse:
 int i;
 bool success = int.TryParse(string, out i);
 ```
+
+### Generate a Random Color
+```cs
+Color randomColor = Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256));
+```
