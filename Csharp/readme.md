@@ -69,3 +69,7 @@ bool success = int.TryParse(string, out i);
 ```cs
 Color randomColor = Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256));
 ```
+
+```cs
+public Color randomColor { get { return Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256)); } }
+```
