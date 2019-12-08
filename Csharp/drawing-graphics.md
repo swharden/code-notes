@@ -22,6 +22,11 @@ private void button1_Click(object sender, EventArgs e)
 }
 ```
 
+## Faster bitmaps using [premultiplied alpha](https://en.wikipedia.org/wiki/Alpha_compositing)
+```cs
+var bmp = new Bitmap(w, g, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+```
+
 ## Draw Graphics on a Panel
 ```cs
 private void button1_Click(object sender, EventArgs e)
