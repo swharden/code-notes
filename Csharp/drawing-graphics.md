@@ -272,9 +272,14 @@ private void Bitmap_from_data()
 }
 ```
 
-## Random Color
+## Random Stuff
 ```C#
-public Color randomColor{get{return Color.FromArgb(255, gen.rand.Next(256), gen.rand.Next(256), gen.rand.Next(256));}}
+private readonly Bitmap bmp;
+Random rand = new Random();
+int randomX { get { return rand.Next(bmp.Width); } }
+int randomY { get { return rand.Next(bmp.Height); } }
+Point randomPoint {  get { return new Point(randomX, randomY); } }
+Color randomColor { get { return Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256)); } }
 ```
 
 ## Quick and Dirty Histogram Bitmap
