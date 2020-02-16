@@ -17,5 +17,24 @@ System.Diagnostics.Process.Start(controlPanelPath, "mmsys.cpl");
 
 ## Launch the default web browser
 ```cs
-System.Diagnostics.Process.Start("http://google.com");
+private void LaunchBrowser(string url)
+{
+	// A cross-platform .NET-Core-safe function to launch a URL in the browser
+	Console.WriteLine($"Launching: {url}");
+	try
+	{
+		Process.Start(url);
+	}
+	catch
+	{
+		if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+			Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+		else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+			Process.Start("xdg-open", url);
+		else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+			Process.Start("open", url);
+		else
+			throw;
+	}
+}
 ```
