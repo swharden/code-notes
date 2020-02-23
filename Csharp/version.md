@@ -1,9 +1,15 @@
 ## Version Tracking with Assembly
 
 ```cs
+// get the version of this application
 Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-Console.WriteLine(version);
 Console.WriteLine($"{version.Major}.{version.Minor}.{version.Build}");
+```
+
+```cs
+// get the version of something else
+Version ver = typeof(Form1).Assembly.GetName().Version;
+lblVersion.Text = ver.ToString();
 ```
 
 ```
