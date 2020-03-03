@@ -9,6 +9,7 @@ private void GenerateClicked(object sender, RoutedEventArgs e)
     worker.WorkerReportsProgress = true;
     worker.DoWork += Worker_DoWork;
     worker.ProgressChanged += Worker_ProgressChanged;
+    worker.RunWorkerCompleted += Worker_RunWorkerCompleted; ;
     worker.RunWorkerAsync();
 }
 
@@ -23,6 +24,11 @@ private void Worker_DoWork(object sender, DoWorkEventArgs e)
 }
 
 private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+{
+    // you may access GUI components from this thread
+}
+
+private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
 {
     // you may access GUI components from this thread
 }
