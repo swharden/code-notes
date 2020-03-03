@@ -17,24 +17,18 @@ private void GenerateClicked(object sender, RoutedEventArgs e)
 
 private void Worker_DoWork(object sender, DoWorkEventArgs e)
 {
-	for (int i = 0; i < demoPlotNames.Length; i++)
-	{
-		string name = demoPlotNames[i].Replace("ScottPlot.Demo.", "");
-		(sender as BackgroundWorker).ReportProgress(i * 100 / demoPlotNames.Length, name);
+    // do NOT access GUI components from this thread
 
-		IPlotDemo plotDemo = Reflection.GetPlot(demoPlotNames[i]);
-		var plt = new Plot(600, 400);
-		plotDemo.Render(plt);
-		Debug.WriteLine(plotDemo);
-	}
-
-	(sender as BackgroundWorker).ReportProgress(100, $"Completed generating {demoPlotNames.Length} plots");
+    for (int i = 0; i < 100; i++)
+    {
+	(sender as BackgroundWorker).ReportProgress(i);
+    }
 }
 
 private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
 {
-	ProgressBar1.Value = e.ProgressPercentage;
-	ProgressLabel.Content = e.UserState;
-	Debug.WriteLine(e.UserState);
-} 
+    // you may access GUI components from this thread
+    //ProgressBar1.Value = e.ProgressPercentage;
+    //ProgressLabel.Content = e.UserState;
+}
 ```
