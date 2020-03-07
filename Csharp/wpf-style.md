@@ -2,7 +2,7 @@
 
 Styles let you define the default styles of a component. This is useful for changing styles of many components all at one time.
 
-```cs
+```xaml
 <Window.Resources>
     <Style TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
