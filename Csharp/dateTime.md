@@ -1,8 +1,15 @@
 # Date and Time in C#
+
+https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
+
 ```cs
-Console.WriteLine(DateTime.Now.Second);
+string msg = $"generated on {DateTime.Now.ToString("D")} at {DateTime.Now.ToString("t")}";
 ```
 
 ```cs
-double epochSeconds = (double)DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
+double sec = Console.WriteLine(DateTime.Now.Second);
+```
+
+```cs
+double epoch = double epochSeconds = (double)DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
 ```
