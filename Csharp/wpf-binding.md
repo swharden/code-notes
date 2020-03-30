@@ -4,7 +4,7 @@
 They key is to set your DataContext to be the view model
 
 ```xaml
-<Slider x:Name="BaselineSlider1" Maximum="100" Value="{Binding b1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+<Slider x:Name="BaselineSlider1" Value="{Binding b1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 ```
 
 ```cs
