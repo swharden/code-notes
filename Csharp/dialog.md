@@ -1,5 +1,25 @@
 # Dialog
 
+## Use Windows Forms Dialogs in WPF
+### Add this to your csproj `PropertyGroup`
+```xml
+<UseWindowsForms>true</UseWindowsForms>
+```
+
+### Add this `using`
+```cs
+using WinForms = System.Windows.Forms;
+```
+
+### Add a WinForms Dialog
+```cs
+var diag = new WinForms.FolderBrowserDialog();
+if (diag.ShowDialog() == WinForms.DialogResult.OK)
+{
+    string selectedPath = diag.SelectedPath;
+}
+```
+
 ## Messagebox
 ```cs
 MessageBox.Show("some long message here","WARNING!!!");
