@@ -21,7 +21,7 @@ public static string GetDateTimestamp()
 Stopwatch stopwatch = Stopwatch.StartNew();
 /* do stuff */
 double elapsedSec = (double)stopwatch.ElapsedTicks / Stopwatch.Frequency;
-string message = string.Format("completed in {0:0.00} ms ({1:0.00} Hz)", elapsedSec * 1000.0, 1 / elapsedSec);
+string message = $"{elapsedSec * 1000:0.00} ms ({1 / elapsedSec:0.00} Hz)";
 ```
 
 ### Keyboard Shortcuts
