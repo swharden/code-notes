@@ -106,3 +106,14 @@ public double DialogGetNumber(string text, string caption, int valMin=1, int val
     return (double)nudVal.Value;
 }
 ```
+
+## Color Picker
+```cs
+using(var diag = new ColorDialog())
+{
+    if (diag.ShowDialog() == DialogResult.OK)
+    {
+        button1.BackColor = diag.Color;
+    }
+}
+```
