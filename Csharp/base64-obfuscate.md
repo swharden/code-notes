@@ -1,11 +1,19 @@
 # Obfuscate text in C#
 
-Converting it to base64 does the trick, and removing the `==` hides it's a base64 string.
+Converting it to base64 does the trick, and removing the `=` hides it's a base64 string (which pads with `=` to achieve length multiples of 4).
 
 ```cs
-string original = "foxtrot123";
-string obfuscated = Convert.ToBase64String(Encoding.UTF8.GetBytes(original)).Trim('=');
-string decoded = Encoding.UTF8.GetString(Convert.FromBase64String(obfuscated + "=="));
+private string Obfuscate(string message)
+{
+    return Convert.ToBase64String(Encoding.UTF8.GetBytes(message)).Trim('=');
+}
+
+private string DeObfuscate(string obfuscated)
+{
+    while (obfuscated.Length % 4 != 0)
+        obfuscated += "=";
+    return Encoding.UTF8.GetString(Convert.FromBase64String(obfuscated));
+}
 ```
 
 ```cs
