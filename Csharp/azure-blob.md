@@ -1,7 +1,7 @@
 # Azure Blob Storage
 
 ```cs
-// read a blog file into a string
+// read a blob file into a string
 public static string ReadBlobText(string containerName, string fileName)
 {
 	string connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage", EnvironmentVariableTarget.Process);
