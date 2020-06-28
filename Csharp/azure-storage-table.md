@@ -1,6 +1,12 @@
 # Azure Tables in Storage
 
 ```cs
+// NuGet
+// Microsoft.Azure.Cosmos
+// Microsoft.Azure.Cosmos.Table
+```
+
+```cs
 class PackageStat : TableEntity
 {
     public string Package { get; set; }
