@@ -6,7 +6,7 @@
 System.Diagnostics.Process.Start("explorer.exe", pathLinescan);
 
 // or get fancy and pre-select a file or folder
-System.Diagnostics.Process.Start("explorer.exe", $"/select, \"{pathLinescan}\"");
+System.Diagnostics.Process.Start("explorer.exe", $"/select \"{pathLinescan}\"");
 ```
 
 ## Open the control panel to a certain page
