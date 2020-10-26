@@ -1,5 +1,11 @@
 # Launching things
 
+## Start a new process (cross platform)
+```cs
+ProcessStartInfo psi = new ProcessStartInfo(filename) { UseShellExecute = true };
+Process.Start(psi);
+```
+
 ## Open a folder in Explorer
 ```cs
 // just open an explorer window into a folder
