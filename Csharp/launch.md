@@ -2,7 +2,7 @@
 
 ## Start a new process (cross platform)
 ```cs
-ProcessStartInfo psi = new ProcessStartInfo(filename) { UseShellExecute = true };
+ProcessStartInfo psi = new ProcessStartInfo("pathToFile.exe") { UseShellExecute = true };
 Process.Start(psi);
 ```
 
