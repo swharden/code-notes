@@ -1,5 +1,7 @@
 # Enumerations
 
+[Three Methods to Convert Strings into Enums in C#](https://ivankahl.com/three-methods-to-convert-strings-into-enums-in-csharp/)
+
 ## Creating
 ```C#
 enum LineStyle { solid, dashed, dotted };
