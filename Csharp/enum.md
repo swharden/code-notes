@@ -1,7 +1,5 @@
 # Enumerations
 
-[Three Methods to Convert Strings into Enums in C#](https://ivankahl.com/three-methods-to-convert-strings-into-enums-in-csharp/)
-
 ## Creating
 ```C#
 enum LineStyle { solid, dashed, dotted };
@@ -10,14 +8,11 @@ enum MarkerShape { circleSolid, circleOutline };
 
 ## Access Enum by String Name
 ```cs
-// raw
-LineStyle ls = (LineStyle)Enum.Parse(typeof(LineStyle), "dashed");
-```
+// sleek
+Enum.TryParse("dashed", out LineStyle ls);
 
-```cs
-// safer
-LineStyle ls;
-Enum.TryParse("dashed", true, out ls);
+// cast
+LineStyle ls = (LineStyle)Enum.Parse(typeof(LineStyle), "dashed");
 ```
 
 ## Access Enum by Index
