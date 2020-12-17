@@ -1,4 +1,14 @@
-# GitHub Emoji Cheatsheet
+# Emoji
+
+## Iterate Emoji in C#
+
+```cs
+var textParts = System.Globalization.StringInfo.GetTextElementEnumerator(emojis);
+while (textParts.MoveNext())
+    Console.WriteLine((string)textParts.Current);
+```
+
+## GitHub Emoji Cheatsheet
 
 _Hover over an emoji to see its github markdown code_
 
