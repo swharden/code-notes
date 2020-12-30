@@ -18,6 +18,32 @@ public static async Task Main(string[] args)
 }
 ```
 
+### Container
+```cs
+using System;
+using System.Linq;
+
+namespace BlazorPassingData.Shared
+{
+    public class PetInventory
+    {
+        public event Action OnStateChange;
+        private readonly Random Rand = new Random();
+        private readonly int[] PetsPerKid = { 0, 0, 0 };
+
+        public int TotalPetCount => PetsPerKid.Sum();
+        private int RandomKidIndex => Rand.Next(PetsPerKid.Length);
+
+        public int GetPetCountForKid(int kidIndex) => PetsPerKid[kidIndex];
+        public void Buy(int kidIndex) { PetsPerKid[kidIndex] += 1; OnStateChange?.Invoke(); }
+        public void Sell(int kidIndex) { PetsPerKid[kidIndex] -= 1; OnStateChange?.Invoke(); }
+
+        public void BuyRandomPet() => Buy(RandomKidIndex);
+        public void SellRandomPet() => Sell(RandomKidIndex);
+    }
+}
+```
+
 ### Parent
 
 ```xml
@@ -33,7 +59,7 @@ public static async Task Main(string[] args)
 ```cs
 @code {
     [Inject]
-    private PetInventory Inventory { get; set; }
+    private PetInventory Inventory { get; set; } // <-- injection happens here!
 
     protected override void OnInitialized()
     {
@@ -62,7 +88,7 @@ public static async Task Main(string[] args)
     public int KidIndex { get; set; }
 
     [Inject]
-    protected PetInventory Inventory { get; set; }
+    protected PetInventory Inventory { get; set; } // <-- injection happens here!
 
     private int PetCount => Inventory.GetPetCountForKid(KidIndex);
 
