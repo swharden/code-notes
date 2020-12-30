@@ -47,6 +47,8 @@ namespace BlazorPassingData.Shared
 ### Parent
 
 ```xml
+@inject PetInventory Inventory
+
 <h3>My house has @Inventory.TotalPetCount pets</h3>
 <button @onclick="Inventory.BuyRandomPet">buy</button>
 <button @onclick="Inventory.SellRandomPet">sell</button>
@@ -59,7 +61,7 @@ namespace BlazorPassingData.Shared
 ```cs
 @code {
     [Inject]
-    private PetInventory Inventory { get; set; } // <-- injection happens here!
+    private PetInventory Inventory { get; set; } // <-- alternative injection style
 
     protected override void OnInitialized()
     {
@@ -71,6 +73,8 @@ namespace BlazorPassingData.Shared
 ### Child
 
 ```xml
+@inject PetInventory Inventory
+
 <div style="margin: 3em;">
     @Name has @PetCount pets
     <button @onclick="Buy">BUY</button>
@@ -88,7 +92,7 @@ namespace BlazorPassingData.Shared
     public int KidIndex { get; set; }
 
     [Inject]
-    protected PetInventory Inventory { get; set; } // <-- injection happens here!
+    protected PetInventory Inventory { get; set; } // <-- alternative injection style
 
     private int PetCount => Inventory.GetPetCountForKid(KidIndex);
 
