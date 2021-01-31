@@ -1,10 +1,39 @@
 # XML Parsing
 
-Favor `XDocument` over `XmlDocument` because it's newer and works with LINQ. It requires .NET 3.0 or newer (easy)
+* Favor `XDocument` over `XmlDocument`. It's newer and works with LINQ.
+* [Microsoft: XDocument](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xdocument)
+* [Microsoft: XElement](https://docs.microsoft.com/en-us/dotnet/api/system.xml.linq.xelement)
 
-## XDocument
+### Parse XML
+```cs
+// parse XML in a string
+string xmlText = File.ReadAllText(xmlPath);
+XDocument doc = XDocument.Parse(xmlText);
+```
 
-### Creating XML with `XDocument`
+```cs
+// load XML from a file
+XDocument doc = XDocument.Load(xmlPath);
+```
+
+### Select an element by its path
+
+```cs
+using System.Xml.XPath;
+```
+
+```cs
+var element = doc.XPathSelectElement("/top/middle/low");
+```
+
+### Find child element by name at any level
+```cs
+XDocument doc = XDocument.Parse(xmlText);
+foreach (XElement element in doc.Descendants("grandchild"))
+    Console.WriteLine(element);
+```
+
+### Create XML _de novo_
 ```cs
 
 XDocument doc = new XDocument();
@@ -34,7 +63,9 @@ System.IO.File.WriteAllText(pathFile, doc.ToString());
 System.Console.WriteLine($"Saved: {pathFile}");
 ```
 
-## XmlDocument
+---
+
+## XmlDocument (obsolete)
 
 ### Reading XML with `XmlDocument`
 ```cs
