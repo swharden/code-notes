@@ -13,7 +13,7 @@ Console.WriteLine($"{version.Major}.{version.Minor}.{version.Build}");
 ```
 
 ### Get Version of Another Project
-```
-var ver = typeof(WsprSharp.WsprTransmission).Assembly.GetName().Version;
-Text = $"WSPR Inspector v{ver.Major}.{ver.Minor}";
+```cs
+var version = typeof(WsprSharp.WsprTransmission).Assembly.GetName().Version;
+Text = $"WSPR Inspector v{version.Major}.{version.Minor}";
 ```
