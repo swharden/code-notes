@@ -25,6 +25,7 @@ static void Main(string[] args)
     CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse("SECRET");
     CloudTableClient tableClient = cloudStorageAccount.CreateCloudTableClient();
     CloudTable table = tableClient.GetTableReference("devtable");
+    table.CreateIfNotExists();
 
     Random rand = new Random();
     PackageStat packageStat = new PackageStat()
