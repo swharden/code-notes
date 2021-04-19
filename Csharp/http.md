@@ -1,9 +1,14 @@
 # HTTP C# Examples
 
-## Download a File
+## Download
 
 ```cs
 using WebClient client = new();
+
+// download text
+string txt = client.DownloadString("http://somewhere.com/test.txt");
+
+// download a file
 client.DownloadFile("http://somewhere.com/test.jpg", "test.jpg");
 ```
 
