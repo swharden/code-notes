@@ -46,3 +46,23 @@ static void Main(string[] args)
     }
 }
 ```
+
+### Batch Operations
+```cs
+/// <summary>
+/// Insert many items table storage in a single operation
+/// </summary>
+public static void AddGrabResults(GrabResult[] grabs)
+{
+    CloudStorageAccount storageAccount = CloudStorageAccount.Parse(Cloud.GetStorageConnectionString());
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+
+    CloudTable table = tableClient.GetTableReference("GrabResults");
+    table.CreateIfNotExists();
+
+    TableBatchOperation batchOperation = new();
+    foreach (GrabResult grab in grabs)
+        batchOperation.Insert(grab);
+    table.ExecuteBatch(batchOperation);
+}
+```
