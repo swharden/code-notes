@@ -1,6 +1,16 @@
 # Azure Blob Storage
 
 ```cs
+BlobContainerClient container = new("CONNECTION_STRING", "$web");
+BlobClient blob = container.GetBlobClient("demo.txt");
+
+byte[] myData = /* demo data */;
+using var stream = new MemoryStream(myData, writable: false);
+blob.Upload(stream);
+stream.Close();
+```
+
+```cs
 // read a blob file into a string
 public static string ReadBlobText(string containerName, string fileName)
 {
