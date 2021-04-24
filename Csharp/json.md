@@ -28,7 +28,7 @@ using (var stream = new MemoryStream())
         writer.WriteEndObject();
     }
 
-    string json = Encoding.UTF8.GetString(stream.ToArray());
+    string json = JsonSerializer.Serialize(writer);
 }
 ```
 
