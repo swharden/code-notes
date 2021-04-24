@@ -89,7 +89,14 @@ Console.WriteLine(myNewLife.Name + " likes " + string.Join(" and ", myNewLife.In
 
 ## Prettify JSON with C#
 
+```
+// pass options to the serializer to allow indenting
+var options = new JsonSerializerOptions() { WriteIndented = true };
+string json = JsonSerializer.Serialize(writer, options: options);
+```
+
 ```cs
+// convert an ugly document to a pretty one
 JsonDocument document = JsonDocument.Parse(jsonString);
 using var stream = new MemoryStream();
 var options = new JsonWriterOptions() { Indented = true };
@@ -99,21 +106,3 @@ using (var writer = new Utf8JsonWriter(stream, options))
 }
 string jsonPretty = Encoding.UTF8.GetString(stream.ToArray());
 ```
-
-```json
-// Ugly JSON
-{"Name":"Scott","Age":35,"Interests":["science","computers","space"]}
-```
-
-```json
-// Pretty JSON
-{
-  "Name": "Scott",
-  "Age": 35,
-  "Interests": [
-    "science",
-    "computers",
-    "space"
-  ]
-}
-````
