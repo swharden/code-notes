@@ -11,24 +11,26 @@ using System.Text.Json;
 ```cs
 using (var stream = new MemoryStream())
 {
-    using (var writer = new Utf8JsonWriter(stream))
+    using var stream = new MemoryStream();
+    var options = new JsonWriterOptions() { Indented = true };
+    using var writer = new Utf8JsonWriter(stream, options);
+           
+    writer.WriteStartObject();
+    writer.WriteNumber("temperatureC", TemperatureC);
+    writer.WriteStartArray("ions");
+    foreach (var ion in Ions)
     {
         writer.WriteStartObject();
-        writer.WriteNumber("temperatureC", TemperatureC);
-        writer.WriteStartArray("ions");
-        foreach (var ion in Ions)
-        {
-            writer.WriteStartObject();
-            writer.WriteString("name", ion.name);
-            writer.WriteNumber("charge", ion.charge);
-            writer.WriteNumber("conductivity", ion.conductivity);
-            writer.WriteEndObject();
-        }
-        writer.WriteEndArray();
+        writer.WriteString("name", ion.name);
+        writer.WriteNumber("charge", ion.charge);
+        writer.WriteNumber("conductivity", ion.conductivity);
         writer.WriteEndObject();
     }
+    writer.WriteEndArray();
+    writer.WriteEndObject();
 
-    string json = JsonSerializer.Serialize(writer);
+    writer.Flush();
+    string json = Encoding.UTF8.GetString(stream.ToArray());
 }
 ```
 
@@ -89,20 +91,13 @@ Console.WriteLine(myNewLife.Name + " likes " + string.Join(" and ", myNewLife.In
 
 ## Prettify JSON with C#
 
-```
-// pass options to the serializer to allow indenting
-var options = new JsonSerializerOptions() { WriteIndented = true };
-string json = JsonSerializer.Serialize(writer, options: options);
-```
-
 ```cs
 // convert an ugly document to a pretty one
 JsonDocument document = JsonDocument.Parse(jsonString);
 using var stream = new MemoryStream();
 var options = new JsonWriterOptions() { Indented = true };
-using (var writer = new Utf8JsonWriter(stream, options))
-{
-    document.WriteTo(writer);
-}
+using var writer = new Utf8JsonWriter(stream, options);
+document.WriteTo(writer);
+writer.Flush();
 string jsonPretty = Encoding.UTF8.GetString(stream.ToArray());
 ```
