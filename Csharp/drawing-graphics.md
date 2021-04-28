@@ -1,5 +1,16 @@
 # Drawing Graphics
 
+## Customize JPEG save quality
+```cs
+void SaveImage(Image img)
+{
+    EncoderParameters encoderParams = new EncoderParameters(1);
+    encoderParams.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+    ImageCodecInfo myImageCodecInfo = ImageCodecInfo.GetImageEncoders().Where(x => x.MimeType == "image/jpeg").First();
+    img.Save("test.jpg", myImageCodecInfo, encoderParams);
+}
+```
+
 ## Draw Graphics in a Picturebox
 ```cs
 public Bitmap TestBitmap(Size size)
