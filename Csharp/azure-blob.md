@@ -11,6 +11,34 @@ stream.Close();
 ```
 
 ```cs
+private static StarRecord[] LoadStarRecords(BlobContainerClient container, string filename = "starRecords.json")
+{
+    BlobClient blob = container.GetBlobClient(filename);
+    if (!blob.Exists())
+	throw new InvalidOperationException($"file not found: {filename}");
+    using MemoryStream stream = new();
+    blob.DownloadTo(stream);
+    string json = Encoding.UTF8.GetString(stream.ToArray());
+    StarRecord[] records = IO.RecordsFromJson(json);
+    return records;
+}
+```
+
+```
+private static void SaveStarRecords(StarRecord[] records, BlobContainerClient container, string filename = "starRecords.json")
+{
+    BlobClient blob = container.GetBlobClient(filename);
+    string json = IO.RecordsToJson(records);
+    byte[] bytes = Encoding.UTF8.GetBytes(json);
+    using var stream = new MemoryStream(bytes, writable: false);
+    blob.Upload(stream, overwrite: true);
+    stream.Close();
+}
+```
+
+## Outdated Methods
+
+```cs
 // read a blob file into a string
 public static string ReadBlobText(string containerName, string fileName)
 {
