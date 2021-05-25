@@ -24,7 +24,7 @@ private static StarRecord[] LoadStarRecords(BlobContainerClient container, strin
 }
 ```
 
-```
+```cs
 private static void SaveStarRecords(StarRecord[] records, BlobContainerClient container, string filename = "starRecords.json")
 {
     BlobClient blob = container.GetBlobClient(filename);
