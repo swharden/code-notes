@@ -27,8 +27,18 @@ enum Colors {Red, Green, Blue}
 Colors color = (Colors)System.Enum.Parse(typeof(Colors), "Green");
 ```
 
+## Iterate Enumerations
+```cs
+foreach(InterpolationMode mode in Enum.GetValues(typeof(InterpolationMode)))
+{
+    Console.WriteLine(mode);
+}
+```
+
 ## Access, Index, Loop, and Assign by Name or Index
 ```cs
+// this is weird... don't do this
+
 public enum Action { actionOne, actionTwo, actionThree, error };
 
 public static Action GetActionByName(string actionName)
