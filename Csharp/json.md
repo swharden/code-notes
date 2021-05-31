@@ -9,29 +9,26 @@ using System.Text.Json;
 ## Create JSON From Scratch
 
 ```cs
-using (var stream = new MemoryStream())
-{
-    using var stream = new MemoryStream();
-    var options = new JsonWriterOptions() { Indented = true };
-    using var writer = new Utf8JsonWriter(stream, options);
-           
-    writer.WriteStartObject();
-    writer.WriteNumber("temperatureC", TemperatureC);
-    writer.WriteStartArray("ions");
-    foreach (var ion in Ions)
-    {
-        writer.WriteStartObject();
-        writer.WriteString("name", ion.name);
-        writer.WriteNumber("charge", ion.charge);
-        writer.WriteNumber("conductivity", ion.conductivity);
-        writer.WriteEndObject();
-    }
-    writer.WriteEndArray();
-    writer.WriteEndObject();
+using var stream = new MemoryStream();
+var options = new JsonWriterOptions() { Indented = true };
+using var writer = new Utf8JsonWriter(stream, options);
 
-    writer.Flush();
-    string json = Encoding.UTF8.GetString(stream.ToArray());
+writer.WriteStartObject();
+writer.WriteNumber("temperatureC", TemperatureC);
+writer.WriteStartArray("ions");
+foreach (var ion in Ions)
+{
+    writer.WriteStartObject();
+    writer.WriteString("name", ion.name);
+    writer.WriteNumber("charge", ion.charge);
+    writer.WriteNumber("conductivity", ion.conductivity);
+    writer.WriteEndObject();
 }
+writer.WriteEndArray();
+writer.WriteEndObject();
+
+writer.Flush();
+string json = Encoding.UTF8.GetString(stream.ToArray());
 ```
 
 ## Navigate JSON Manually
