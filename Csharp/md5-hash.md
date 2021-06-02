@@ -1,4 +1,15 @@
 # MD5 File Hashing
+
+## MD5 Byte Array Hash with C#
+```cs
+public static string MD5(byte[] bytes)
+{
+    var md5 = System.Security.Cryptography.MD5.Create();
+    return string.Join("", md5.ComputeHash(bytes).Select(x => x.ToString("x2")).ToArray());
+}
+```
+
+## MD5 File Hash with C#
 ```cs
 var md5 = System.Security.Cryptography.MD5.Create();
 string[] imageFilePaths = System.IO.Directory.GetFiles($"./", "*.png");
