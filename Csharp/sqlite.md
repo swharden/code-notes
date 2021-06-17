@@ -10,7 +10,10 @@
 // open the database file (creating it if it doesn't exist)
 using var conn = new SqliteConnection($"Data Source=test.db;");
 conn.Open();
+/* do stuff */
+conn.Close();
 ```
+
 ## Create a Table
 ```cs
 using var createTableCommand = conn.CreateCommand();
@@ -26,7 +29,7 @@ createTableCommand.CommandText =
 createTableCommand.ExecuteNonQuery();
 ```
 
-## Insertions
+## Insert
 ```cs
 foreach (string abfFile in System.IO.Directory.GetFiles(SampleData.DATA_FOLDER, "*.abf"))
 {
@@ -41,5 +44,21 @@ foreach (string abfFile in System.IO.Directory.GetFiles(SampleData.DATA_FOLDER, 
     insertAbfCommand.Parameters.AddWithValue("date", abf.Header.StartDateTime.ToString("yyyy-MM-dd"));
     insertAbfCommand.Parameters.AddWithValue("time", abf.Header.StartDateTime.ToString("HH:mm:ss.fff"));
     insertAbfCommand.ExecuteNonQuery();
+}
+```
+
+## Select
+```cs
+using var readAbfsCommand = conn.CreateCommand();
+readAbfsCommand.CommandText = @"SELECT Filename, Date, Time FROM Abfs";
+SqliteDataReader reader = readAbfsCommand.ExecuteReader();
+int abfsReadFromDatabase = 0;
+while (reader.Read())
+{
+    string filename = reader["Filename"].ToString();
+    string date = reader["Date"].ToString();
+    string time = reader["Time"].ToString();
+    abfsReadFromDatabase += 1;
+    Console.WriteLine($"read: {filename} ({date} {time})");
 }
 ```
