@@ -16,7 +16,7 @@ string GetMD5Hash(string filePath)
 {
     var md5 = System.Security.Cryptography.MD5.Create();
     using var stream = File.OpenRead(filePath);
-    return string.Join("", MD5.ComputeHash(stream).Select(x => x.ToString("x2")));
+    return string.Join("", md5.ComputeHash(stream).Select(x => x.ToString("x2")));
 }
 ```
 
