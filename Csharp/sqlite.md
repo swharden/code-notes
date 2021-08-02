@@ -1,6 +1,8 @@
 # SQLite in Csharp
 
-* [SQLite Browser](https://sqlitebrowser.org/)
+* Use the [Microsoft.Data.Sqlite package](https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/?tabs=netcore-cli)
+
+* Check out the graphical [SQLite Browser](https://sqlitebrowser.org/)
 
 * DO NOT CONSTRUCT QUERIES BY EDITING STRINGS! Interact with command abstractions instead (e.g., SqliteCommand.Parameters)
 
