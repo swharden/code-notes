@@ -64,3 +64,15 @@ while (reader.Read())
     Console.WriteLine($"read: {filename} ({date} {time})");
 }
 ```
+
+## Bulk Insert (for performance)
+* individual: 1000 inserts took 13.56 sec
+* bulk: 1000 inserts took 0.26 sec
+
+https://docs.microsoft.com/en-us/dotnet/standard/data/sqlite/bulk-insert
+
+```cs
+using var transaction = conn.BeginTransaction();
+/* create commands, parameters, and ExecuteNonQuery() */
+transaction.Commit();
+```
