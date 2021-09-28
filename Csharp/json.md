@@ -34,6 +34,22 @@ string json = Encoding.UTF8.GetString(stream.ToArray());
 ## Navigate JSON Manually
 
 ```cs
+using JsonDocument document = JsonDocument.Parse(File.ReadAllText(JSON_FILE));
+
+string version = document.RootElement.GetProperty("version").GetString();
+string generated = document.RootElement.GetProperty("generated").GetString();
+
+foreach (JsonElement recipeElement in document.RootElement.GetProperty("recipes").EnumerateArray())
+{
+    string id = recipeElement.GetProperty("id").GetString();
+    string category = recipeElement.GetProperty("category").GetString();
+    string title = recipeElement.GetProperty("title").GetString();
+    string description = recipeElement.GetProperty("description").GetString();
+    string code = recipeElement.GetProperty("code").GetString();
+}
+```
+
+```cs
 using (JsonDocument document = JsonDocument.Parse(jsonString))
 {
     double temperatureC = document.RootElement.GetProperty("temperatureC").GetDouble();
