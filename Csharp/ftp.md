@@ -77,7 +77,29 @@ client.Connect();
 
 foreach (FtpListItem item in client.GetListing("/"))
 {
-	Console.WriteLine(item.FullName);
+	if (item.Type == FtpFileSystemObjectType.File)
+	{
+		Console.WriteLine($"File: {item.FullName}");
+	}
+	else
+	{
+		Console.WriteLine($"Fldr: {item.FullName}");
+	}
 }
 
+if (!client.DirectoryExists("/randomFolders"))
+	client.CreateDirectory("/randomFolders");
+
+if (!client.DirectoryExists("/randomFiles"))
+	client.CreateDirectory("/randomFiles");
+
+string folderPath = $"/randomFolders/random-{Guid.NewGuid()}";
+Console.WriteLine($"Creating {folderPath}");
+client.CreateDirectory(folderPath);
+
+string filePath = $"/randomFiles/random-{Guid.NewGuid()}.txt";
+string filename = Path.GetFileName(filePath);
+File.WriteAllText(filename, "test123");
+Console.WriteLine($"Uploading {filePath}");
+client.UploadFile(filename, filePath);
 ```
