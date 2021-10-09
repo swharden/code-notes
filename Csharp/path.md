@@ -5,6 +5,12 @@
 System.IO.Path.GetFullPath(folder);
 ```
 
+## Path Relative to Running EXE/DLL
+```cs
+string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+string repoRootPath = Path.GetFullPath(Path.Combine(assemblyFolder, "../../../../../../"));
+```
+
 ## Determine if file/folder exists
 ```cs
 if (System.IO.Directory.Exists(someFolder)) {}
