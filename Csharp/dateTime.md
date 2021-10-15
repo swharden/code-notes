@@ -2,14 +2,15 @@
 
 https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings
 
-```cs
-string msg = $"generated on {DateTime.Now.ToString("D")} at {DateTime.Now.ToString("t")}";
-```
+### ISO 8601 Format
 
 ```cs
-double sec = Console.WriteLine(DateTime.Now.Second);
+string s1 = DateTime.Now.ToString("o", CultureInfo.InvariantCulture);
 ```
 
+### Epoch Seconds (Linux Time)
+
 ```cs
-double epoch = double epochSeconds = (double)DateTime.Now.Ticks / TimeSpan.TicksPerSecond;
+long epochTicks = new DateTime(1970, 1, 1).Ticks;
+long unixTime = ((DateTime.UtcNow.Ticks - epochTicks) / TimeSpan.TicksPerSecond);
 ```
