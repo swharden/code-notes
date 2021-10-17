@@ -13,7 +13,7 @@ private string WebSafe(string text)
 {
     char[] chars = text.ToLowerInvariant()
         .ToCharArray()
-        .Select(c => char.IsLetterOrDigit(c) ? c : '-')
+        .Select(c => (char.IsLetterOrDigit(c) || c == '_') ? c : '-')
         .ToArray();
 
     string safe = new(chars);
