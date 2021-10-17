@@ -1,5 +1,12 @@
 # How to Walk a Directory Tree
 
+## Recursively Get all File Paths in a Folder
+```cs
+string[] filePaths = Directory.GetFiles(localFolderPath, "*", SearchOption.AllDirectories);
+```
+
+## Walk a Filesystem
+
 This example is more complex but does a better job preventing exceptions in edge cases:
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/file-system/how-to-iterate-through-a-directory-tree
 
