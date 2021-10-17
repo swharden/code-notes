@@ -15,7 +15,13 @@ private string WebSafe(string text)
         .ToCharArray()
         .Select(c => char.IsLetterOrDigit(c) ? c : '-')
         .ToArray();
-    return new string(chars).Trim('-');
+
+    string safe = new(chars);
+
+    while (safe.Contains("--"))
+        safe = safe.Replace("--", "-");
+
+    return safe.Trim('-');
 }
 ```
 
