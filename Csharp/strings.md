@@ -9,12 +9,14 @@ Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(s))
 /// <summary>
 /// Return the input string modified to contain only numbers, lowercase letters, hyphens, and underscores.
 /// </summary>
-private string WebSafe(string text) =>
-    new(text
-        .ToLowerInvariant()
+private string WebSafe(string text)
+{
+    char[] chars = text.ToLowerInvariant()
         .ToCharArray()
         .Select(c => char.IsLetterOrDigit(c) ? c : '-')
-        .ToArray());
+        .ToArray();
+    return new string(chars).Trim('-');
+}
 ```
 
 ### Place variables in strings with `$` and `{}`
