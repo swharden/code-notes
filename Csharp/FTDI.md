@@ -37,7 +37,7 @@ namespace LearnFTDI3
 
 ```
 
-![](misc/usart.jpg)
+![](misc/images/usart.jpg)
 
 
 ## Resources
