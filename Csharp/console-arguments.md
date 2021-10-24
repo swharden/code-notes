@@ -1,10 +1,24 @@
-# Command Line Parsing
+# Command Line Arguments
+
+```cs
+static void Main(string[] args)
+{    
+    foreach (string arg in args)
+    {
+        Console.WriteLine(arg);
+    }
+}
+```
+
+## Command Line Parsing
+
+Use an argument parser package to make your life easier
 
 * https://www.nuget.org/packages/CommandLineParser/
 * `NuGet Install CommandLineParser`
 
 ```cs
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;

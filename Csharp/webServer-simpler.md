@@ -2,9 +2,6 @@
 
 This page demonstrates simple code to serve dynamically-generated web pages on localhost (127.0.0.1) port 8080. This code was created by refactoring David's [simple C# web server](https://codehosting.net/blog/BlogEngine/post/Simple-C-Web-Server) to improve readability, resulting in a _simpler_ C# web server ready for modification. I also added basic logging and exception handling features.
 
-## Screenshot
-![](webServer-simpler.png)
-
 ## Usage
 Put this code in your Windows Forms or Console Application.
 ```cs

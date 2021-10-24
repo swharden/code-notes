@@ -1,3 +1,6 @@
+I use this code to work with 2D pixel data and images with non-standard (>8-bit) data.
+
+```cs
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -166,3 +169,4 @@ namespace ImagingTests
         }
     }
 }
+```

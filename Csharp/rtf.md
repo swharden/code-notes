@@ -15,7 +15,7 @@ This is a {\fs60 big} deal.
 
 ### RichTextBox RTF Tester
 Download: [RTF RichTextBox tester.exe](rtf%20RichTextBox%20tester.exe)
-![](rtf%20RichTextBox%20tester.png)
+![](images/misc/rtf%20RichTextBox%20tester.png)
 
 ### RTF in a RichTextBox
 

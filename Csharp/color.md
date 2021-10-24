@@ -22,3 +22,12 @@ public static string ColorHexToRgba(string hex, double alpha = 1.0)
     return $"rgba({r}, {g}, {b}, {alpha})";
 }
 ```
+
+### Generate a Random Color
+```cs
+Color randomColor = Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256));
+```
+
+```cs
+public Color randomColor { get { return Color.FromArgb(255, rand.Next(256), rand.Next(256), rand.Next(256)); } }
+```

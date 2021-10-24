@@ -1,5 +1,7 @@
 # Rich Textbox
 
+See [rtf.md](rtf.md) for formatting details
+
 ## Automatically scroll to the bottom
 ```cs
 private void richTextBox_TextChanged(object sender, EventArgs e) {

@@ -9,7 +9,7 @@ Monospace fonts which support ASCII line art are `Consolas` and `Courier New`.
 ## Screenshot
 This screenshot shows ASCII line art drawn by a C# console application.
 
-![](console-fonts-and-ascii.png)
+![](misc/images/console-fonts-and-ascii.png)
 
 ## Available Characters
 The following are unicode character values which render well with Consolas font. Note that these codes are decimal (not hex) values. This lets you do things like:

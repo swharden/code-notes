@@ -75,3 +75,16 @@ if (s.contains("substr")) {/* stuff */}
 ```cs
 lblBinaryByte1.Text = Convert.ToString((int)nudByte1.Value, 2).PadLeft(8, '0'); 
 ```
+
+### String to integer
+
+If you are sure it will parse:
+```cs
+int.Parse(string)
+```
+
+If you are not sure it will parse:
+```cs
+int i;
+bool success = int.TryParse(string, out i);
+```
