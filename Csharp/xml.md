@@ -38,6 +38,12 @@ foreach (XElement element in doc.Descendants("grandchild"))
 
 XDocument doc = new XDocument();
 
+/*
+or this to get the <?xml ?> header
+XDeclaration declaration = new(version: "1.0", encoding: "utf-16", standalone: "yes");
+XDocument doc = new(declaration);
+*/
+	    
 XElement experiment = new XElement("Experiment");
 experiment.SetAttributeValue("created", $"2018-01-01");
 experiment.SetAttributeValue("modified", $"2019-09-29");
