@@ -1,4 +1,4 @@
-# Search the Windows Indexed Filesystem with C#
+# Search a Windows Indexed Filesystem with C#
 
 Walking directories can be slow, but Windows often indexes drives to enable fast _Windows Search_. Queries can be run directly against the indexed database for extremely fast walking/searching.
 
