@@ -1,5 +1,7 @@
 # How to Walk a Directory Tree
 
+Note: Windows-indexed filesystem searching can be performed extremely fast by directly querying the Windows Search database. See [winsearch.md](winsearch.md) for details.
+
 ## Recursively Get all File Paths in a Folder
 ```cs
 string[] filePaths = Directory.GetFiles(localFolderPath, "*", SearchOption.AllDirectories);
