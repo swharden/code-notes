@@ -32,97 +32,97 @@ public static string[] FindIndexedFiles(string basePath = "C:/", string searchPa
 ```
 
 ## Windows Search Columns
-System.Author
-System.Category
-System.Comment
-System.Company
-System.ComputerName
-System.ContentStatus
-System.ContentType
-System.Copyright
-System.DateAccessed
-System.DateAcquired
-System.DateArchived
-System.DateCompleted
-System.DateCreated
-System.DateImported
-System.DateModified
-System.DueDate
-System.EndDate
-System.FileAttributes
-System.FileDescription
-System.FileExtension
-System.FileName
-System.FileOwner
-System.ItemAuthors
-System.ItemDate
-System.ItemFolderNameDisplay
-System.ItemFolderPathDisplay
-System.ItemFolderPathDisplayNarrow
-System.ItemName
-System.ItemNameDisplay
-System.ItemNamePrefix
-System.ItemParticipants
-System.ItemPathDisplay
-System.ItemPathDisplayNarrow
-System.ItemType
-System.ItemTypeText
-System.ItemUrl
-System.Keywords
-System.Kind
-System.SourceItem
-System.StartDate
-System.Status
-System.Subject
-System.ThumbnailCacheId
-System.Title
+* `System.Author`
+* `System.Category`
+* `System.Comment`
+* `System.Company`
+* `System.ComputerName`
+* `System.ContentStatus`
+* `System.ContentType`
+* `System.Copyright`
+* `System.DateAccessed`
+* `System.DateAcquired`
+* `System.DateArchived`
+* `System.DateCompleted`
+* `System.DateCreated`
+* `System.DateImported`
+* `System.DateModified`
+* `System.DueDate`
+* `System.EndDate`
+* `System.FileAttributes`
+* `System.FileDescription`
+* `System.FileExtension`
+* `System.FileName`
+* `System.FileOwner`
+* `System.ItemAuthors`
+* `System.ItemDate`
+* `System.ItemFolderNameDisplay`
+* `System.ItemFolderPathDisplay`
+* `System.ItemFolderPathDisplayNarrow`
+* `System.ItemName`
+* `System.ItemNameDisplay`
+* `System.ItemNamePrefix`
+* `System.ItemParticipants`
+* `System.ItemPathDisplay`
+* `System.ItemPathDisplayNarrow`
+* `System.ItemType`
+* `System.ItemTypeText`
+* `System.ItemUrl`
+* `System.Keywords`
+* `System.Kind`
+* `System.SourceItem`
+* `System.StartDate`
+* `System.Status`
+* `System.Subject`
+* `System.ThumbnailCacheId`
+* `System.Title`
 
 ### Search-Specific Columns
-System.Search.AutoSummary
-System.Search.Contents
-System.Search.EntryID
-System.Search.GatherTime
-System.Search.Rank
-System.Search.Store
+* `System.Search.AutoSummary`
+* `System.Search.Contents`
+* `System.Search.EntryID`
+* `System.Search.GatherTime`
+* `System.Search.Rank`
+* `System.Search.Store`
 
 ### Document-Specific Columns
-System.Document.ByteCount
-System.Document.ByteCount
-System.Document.CharacterCount
-System.Document.CharacterCount
-System.Document.ClientID
-System.Document.ClientID
-System.Document.Contributor
-System.Document.Contributor
-System.Document.DateCreated
-System.Document.DateCreated
-System.Document.DatePrinted
-System.Document.DatePrinted
-System.Document.DateSaved
-System.Document.DateSaved
-System.Document.Division
-System.Document.Division
-System.Document.DocumentID
-System.Document.DocumentID
-System.Document.HiddenSlideCount
-System.Document.HiddenSlideCount
-System.Document.LastAuthor
-System.Document.LastAuthor
-System.Document.LineCount
-System.Document.LineCount
-System.Document.Manager
-System.Document.Manager
-System.Document.PageCount
-System.Document.PageCount
-System.Document.ParagraphCount
-System.Document.ParagraphCount
-System.Document.PresentationFormat
-System.Document.PresentationFormat
-System.Document.RevisionNumber
-System.Document.RevisionNumber
-System.Document.SlideCount
-System.Document.SlideCount
-System.Document.TotalEditingTime
-System.Document.TotalEditingTime
-System.Document.WordCount
-System.Document.WordCount
+* `System.Document.ByteCount`
+* `System.Document.ByteCount`
+* `System.Document.CharacterCount`
+* `System.Document.CharacterCount`
+* `System.Document.ClientID`
+* `System.Document.ClientID`
+* `System.Document.Contributor`
+* `System.Document.Contributor`
+* `System.Document.DateCreated`
+* `System.Document.DateCreated`
+* `System.Document.DatePrinted`
+* `System.Document.DatePrinted`
+* `System.Document.DateSaved`
+* `System.Document.DateSaved`
+* `System.Document.Division`
+* `System.Document.Division`
+* `System.Document.DocumentID`
+* `System.Document.DocumentID`
+* `System.Document.HiddenSlideCount`
+* `System.Document.HiddenSlideCount`
+* `System.Document.LastAuthor`
+* `System.Document.LastAuthor`
+* `System.Document.LineCount`
+* `System.Document.LineCount`
+* `System.Document.Manager`
+* `System.Document.Manager`
+* `System.Document.PageCount`
+* `System.Document.PageCount`
+* `System.Document.ParagraphCount`
+* `System.Document.ParagraphCount`
+* `System.Document.PresentationFormat`
+* `System.Document.PresentationFormat`
+* `System.Document.RevisionNumber`
+* `System.Document.RevisionNumber`
+* `System.Document.SlideCount`
+* `System.Document.SlideCount`
+* `System.Document.TotalEditingTime`
+* `System.Document.TotalEditingTime`
+* `System.Document.WordCount`
+* `System.Document.WordCount`
