@@ -36,7 +36,7 @@ public static class Program
             Console.WriteLine($"Testing {func.Method.Name} {REPS_PER_FUNCTION:N0} times...");
             sw.Restart();
             for (int i = 0; i < REPS_PER_FUNCTION; i++)
-                SumDoubleArray(values);
+                func(values);
             sw.Stop();
             Console.WriteLine($"Mean of {sw.Elapsed.TotalMilliseconds / REPS_PER_FUNCTION * 1000:N3} µs per sum");
         }
