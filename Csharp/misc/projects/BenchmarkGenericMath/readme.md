@@ -1,5 +1,26 @@
 This project benchmarks different ways to add numbers.
 
+## Latest Test
+
+```
+Generating 10,000,000 random numbers...
+
+Testing SumDoubleArray 100 times...
+Mean of 9,966.125 µs per sum
+
+Testing SumGenericToDouble 100 times...
+Mean of 31,254.693 µs per sum
+
+Testing SumGenericMath 100 times...
+Mean of 9,913.450 µs per sum
+```
+
+**CONCLUSION:** Generic math is fast just like working with typed arrays.
+
+I can't use a test package because that requires a special build for `EnablePreviewFeatures` in my csproj
+
+## Older Notes
+
 Generic math isn't available yet in .NET 6, but when it releases I'll add it.
 
 ```
