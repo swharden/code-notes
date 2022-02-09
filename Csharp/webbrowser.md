@@ -2,6 +2,11 @@
 
 ## Launch the default web browser
 ```cs
+System.Diagnostics.Process.Start("explorer", "https://github.com/swharden/StupidTimer");
+```
+
+```cs
+// WARNING: THIS DOES NOT WORK IN .NET CORE!
 System.Diagnostics.Process.Start("http://google.com");
 ```
 
