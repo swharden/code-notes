@@ -1,6 +1,7 @@
 # Icons
 
 ## Icon Packs
+* [FlatIcon](https://www.flaticon.com/)
 * [Material Icons](https://material.io/tools/icons/)
 * [Open Iconic](https://useiconic.com/open)
 * [Modern UI Icons](http://modernuiicons.com/)
