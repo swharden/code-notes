@@ -1,4 +1,17 @@
-## Version Tracking with Assembly
+# Versioning in C#
+
+## AssemblyVersion
+
+In .NET Framework projects add this to Program.cs
+```cs
+using System.Reflection;
+[assembly: AssemblyVersion("1.5.0.0")]
+```
+
+Reference it like this:
+```cs
+string version = $"Version {Application.ProductVersion}";
+```
 
 ### Create and Parse Versions
 ```cs
