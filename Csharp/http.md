@@ -20,6 +20,17 @@ private static async Task<JsonDocument> RequestJsonAsync(string url)
 ```
 
 ```cs
+public static async Task DownloadFileAsync(string url, string savePath)
+{
+    using HttpClient client = new();
+    using HttpResponseMessage response = await client.GetAsync(url);
+    using HttpContent content = response.Content;
+    byte[] bytes = await content.ReadAsByteArrayAsync();
+    System.IO.File.WriteAllBytes(savePath, bytes);
+}
+```
+
+```cs
 public static async Task<(int, int, double)> GetResponseTimeAsync(string url)
 {
     HttpClient client = new();
