@@ -6,6 +6,23 @@ System.Text.Json is a modern built-in alternative to Newtonsoft libraries.
 using System.Text.Json;
 ```
 
+## Download JSON
+
+```cs
+private static JsonDocument RequestJson(string url) => RequestJsonAsync(url).Result;
+```
+
+```cs
+private static async Task<JsonDocument> RequestJsonAsync(string url)
+{
+    using HttpClient client = new();
+    using HttpResponseMessage response = await client.GetAsync(url);
+    using HttpContent content = response.Content;
+    string json = await content.ReadAsStringAsync();
+    return JsonDocument.Parse(json);
+}
+```
+
 ## Create JSON From Scratch
 
 ```cs
