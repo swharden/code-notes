@@ -5,11 +5,21 @@
 In modern .NET `HttpClient` is preferred over `WebClient`
 
 ```cs
-public static (int code, int length, double msec) GetResponseTime(string url)
-{
-    return GetResponseTimeAsync(url).Result;
-}
+private static JsonDocument RequestJson(string url) => RequestJsonAsync(url).Result;
+```
 
+```cs
+private static async Task<JsonDocument> RequestJsonAsync(string url)
+{
+    using HttpClient client = new();
+    using HttpResponseMessage response = await client.GetAsync(url);
+    using HttpContent content = response.Content;
+    string json = await content.ReadAsStringAsync();
+    return JsonDocument.Parse(json);
+}
+```
+
+```cs
 public static async Task<(int, int, double)> GetResponseTimeAsync(string url)
 {
     HttpClient client = new();
