@@ -16,6 +16,9 @@ convert favicon-256.png -resize 32x32 favicon-32.png
 convert favicon-256.png -resize 64x64 favicon-64.png
 convert favicon-256.png -resize 128x128 favicon-128.png
 
+:: create a small and simple 32px icon file
+convert favicon-32.png -colors 256 favicon-32.ico
+
 :: pack individual sizes into a single icon file
 convert favicon-16.png favicon-32.png favicon-64.png favicon-128.png favicon-256.png -colors 256 favicon.ico
 
