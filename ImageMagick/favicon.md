@@ -1,10 +1,12 @@
 # Convert SVG to Favicon.ico
 
-This supports transparency and multi-size icon file
+This script creates transparent PNGs and a transparent `favicon.ico` with multiple sizes included
 
 ```bash
-:: create a full-size PNG with transparent background
+:: create large PNGs with transparent backgrounds
+convert -background transparent favicon.svg -resize 512x512 favicon-512.png
 convert -background transparent favicon.svg -resize 256x256 favicon-256.png
+convert -background transparent favicon.svg -resize 192x192 favicon-192.png
 
 :: resize the transparent PNG to individual sizes
 convert favicon-256.png -resize 16x16 favicon-16.png
