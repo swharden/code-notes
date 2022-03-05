@@ -24,3 +24,23 @@ convert favicon-16.png favicon-32.png favicon-64.png favicon-128.png favicon-256
 
 pause
 ```
+
+## Favicon Cheat Sheet
+
+* `/favicon.ico` 32px (or multi-size)
+* `/favicon.svg`
+* `/favicon-180.png`
+* `/favicon-192.png`
+* `/favicon-512.png`
+* `/manifest.webmanifest`
+
+The web manifest file contains:
+
+```json
+{
+  "icons": [
+    { "src": "/favicon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/favicon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
+```
