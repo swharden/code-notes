@@ -2,6 +2,8 @@
 
 This script creates transparent PNGs and a transparent `favicon.ico` with multiple sizes included
 
+* Reference: [How to Favicon in 2022](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
+
 ```bash
 :: create large PNGs with transparent backgrounds
 convert -background transparent favicon.svg -resize 512x512 favicon-512.png
