@@ -4,7 +4,9 @@
 * Syntax highlighting: https://gohugo.io/content-management/syntax-highlighting/
 * Syntax highlighting configuration: https://gohugo.io/getting-started/configuration-markup#highlight
 
-## Set Style
+## Use Standard Syntax Highlighting Style
+
+_This method uses CSS styles built-in to Hugo_
 
 ### config.toml
 
@@ -25,16 +27,16 @@
     tabWidth = 4
 ```
 
-## Customize Style
+## Customize Syntax Highlighting Style
 
-To customize a style:
+_This method uses a CSS file to set syntax highlighting styles so you can customize it manually as desired_
 
 1. Turn off the `noClasses` configuration flag
 
 2. Use Hugo to generate a custom CSS file for syntax highlighting
 
 ```bash
-hugo gen chromastyles --style=abap > static/syntax.css
+hugo gen chromastyles --style=dracula > static/syntax.css
 ```
 
 3. Configure your layout to use the custom CSS file
