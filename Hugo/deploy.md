@@ -4,7 +4,7 @@
 
 The advantage of `rsync` over other methods is that it's smart enough to only upload _modified_ files. This doesn't matter for small sites, but it's super helpful for large ones.
 
-This command deploys a folder over SSH using `rsync` on Ubuntu through WSL.
+This command deploys a folder over SSH using `rsync` on Ubuntu through WSL. File permissions in the WSL environment are why this command must be run using `sudo`.
 
 ```bash
 sudo rsync \
