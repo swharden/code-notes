@@ -1,29 +1,37 @@
-# Redirect `/feed/` to `/rss.xml`
+# Show RSS in `/feed/` with Hugo
+
+Hugo's default URL for the RSS file is `/index.xml` but I prefer to have this in `/feed/`. I accomplish this by making the output file `/feed/index.xml` then use a custom `.htaccess` file to serve it as the index. 
 
 ### config.toml
-
-This makes the RSS file `rss.xml` instead of the default `index.xml`
 
 ```toml
 [outputFormats]
   [outputFormats.RSS]
     mediatype = "application/rss"
-    baseName = "rss"
+    path = "feed"
+    baseName = "index"
 ```
 
-### static/feed/index.html
+### `/static/feed/.htaccess`
 
-This redirects the folder-level URL to the XML file
+```
+Options +Indexes
+DirectoryIndex index.xml
+```
+
+### Alternative: Redirect
+
+For users not using Apache (or `.htaccess`) an alternative appropach is to create `/static/feed/index.html` that forwards to the permanent location of the feed XML file:
 
 ```html
 <html>
 
 <head>
-    <meta http-equiv="refresh" content="0; URL=../rss.xml" />
+    <meta http-equiv="refresh" content="0; URL=../index.xml" />
 </head>
 
 <body>
-    <p>Redirecting to <a href="../rss.xml">../rss.xml</a> ...</p>
+    <p>Redirecting to <a href="../rss.xml">../index.xml</a> ...</p>
 </body>
 
 </html>
