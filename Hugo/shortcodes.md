@@ -3,7 +3,11 @@
 ### Show page build date
 
 ```html
-Built on {{ now | time.Format ":date_long" }} at {{ now | time.Format ":time_short" }}
+<div>
+    Built with Hugo {{ .Site.Hugo.Version }}
+    on {{ time now | time.Format ":date_long" }} 
+    at {{ time now "America/New_York" | time.Format ":time_short" }} EST
+</div>
 ```
 
 ### Link to Source Code
