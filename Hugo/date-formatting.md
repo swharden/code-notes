@@ -1,6 +1,6 @@
 # Date Formatting in Hugo
 
-## Separate Written and Updated Page Times
+Show separate "written" and "last modified" dates
 
 ```
 ---
