@@ -12,7 +12,7 @@ Hugo's default URL for the RSS file is `/index.xml` but I prefer to have this in
     baseName = "index"
 ```
 
-### `/static/feed/.htaccess`
+### /static/feed/.htaccess
 
 ```
 Options +Indexes
