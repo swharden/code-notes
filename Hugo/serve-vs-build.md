@@ -4,6 +4,6 @@ This method can be used to enable test pages that do not appear in production bu
 
 ```
 {{ if in .Site.BaseURL "localhost"}}
-<!-- this only appears when Hugo server is running -->
+<!-- this only appears when Hugo server is running locally -->
 {{end}}
 ```
