@@ -1,8 +1,10 @@
 # Show RSS in `/feed/` with Hugo
 
-Hugo's default URL for the RSS file is `/index.xml` but I prefer to have this in `/feed/`. I accomplish this by making the output file `/feed/index.xml` then use a custom `.htaccess` file to serve it as the index. 
+Hugo's default URL for the RSS file is `/index.xml` but I prefer to have this in `/feed/`. I accomplish this by making the output file `/feed/index.xml` then use a custom `.htaccess` file to serve it as the index.
 
 ### config.toml
+
+This configures Hugo to generate the RSS file as `/feed/index.xml`
 
 ```toml
 [outputFormats]
@@ -14,24 +16,26 @@ Hugo's default URL for the RSS file is `/index.xml` but I prefer to have this in
 
 ### /static/feed/.htaccess
 
+This configures Apache to serve the XML file as the index
+
 ```
 Options +Indexes
 DirectoryIndex index.xml
 ```
 
-### Alternative: Redirect
+### /static/feed/index.html
 
-For users not using Apache (or `.htaccess`) an alternative appropach is to create `/static/feed/index.html` that forwards to the permanent location of the feed XML file:
+Creating an `index.html` allows a fallback if Apache (or .htaccess) is not supported
 
 ```html
 <html>
 
 <head>
-    <meta http-equiv="refresh" content="0; URL=../index.xml" />
+    <meta http-equiv="refresh" content="0; URL=index.xml" />
 </head>
 
 <body>
-    <p>Redirecting to <a href="../rss.xml">../index.xml</a> ...</p>
+    <p>Redirecting to <a href="index.xml">index.xml</a> ...</p>
 </body>
 
 </html>
