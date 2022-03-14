@@ -15,3 +15,5 @@ Placing a default title in the template is a solution
     {{ .Title | default "no title" }}
 </a>
 ```
+
+_EDIT: This works in my section template but not on my page template..._
