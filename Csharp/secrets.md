@@ -3,7 +3,7 @@
 Consider using user secrets to load environment variables when a program starts
 * https://dusted.codes/dotenv-in-dotnet
 
-## User Secrets
+## Managing User Secrets with C#
 
 * https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets
 * Secrets are not stored in the project folder
@@ -67,6 +67,11 @@ internal class FtpSecrets
 
         if (string.IsNullOrEmpty(Password))
             throw new InvalidOperationException("secret 'password' not found");
+    }
+
+    public override string ToString()
+    {
+        return $"{Hostname} {Username}:{Password}";
     }
 }
 ```
