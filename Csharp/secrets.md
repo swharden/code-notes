@@ -1,9 +1,10 @@
 # Managing Secrets in C#
 
-Consider using user secrets to load environment variables when a program starts
+## Environment variables via `.env` file
+
 * https://dusted.codes/dotenv-in-dotnet
 
-## Managing User Secrets with C#
+## Microsoft Configuration User Secrets
 
 * https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets
 * Secrets are not stored in the project folder
@@ -41,7 +42,7 @@ Username: someone@example.com
 Password: s3cr3t123
 ```
 
-### FtpSecrets
+## FtpSecrets Class
 
 I like to have a small object that contains secrets that I can pass around functions that need it
 
