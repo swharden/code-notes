@@ -3,7 +3,10 @@
 ## Setup
 * https://nodejs.org/en/download/
 * `npm install -g create-react-app`
-* `npx create-react-app abf-browser -template typescript`
+* `npx create-react-app appname -template typescript`
+* `cd appname`
+* `npm audit fix`
+* `npm start`
 
 ## Run Once On Load
 
