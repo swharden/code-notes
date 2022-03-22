@@ -1,5 +1,10 @@
 # React JS Notes
 
+## Setup
+* https://nodejs.org/en/download/
+* `npm install -g create-react-app`
+* `npx create-react-app abf-browser -template typescript`
+
 ## Run Once On Load
 
 ```js
