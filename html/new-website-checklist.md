@@ -12,3 +12,4 @@
   * Beware of crop: linkedin makes images as small as a square
 * check mobile views
 * lighthouse
+* apple touch icons
