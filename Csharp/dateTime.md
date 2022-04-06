@@ -11,8 +11,7 @@ string s1 = DateTime.Now.ToString("o", CultureInfo.InvariantCulture);
 ### Epoch Seconds (Linux Time)
 
 ```cs
-long epochTicks = new DateTime(1970, 1, 1).Ticks;
-long unixTime = ((DateTime.UtcNow.Ticks - epochTicks) / TimeSpan.TicksPerSecond);
+double linuxTime = (DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
 ```
 
 ### Get Timestamp
