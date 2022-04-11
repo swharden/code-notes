@@ -26,19 +26,18 @@ private static async Task<JsonDocument> RequestJsonAsync(string url)
 ## Create JSON From Scratch
 
 ```cs
-using var stream = new MemoryStream();
-var options = new JsonWriterOptions() { Indented = true };
-using var writer = new Utf8JsonWriter(stream, options);
+using MemoryStream stream = new();
+JsonWriterOptions options = new() { Indented = true };
+using Utf8JsonWriter writer = new(stream, options);
 
 writer.WriteStartObject();
-writer.WriteNumber("temperatureC", TemperatureC);
-writer.WriteStartArray("ions");
-foreach (var ion in Ions)
+writer.WriteNumber("simple value", 123);
+writer.WriteStartArray("more values");
+for (int i = 0; i < 10; i++)
 {
     writer.WriteStartObject();
-    writer.WriteString("name", ion.name);
-    writer.WriteNumber("charge", ion.charge);
-    writer.WriteNumber("conductivity", ion.conductivity);
+    writer.WriteString("alpha", $"asdf{i}");
+    writer.WriteNumber("beta", i);
     writer.WriteEndObject();
 }
 writer.WriteEndArray();
