@@ -14,3 +14,4 @@
 * lighthouse
 * apple touch icons
 * .htaccess (redirect, index, permission, rewrite, https, www)
+* meta theme color
