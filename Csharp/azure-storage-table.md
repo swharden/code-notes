@@ -66,3 +66,22 @@ public static void AddGrabResults(GrabResult[] grabs)
     table.ExecuteBatch(batchOperation);
 }
 ```
+
+### Query more than 1000 table records
+
+By default `ExecuteQuerySegmentedAsync()` returns a maximum of 1000 records.
+
+To get more results, make multiple queries using a contination token:
+
+```cs
+TableQuery<MyThing> tableQuery = new() { TakeCount = 100_000 };
+TableContinuationToken continuationToken = default;
+List<MyThing> results = new();
+
+do
+{
+    var queryResult = await table.ExecuteQuerySegmentedAsync(tableQuery, continuationToken);
+    results.AddRange(queryResult.Results);
+    continuationToken = queryResult.ContinuationToken;
+} while (continuationToken is not null);
+```
