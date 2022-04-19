@@ -9,7 +9,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Get lftp
         run: sudo apt install lftp
-      - name: Upload File
-        run: lftp -c "open -p 21 -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}; put README.md"
       - name: Mirror Directory
-        run: lftp -c "open -p 21 -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}; mirror -v -R ./ffmpeg /ffmpeg"
+        run: lftp -e "set ftp:ssl-allow no; mirror --parallel=100 -R ./ffmpeg /ffmpeg" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
