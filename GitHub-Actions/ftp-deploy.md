@@ -1,5 +1,33 @@
 # Deploy using FTP from GitHub Actions
 
+## Natively
+
+```yaml
+name: 🚀 FTP Deploy
+on: push
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    name: Upload
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v2
+      - name: 📦 Get lftp
+        run: sudo apt install lftp
+      - name: 🔑 Load Secrets
+        run: echo "machine ${{ secrets.FTP_HOSTNAME }} login ${{ secrets.FTP_USERNAME }} password ${{ secrets.FTP_PASSWORD }}" > $HOME/.netrc
+      - name: 📄 Upload File
+        run: lftp -e "set ftp:ssl-allow no; put -O / ./README.md" ${{ secrets.FTP_HOSTNAME }}
+      - name: 📁 Upload Folder
+        run: lftp -e "set ftp:ssl-allow no; mirror --parallel=100 -R ./ffmpeg /ffmpeg" ${{ secrets.FTP_HOSTNAME }}
+```
+
+## With a Dependency Action
+
+⚠️ DO NOT DO THIS! ⚠️
+
+It has some fancy features like using a JSON file to store state server-side and only uploaded changed files, but rsync is better for that, and this action has potential of compromise and leaking your secrets!
+
 ```yaml
 name: Build and Deploy
 
