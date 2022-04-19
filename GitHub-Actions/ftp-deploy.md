@@ -22,6 +22,12 @@ jobs:
         run: lftp -e "set ftp:ssl-allow no; mirror --parallel=100 -R ./ffmpeg /ffmpeg" ${{ secrets.FTP_HOSTNAME }}
 ```
 
+Or without storing a secrets file:
+
+```yaml
+run: lftp -e "commands" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+```
+
 ## With a Dependency Action
 
 ⚠️ DO NOT DO THIS! ⚠️
