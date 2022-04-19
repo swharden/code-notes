@@ -3,11 +3,13 @@ on: push
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
-    name: FTP Deploy
+    name: Upload
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Get lftp
         run: sudo apt install lftp
-      - name: Upload with lftp
-        run: lftp -c "open -p 21 -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}; mirror -v -R ./README.md /remote.md"
+      - name: Upload File
+        run: lftp -c "open -p 21 -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}; put README.md"
+      - name: Mirror Directory
+        run: lftp -c "open -p 21 -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}; mirror -v -R ./ffmpeg /ffmpeg"
