@@ -1,17 +1,17 @@
-name: FTP Deploy
+name: 🚀 FTP Deploy
 on: push
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
     name: Upload
     steps:
-      - name: Checkout
+      - name: 🛒 Checkout
         uses: actions/checkout@v2
-      - name: Get lftp
+      - name: 📦 Get lftp
         run: sudo apt install lftp
-      - name: Configure Credentials
+      - name: 🔑 Load Secrets
         run: echo "machine ${{ secrets.FTP_HOSTNAME }} login ${{ secrets.FTP_USERNAME }} password ${{ secrets.FTP_PASSWORD }}" > $HOME/.netrc
-      - name: Upload File
+      - name: 📄 Upload File
         run: lftp -e "set ftp:ssl-allow no; put -O / ./README.md" ${{ secrets.FTP_HOSTNAME }}
-      - name: Upload Folder
+      - name: 📁 Upload Folder
         run: lftp -e "set ftp:ssl-allow no; mirror --parallel=100 -R ./ffmpeg /ffmpeg" ${{ secrets.FTP_HOSTNAME }}
