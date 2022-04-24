@@ -9,6 +9,6 @@ jobs:
       - name: 📦 Get lftp
         run: sudo apt install lftp
       - name: 📄 Upload File
-        run: lftp -e "set ftp:ssl-allow no; put -O /destination/ ./README.md" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "put -O /destination/ ./README.md" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
       - name: 📁 Upload Folder
-        run: lftp -e "set ftp:ssl-allow no; mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
