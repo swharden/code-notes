@@ -7,16 +7,19 @@ jobs:
       - name: 🛒 Checkout
         uses: actions/checkout@v2
 
-      - name: 📦 Get lftp
+      - name: 📦 Get LFTP
         run: sudo apt install lftp
 
-      - name: Configure lftp
+      - name: 🛠️ Configure LFTP
         run: |
           mkdir ~/.lftp
           echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
 
+      - name: 🔑 Load Secrets
+        run: echo "machine ${{ secrets.FTP_HOSTNAME }} login ${{ secrets.FTP_USERNAME }} password ${{ secrets.FTP_PASSWORD }}" > ~/.netrc
+
       - name: 📄 Upload File
-        run: lftp -e "put -O /destination/ ./README.md" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "put -O /destination/ ./README.md" ${{ secrets.FTP_HOSTNAME }}
 
       - name: 📁 Upload Folder
-        run: lftp -e "mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" ${{ secrets.FTP_HOSTNAME }}
