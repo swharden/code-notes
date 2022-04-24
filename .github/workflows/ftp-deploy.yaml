@@ -1,5 +1,11 @@
 name: 🚀 FTP Deploy
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/*"
+    branches:
+      - main
 jobs:
   ftp-deploy:
     runs-on: ubuntu-latest
