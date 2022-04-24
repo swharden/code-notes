@@ -10,8 +10,11 @@ jobs:
       - name: 📦 Get lftp
         run: sudo apt install lftp
 
+      - name: Configure lftp
+        run: echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
+
       - name: 📄 Upload File
-        run: lftp -e "set ssl:verify-certificate false; put -O /destination/ ./README.md" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "put -O /destination/ ./README.md" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
 
       - name: 📁 Upload Folder
-        run: lftp -e "set ssl:verify-certificate false; mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
+        run: lftp -e "mirror --parallel=100 -R ./ffmpeg/ /ffmpeg/" -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOSTNAME }}
