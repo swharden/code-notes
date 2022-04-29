@@ -20,7 +20,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-* https://python-course.eu/numerical-programming/creating-subplots-in-matplotlib.php
+* https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html
 
 ## Get a color from a colormap
 
