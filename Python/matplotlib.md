@@ -20,11 +20,13 @@ plt.tight_layout()
 plt.show()
 ```
 
-## Get a color from a colormap
+* https://python-course.eu/numerical-programming/creating-subplots-in-matplotlib.php
 
-* [matplotlib colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
+## Get a color from a colormap
 
 ```py
 cmap = matplotlib.cm.get_cmap('Spectral')
 myColor = cmap(.5)
 ```
+
+* [matplotlib colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)
