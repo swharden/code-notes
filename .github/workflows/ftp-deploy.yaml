@@ -9,8 +9,11 @@ jobs:
       - name: 📦 Get LFTP
         run: sudo apt install lftp
       - name: 🛠️ Configure LFTP
-        run: mkdir ~/.lftp && echo "set ssl:verify-certificate false;" >> ~/.lftp/rc
-      - name: 🔑 Load Secrets
+        run: |
+          mkdir ~/.lftp
+          echo "set ssl:ca-file ~/.lftp/certs.crt;set ssl:check-hostname no;" >> ~/.lftp/rc
+          echo "${{ secrets.FTP_CERTS_BASE64 }}" | base64 --decode > ~/.lftp/certs.crt
+      - name: 🔑 Load Credentials
         run: echo "machine ${{ secrets.FTP_HOSTNAME }} login ${{ secrets.FTP_USERNAME }} password ${{ secrets.FTP_PASSWORD }}" > ~/.netrc
       - name: 📄 Upload File
         run: lftp -d -e "put -O /destination/ ./README.md" ${{ secrets.FTP_HOSTNAME }}
