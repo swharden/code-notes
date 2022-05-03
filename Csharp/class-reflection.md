@@ -11,3 +11,15 @@ foreach (var field in this.GetType().GetFields())
     Console.WriteLine($"({type}) {name} = {value}");
 }
 ```
+
+# Get Classes Implenting an Interface
+
+```cs
+public static Type[] GetCategoryTypes()
+{
+    return Assembly.GetExecutingAssembly()
+        .GetTypes()
+        .Where(x => x.GetInterfaces().Contains(typeof(ICategory)))
+        .ToArray();
+}
+```
