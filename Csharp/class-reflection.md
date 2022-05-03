@@ -23,3 +23,15 @@ public static Type[] GetCategoryTypes()
         .ToArray();
 }
 ```
+
+# Instantiate Classes Implementing an Interface
+```cs
+public static ICategory[] GetCategories()
+{
+    return Assembly.GetExecutingAssembly()
+        .GetTypes()
+        .Where(x => x.GetInterfaces().Contains(typeof(ICategory)))
+        .Select(x => (ICategory)Activator.CreateInstance(x))
+        .ToArray();
+}
+```
