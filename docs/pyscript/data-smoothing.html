@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+      - numpy
+      - scipy
+      - matplotlib
+    </py-env>
+</head>
+
+<body>
+    <h1>Data Smoothing</h1>
+
+    <div id="plot"></div>
+    
+    <py-script output="plot">
+import numpy as np
+import scipy.signal
+import matplotlib.pyplot as plt
+
+fig = plt.figure()
+
+values = np.sin(np.random.random_sample(100) * np.pi * 2)
+values = np.cumsum(values)
+plt.plot(values, '.', label="original")
+
+# apply a 3-pole lowpass filter at 0.1x Nyquist frequency
+b, a = scipy.signal.butter(3, 0.1)
+filtered = scipy.signal.filtfilt(b, a, values)
+plt.plot(filtered, '-', label="filtered")
+
+plt.legend()
+plt
+    </py-script>
+</body>
+
+</html>
