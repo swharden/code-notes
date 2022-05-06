@@ -14,13 +14,18 @@ List<int> Numbers = new() { 1, 2, 3 };
 app.MapGet("/numbers", () =>
 {
     return Numbers;
-})
-.Produces<List<int>>();
+});
 
 app.MapPut("/numbers", (int number) =>
 {
     Numbers.Add(number);
-    return Results.Ok;
+    return Results.Ok(Numbers);
+});
+
+app.MapDelete("/numbers", (int number) =>
+{
+    Numbers.Remove(number);
+    return Results.Ok(Numbers);
 });
 
 app.Run();
