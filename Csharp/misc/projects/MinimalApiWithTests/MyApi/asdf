@@ -1,0 +1,17 @@
+[
+  {
+    "Name": "name1",
+    "FavoriteColor": "magenta",
+    "Birthday": "2022-05-10T00:39:12.713Z"
+  },
+  {
+    "Name": "name2",
+    "FavoriteColor": "yellow",
+    "Birthday": "2022-05-10T00:39:12.713Z"
+  },
+  {
+    "Name": "name3",
+    "FavoriteColor": "lolz",
+    "Birthday": "2022-05-10T00:44:12.29Z"
+  }
+]
