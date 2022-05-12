@@ -1,0 +1,68 @@
+﻿@page "/fs"
+@using BlazorApp5.Shared
+@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+<PageTitle>Filesystem Browser</PageTitle>
+
+<h1>Filesystem Browser</h1>
+@if (Contents is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>Path</h3>
+    <code>@Contents.Path</code>
+
+    <h3>Folders</h3>
+    <ul>
+        @foreach (string folderName in Contents.FolderNames)
+        {
+            <li>
+                <NavLink href=@GetSubFolderUrl(folderName)>
+                    @folderName
+                </NavLink>
+            </li>
+        }
+    </ul>
+
+    <h3>Files</h3>
+    <ul>
+        @foreach (string fileName in Contents.FileNames)
+        {
+            <li>@fileName</li>
+        }
+    </ul>
+}
+
+@code {
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "path")]
+    public string? Path { get; set; }
+
+    private FolderContents? Contents;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await UpdateListAsync();
+    }
+
+    private async Task UpdateListAsync()
+    {
+        Contents = await Http.GetFromJsonAsync<FolderContents>("Folder?path=" + Path);
+    }
+
+    private string GetSubFolderUrl(string folderName)
+    {
+        string newPath = System.IO.Path.Combine(Contents!.Path, folderName);
+        string newUrl = NavigationManager.GetUriWithQueryParameter("path", newPath);
+        return newUrl;
+    }
+}

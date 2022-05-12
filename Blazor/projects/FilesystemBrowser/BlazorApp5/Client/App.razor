@@ -1,0 +1,19 @@
+﻿<Router AppAssembly="@typeof(App).Assembly">
+
+    <Found Context="routeData">
+        <!-- This indicates the router is used to show pages depending onthe URL. Pages will be wrapped in the given layout. -->
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+
+    <NotFound>
+        <!-- this block is shown if the route does not map to a page -->
+        <PageTitle>Not found</PageTitle>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <div class="alert alert-danger" role="alert">
+              404: page does not exist
+            </div>
+        </LayoutView>
+    </NotFound>
+
+</Router>

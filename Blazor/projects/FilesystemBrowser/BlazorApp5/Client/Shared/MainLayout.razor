@@ -1,0 +1,16 @@
+﻿@inherits LayoutComponentBase
+
+<nav>
+    <div class="bg-dark text-light">
+        <NavLink class="mx-3" href="./" Match="NavLinkMatch.All">Home</NavLink>
+        <NavLink class="mx-3" href="counter">Counter</NavLink>
+        <NavLink class="mx-3" href="fetchdata">Fetch data</NavLink>
+        <NavLink class="mx-3" href="fs">Filesystem Browser</NavLink>
+    </div>
+</nav>
+
+<main>
+    <article class="context p-4 m-4 border rounded shadow bg-white">
+        @Body
+    </article>
+</main>
