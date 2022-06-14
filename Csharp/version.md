@@ -1,8 +1,23 @@
 # Versioning in C#
 
+## Simple Version
+
+```xml
+<PropertyGroup>
+  <Version>1.3</Version>
+</PropertyGroup>
+```
+
+```cs
+string version = Assembly.GetEntryAssembly()
+    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+    .InformationalVersion;
+```
+
 ## AssemblyVersion
 
 In .NET Framework projects add this to Program.cs
+
 ```cs
 using System.Reflection;
 [assembly: AssemblyVersion("1.5.0.0")]
