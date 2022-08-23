@@ -3,12 +3,12 @@
 ```cs
 InitializeComponent();
 AllowDrop = true;
-DragEnter += DragEnter;
-DragDrop += DragDrop;
+DragEnter += OnDragEnter;
+DragDrop += OnDragDrop;
 ```
 
 ```cs
-private void DragEnter(object sender, DragEventArgs e)
+private void OnDragEnter(object sender, DragEventArgs e)
 {
     if (e.Data.GetDataPresent(DataFormats.FileDrop))
         e.Effect = DragDropEffects.Copy;
@@ -16,7 +16,7 @@ private void DragEnter(object sender, DragEventArgs e)
 ```
 
 ```cs
-private void DragDrop(object sender, DragEventArgs e)
+private void OnDragDrop(object sender, DragEventArgs e)
 {
     string[] paths = (string[])e.Data.GetData(DataFormats.FileDrop);
     foreach (string path in paths)
