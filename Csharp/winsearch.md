@@ -2,6 +2,10 @@
 
 Walking directories can be slow, but Windows often indexes drives to enable fast _Windows Search_. Queries can be run directly against the indexed database for extremely fast walking/searching.
 
+```
+dotnet add package System.Data.OleDb
+```
+
 ```cs
 /// <summary>
 /// Return an array of all files matching the search pattern.
