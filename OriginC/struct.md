@@ -12,10 +12,15 @@ void Display(KnownAbf abf){
 	printf("%s\n", abf.strGuid);
 }
 
-void structDemo(){
+KnownAbf GetDemoStruct(){
 	KnownAbf abf;
 	abf.strPath = "test path";
 	abf.strGuid = "test guid";
+	return abf;
+}
+
+void structDemo(){
+	KnownAbf &abf = GetDemoStruct();
 	Display(abf);
 }
 ```
