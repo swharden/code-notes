@@ -1,57 +1,80 @@
 # OriginC Classes
 
+## Required Headers
+
 ```c
 #include <Origin.h>
+#include <Array.h>
 ```
 
-```c
-class Animal {
-  public:
-  	int age;
-  	string species;
-  	
-  	void SayHi(){
-  		printf("I am a %s and my age is %d\n", species, age);
-  	}
-  	
-  private:
-	void Animal(){
-		age = 0;
-		species = "generic animal";
-	}
-};
-```
+## Classes and Inheritance
 
 ```c
-class Dog : public Animal {
+class AnimalBase {
 public:
-	void WagTail(){
-  		printf("I can wag my tail");
-	}
-private:
-	Dog(){
-		species = "dog";
-		age = 5;
-	}
+  	virtual void MakeSound(){
+  		printf("base sound\n");
+  	}
+};
+
+class AnimalCat : public AnimalBase {
+public:
+  	void MakeSound(){
+  		printf("meow\n");
+  	}
+};
+
+class AnimalDog : public AnimalBase {
+public: 
+  	void MakeSound(){
+  		printf("woof\n");
+  	}
+};
+
+class AnimalCow : public AnimalBase {
+public: 
+  	void MakeSound(){
+  		printf("moo\n");
+  	}
 };
 ```
 
----
+## Functions Consume Base Classes
 
-```
-void RunClassTests(){
-	Animal myAnimal;
-	myAnimal.SayHi();
-	
-	Dog myDog;
-	myDog.SayHi();
-	myDog.WagTail();
+```cs
+void KickAnimal(AnimalBase &animal){
+	animal.MakeSound();
+}
+
+void ScottDemo1(){
+	AnimalCat cat;
+	AnimalDog dog;
+	AnimalCow cow;
+	KickAnimal(cat);
+	KickAnimal(dog);
+	KickAnimal(cow);
 }
 ```
 
-```
->>runclasstests
-I am a generic animal and my age is 0
-I am a dog and my age is 5
-I can wag my tail
+```cs
+void KickAnimals(Array<AnimalBase&> &animals){
+	for (int i=0; i<animals.GetSize(); i++){
+		AnimalBase& animal = animals.GetAt(i);
+		animal.MakeSound();
+	}
+}
+
+void ScottDemo3(){
+
+	AnimalCat cat;
+	AnimalDog dog;
+	AnimalCow cow;
+	
+	Array<AnimalBase&> animals;
+	animals.Add(cat);
+	animals.Add(dog);
+	animals.Add(cow);
+	
+	KickAnimals(animals); 
+}
 ```
