@@ -9,8 +9,8 @@
 ```
 
 ```cs
-string version = Assembly.GetEntryAssembly()
-    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+public string InformalVersion => Assembly.GetAssembly(typeof(Plot))!
+    .GetCustomAttribute<AssemblyInformationalVersionAttribute>()!
     .InformationalVersion;
 ```
 
