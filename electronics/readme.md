@@ -7,7 +7,7 @@
 
 ## LED drivers (common cathode)
 
-* [AS1115](https://www.mouser.com/ProductDetail/ams-OSRAM/AS1115-BSST?qs=jMXWnm70%252BC%2FTIBNsbFwa8Q%3D%3D) I2C 8 digit 7-segment driver ($4.61) [datasheet](https://www.mouser.com/datasheet/2/588/AS1115_DS000206_1_00-1512924.pdf)
+* [AS1115 QSOP-24](https://www.mouser.com/ProductDetail/ams-OSRAM/AS1115-BSST?qs=jMXWnm70%252BC%2FTIBNsbFwa8Q%3D%3D) I2C 8 digit 7-segment driver ($4.61) [datasheet](https://www.mouser.com/datasheet/2/588/AS1115_DS000206_1_00-1512924.pdf)
 * [MAX7221](https://www.mouser.com/ProductDetail/Maxim-Integrated/MAX7221CWG%2b?qs=1THa7WoU59F1XFSSIxmbww%3D%3D) SPI 8 digit 7-segment driver ($10.77) [datasheet](https://www.mouser.com/datasheet/2/256/MAX7219_MAX7221-1513157.pdf)
 * [MAX7219](https://www.mouser.com/ProductDetail/Maxim-Integrated/MAX7219CWG%2bT?qs=p6VZ%252BklCkRRSntwSIyvWcQ%3D%3D) SPI 8 digit 7-segment driver ($11.19) [datasheet](https://www.mouser.com/datasheet/2/256/MAX7219_MAX7221-1513157.pdf) - source from Amazon or eBay way cheaper
 
