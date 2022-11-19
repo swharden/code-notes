@@ -23,6 +23,9 @@
 
 ![image](https://user-images.githubusercontent.com/4165489/202861478-c7361100-002b-4916-af51-909da3acebbe.png)
 
+## Oscillators
+* [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
