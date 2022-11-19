@@ -21,10 +21,11 @@
 * [ATMEGA3208-XFR SSOP-28](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA3208-XFR?qs=y6ZabgHbY%252ByexExRqReahg%3D%3D) well stocked ($1.49) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega3208_09_DataSheet_DS40002174C-2237616.pdf)
 * [ATTINY826-XUR SSOP-20](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATTINY826-XUR?qs=pUKx8fyJudBqvAbCMR8k%252BQ%3D%3D) well stocked ($0.95) [datasheet](https://www.mouser.com/datasheet/2/268/ATtiny424_426_427_824_826_827_DataSheet_DS40002311-2887739.pdf)
 
-![image](https://user-images.githubusercontent.com/4165489/202861478-c7361100-002b-4916-af51-909da3acebbe.png)
-
 ## Oscillators
 * [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
+
+## Counters
+* [SN74LV8154PW dual 16-bit](https://www.mouser.com/ProductDetail/Texas-Instruments/SN74LV8154PW?qs=UG%2F8xqv%2F6Wd2o8q7Jigq4Q%3D%3D) available ($1.32) [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=https://www.ti.com/lit/gpn/sn74lv8154)
 
 ## IC Packages
 
