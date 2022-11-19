@@ -27,6 +27,9 @@
 ## Counters
 * [SN74LV8154PW dual 16-bit](https://www.mouser.com/ProductDetail/Texas-Instruments/SN74LV8154PW?qs=UG%2F8xqv%2F6Wd2o8q7Jigq4Q%3D%3D) available ($1.32) [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=https://www.ti.com/lit/gpn/sn74lv8154)
 
+## IO Expanders
+* [MCP23008](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP23008-E-SO?qs=Sez7gRs8XSWum74ZwQXTLw%3D%3D) stocked ($1.38) [datasheet](https://www.mouser.com/datasheet/2/268/21919b-65915.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
