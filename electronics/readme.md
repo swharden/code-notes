@@ -36,7 +36,7 @@
 * [FT231XS](https://www.mouser.com/ProductDetail/FTDI/FT231XS-R?qs=Gp1Yz1mis3WduRPsgrTbtg%3D%3D) stocked ($2.34) [datasheet](https://www.mouser.com/datasheet/2/163/DS_FT231X-13571.pdf)
 
 ## Voltage Regulators
-* [NCP1117LP SOT-223](https://www.mouser.com/ProductDetail/onsemi/NCP1117LPST33T3G?qs=kbSN2QblFfKG9A4Foh4YYg%3D%3D) ($0.52) [datasheet](https://www.mouser.com/datasheet/2/308/NCP1117LP_D-1812283.pdf)
+* [NCP1117LP ST33T3G (3.3V) SOT-223](https://www.mouser.com/ProductDetail/onsemi/NCP1117LPST33T3G?qs=kbSN2QblFfKG9A4Foh4YYg%3D%3D) ($0.52) [datasheet](https://www.mouser.com/datasheet/2/308/NCP1117LP_D-1812283.pdf)
 
 ## IC Packages
 
