@@ -35,6 +35,9 @@
 ## USB Interfaces
 * [FT231XS](https://www.mouser.com/ProductDetail/FTDI/FT231XS-R?qs=Gp1Yz1mis3WduRPsgrTbtg%3D%3D) stocked ($2.34) [datasheet](https://www.mouser.com/datasheet/2/163/DS_FT231X-13571.pdf)
 
+## Voltage Regulators
+* [NCP1117LP SOT-223](https://www.mouser.com/ProductDetail/onsemi/NCP1117LPST33T3G?qs=kbSN2QblFfKG9A4Foh4YYg%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/308/NCP1117LP_D-1812283.pdf) ($0.52)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
