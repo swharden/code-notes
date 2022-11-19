@@ -30,6 +30,9 @@
 ## IO Expanders
 * [MCP23008](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP23008-E-SO?qs=Sez7gRs8XSWum74ZwQXTLw%3D%3D) stocked ($1.38) [datasheet](https://www.mouser.com/datasheet/2/268/21919b-65915.pdf)
 
+## USB Interfaces
+* [FT231XS](https://www.mouser.com/ProductDetail/FTDI/FT231XS-R?qs=Gp1Yz1mis3WduRPsgrTbtg%3D%3D) stocked ($2.34) [datasheet](https://www.mouser.com/datasheet/2/163/DS_FT231X-13571.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
