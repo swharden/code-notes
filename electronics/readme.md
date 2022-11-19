@@ -1,7 +1,7 @@
 # Favorite Electrical Components
 
 ## USB connectors
-
+* [micro USB socket](https://www.mouser.com/ProductDetail/Amphenol-Commercial-Products/GMCB05B11124H1EU?qs=f9yNj16SXrIThfsveFtgfg%3D%3D) uses small vias I think ($.81) [datasheet](https://cdn.amphenol-cs.com/media/wysiwyg/files/documentation/datasheet/inputoutput/io_micro_usb_2_gmcb05.pdf)
 * [mini USB socket](https://www.mouser.com/ProductDetail/Amphenol-Commercial-Products/GMSB0532112YEU?qs=pY5jAzTlmq7%252B2fYGzHGMew%3D%3D) simple ($0.48)
 * [USB B socket](https://www.mouser.com/ProductDetail/CUI-Devices/UJ2-BH-W1-TH?qs=5mqXD9RfOg3dpHLjDScu%2Fg%3D%3D) simple ($0.62)
 * [523-UE25BE55100](https://www.mouser.com/ProductDetail/Amphenol-Commercial-Products/UE25BE55100?qs=QKFpRO38X6kcZFlHb%2Fw2YA%3D%3D) surface mount ($0.83) [datasheet](https://www.mouser.com/datasheet/2/18/Amphenol_02062017_UE25BEX510X-1156639.pdf) - weird mounting though
