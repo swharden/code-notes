@@ -21,3 +21,11 @@
 * [ATMEGA3208-XFR SSOP-32](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA3208-XFR?qs=y6ZabgHbY%252ByexExRqReahg%3D%3D) well stocked ($1.49) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega3208_09_DataSheet_DS40002174C-2237616.pdf)
 
 ![image](https://user-images.githubusercontent.com/4165489/202861478-c7361100-002b-4916-af51-909da3acebbe.png)
+
+## IC Packages
+
+![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
+
+![image](https://user-images.githubusercontent.com/4165489/202861964-6511e83e-4ff1-40e8-9848-0c9e50685223.png)
+
+![image](https://user-images.githubusercontent.com/4165489/202861989-e5dc5835-29c0-41a4-b224-298a60c7468d.png)
