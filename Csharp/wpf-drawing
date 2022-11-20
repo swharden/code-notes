@@ -1,0 +1,34 @@
+# Drawing Primitives in WPF
+
+## ArcSegment
+
+```cs
+ArcSegment arcSeg = new()
+{
+    Point = center,
+    Size = size,
+    IsLargeArc = angles[i] > 180,
+    SweepDirection = SweepDirection.Clockwise,
+    RotationAngle = angles[i],
+};
+
+startAngle += angles[i];
+
+PathSegmentCollection myPathSegmentCollection = new() { arcSeg };
+PathFigure pthFigure = new()
+{
+    StartPoint = new Point(0, 100),
+    Segments = myPathSegmentCollection,
+};
+PathFigureCollection pthFigureCollection = new() { pthFigure };
+PathGeometry pthGeometry = new() { Figures = pthFigureCollection };
+Path arcPath = new()
+{
+    Stroke = new SolidColorBrush(Colors.Black),
+    StrokeThickness = 1,
+    Data = pthGeometry,
+    Fill = new SolidColorBrush(Colors.Yellow)
+};
+
+ChartCanvas.Children.Add(arcPath);
+```
