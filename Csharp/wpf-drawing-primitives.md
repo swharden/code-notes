@@ -1,4 +1,98 @@
 # Drawing Primitives with WPF
+
+## Pie
+
+![image](https://user-images.githubusercontent.com/4165489/202911136-d31e9ca9-250d-4102-b956-ca79b610f3a2.png)
+
+```cs
+double width = ChartCanvas.ActualWidth;
+double height = ChartCanvas.ActualHeight;
+double r = Math.Min(width, height) / 2 * .8;
+Point center = new(width / 2, height / 2);
+Size size = new(width, height);
+
+(string[] names, Color[] colors) = GetEnabledItems();
+double[] values = Enumerable.Range(0, names.Length).Select(x => Random.Shared.NextDouble()).ToArray();
+double valueSum = values.Sum();
+double[] angles = values.Select(x => x / valueSum * 360).ToArray();
+double[] radians = values.Select(x => x / valueSum * 2 * Math.PI).ToArray();
+
+ChartCanvas.Children.Clear();
+
+double startRadians = 0;
+for (int i = 0; i < names.Length; i++)
+{
+    System.Diagnostics.Debug.WriteLine(colors[i]);
+
+    Point arcStart = new(
+        x: center.X + r * Math.Cos(startRadians),
+        y: center.Y + r * Math.Sin(startRadians));
+
+    Point arcEnd = new(
+        x: center.X + r * Math.Cos(startRadians + radians[i]),
+        y: center.Y + r * Math.Sin(startRadians + radians[i]));
+
+    startRadians += radians[i];
+
+    Size outerArcSize = new(r, r);
+    Size innerArcSize = new(r / 2, r / 2);
+
+    StreamGeometry sg = new();
+    using StreamGeometryContext context = sg.Open();
+    context.BeginFigure(center, true, true);
+    context.LineTo(arcStart, true, true);
+    context.ArcTo(arcEnd, outerArcSize, 0, angles[i] > 180, SweepDirection.Clockwise, true, true);
+    context.LineTo(center, true, true);
+
+    System.Windows.Shapes.Path myPath = new()
+    {
+        Data = sg,
+        Stroke = Brushes.Black,
+        Fill = new SolidColorBrush(colors[i]),
+        StrokeThickness = 1,
+        HorizontalAlignment = HorizontalAlignment.Left,
+        VerticalAlignment = VerticalAlignment.Center,
+    };
+
+    ChartCanvas.Children.Add(myPath);
+}
+```
+
+## ArcSegment
+
+```cs
+ArcSegment arcSeg = new()
+{
+    Point = center,
+    Size = size,
+    IsLargeArc = angles[i] > 180,
+    SweepDirection = SweepDirection.Clockwise,
+    RotationAngle = angles[i],
+};
+
+startAngle += angles[i];
+
+PathSegmentCollection myPathSegmentCollection = new() { arcSeg };
+PathFigure pthFigure = new()
+{
+    StartPoint = new Point(0, 100),
+    Segments = myPathSegmentCollection,
+};
+PathFigureCollection pthFigureCollection = new() { pthFigure };
+PathGeometry pthGeometry = new() { Figures = pthFigureCollection };
+Path arcPath = new()
+{
+    Stroke = new SolidColorBrush(Colors.Black),
+    StrokeThickness = 1,
+    Data = pthGeometry,
+    Fill = new SolidColorBrush(Colors.Yellow)
+};
+
+ChartCanvas.Children.Add(arcPath);
+```
+
+## Old
+
 I tried drawing lines, polygons, and polyliens using WPF just to see what the performance was. It's awful. I get about 1Hz update speed when drawing 1K lines in a fullscreen canvas.
 
 ```XAML
