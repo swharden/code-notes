@@ -1,5 +1,55 @@
 # Drawing Primitives with WPF
 
+## Donut
+
+![image](https://user-images.githubusercontent.com/4165489/202913343-761cb531-03f9-49eb-8d38-eb739827acc3.png)
+
+```cs
+private Path GetDonutSlice(Point center, double angleStart, double angleEnd, double rInner, double rOuter, Color color)
+{
+    Point innerArcStart = new(
+            x: center.X + rInner * Math.Cos(angleStart),
+            y: center.Y + rInner * Math.Sin(angleStart));
+
+    Point innerArcEnd = new(
+        x: center.X + rInner * Math.Cos(angleEnd),
+        y: center.Y + rInner * Math.Sin(angleEnd));
+
+    Point outerArcStart = new(
+        x: center.X + rOuter * Math.Cos(angleStart),
+        y: center.Y + rOuter * Math.Sin(angleStart));
+
+    Point outerArcEnd = new(
+        x: center.X + rOuter * Math.Cos(angleEnd),
+        y: center.Y + rOuter * Math.Sin(angleEnd));
+
+    bool oversize = (angleEnd - angleStart) > Math.PI;
+
+    Size outerArcSize = new(rOuter, rOuter);
+    Size innerArcSize = new(rInner, rInner);
+
+    StreamGeometry sg = new();
+    using StreamGeometryContext context = sg.Open();
+    context.BeginFigure(innerArcStart, true, true);
+    context.LineTo(outerArcStart, true, true);
+    context.ArcTo(outerArcEnd, outerArcSize, 0, oversize, SweepDirection.Clockwise, true, true);
+    context.LineTo(innerArcEnd, true, true);
+    context.ArcTo(innerArcStart, innerArcSize, 0, oversize, SweepDirection.Counterclockwise, true, true);
+
+    Path path = new()
+    {
+        Data = sg,
+        Stroke = Brushes.Black,
+        Fill = new SolidColorBrush(color),
+        StrokeThickness = 1,
+        HorizontalAlignment = HorizontalAlignment.Left,
+        VerticalAlignment = VerticalAlignment.Center,
+    };
+
+    return path;
+}
+```
+
 ## Pie
 
 ![image](https://user-images.githubusercontent.com/4165489/202911136-d31e9ca9-250d-4102-b956-ca79b610f3a2.png)
