@@ -38,6 +38,9 @@
 ## Voltage Regulators
 * [NCP1117LP ST33T3G (3.3V) SOT-223](https://www.mouser.com/ProductDetail/onsemi/NCP1117LPST33T3G?qs=kbSN2QblFfKG9A4Foh4YYg%3D%3D) ($0.52) [datasheet](https://www.mouser.com/datasheet/2/308/NCP1117LP_D-1812283.pdf)
 
+## Ferrite
+* [2508051027Y1 0805](https://www.mouser.com/ProductDetail/Fair-Rite/2508051027Y1?qs=paL1wOLBYNd1w0Ok9jKq0w%3D%3D) 1kOhm 1mA ferrite bead] ($0.10)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
