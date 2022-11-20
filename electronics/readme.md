@@ -41,6 +41,10 @@
 ## Ferrite
 * [2508051027Y1 0805](https://www.mouser.com/ProductDetail/Fair-Rite/2508051027Y1?qs=paL1wOLBYNd1w0Ok9jKq0w%3D%3D) 1kOhm 1mA ferrite bead] ($0.10)
 
+## Capacitors
+* [CL21A106KOQNNNG 0805 10µF Ceramic](https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNG?qs=hqM3L16%252BxlcMWI7QbqH0LA%3D%3D) simple and cheap ($0.10)
+* [74-TMCP1A106KTRF 0805 10µF Tantalum](https://www.mouser.com/ProductDetail/Vishay-Sprague/TMCP1A106KTRF?qs=sGAEpiMZZMtZ1n0r9vR22SXwTtNEhYRLS07jIX8iAlowPy%2FNlFow%252BA%3D%3D) 10V for power supply decoupling ($0.34)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
