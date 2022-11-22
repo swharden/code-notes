@@ -45,6 +45,10 @@
 * [CL21A106KOQNNNG 0805 10µF Ceramic](https://www.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KOQNNNG?qs=hqM3L16%252BxlcMWI7QbqH0LA%3D%3D) 16V max ($0.10)
 * [74-TMCP1A106KTRF 0805 10µF Tantalum](https://www.mouser.com/ProductDetail/Vishay-Sprague/TMCP1A106KTRF?qs=sGAEpiMZZMtZ1n0r9vR22SXwTtNEhYRLS07jIX8iAlowPy%2FNlFow%252BA%3D%3D) 10V max ($0.34)
 
+## Diodes
+* [757-CVJ10F30LF](https://www.mouser.com/ProductDetail/Toshiba/CVJ10F30LF?qs=F5EMLAvA7ID%2Foktwf3VUSg%3D%3D) Schottky dual 1A 32V [datasheet](https://www.mouser.com/datasheet/2/408/CVJ10F30_datasheet_en_20140407-1315971.pdf)
+* [SD0805S020S1R0 0805](https://www.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) Schottky 1A 20V [datasheet](https://www.mouser.com/datasheet/2/40/schottky-776407.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
