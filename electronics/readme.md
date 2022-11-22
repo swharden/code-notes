@@ -46,7 +46,7 @@
 * [74-TMCP1A106KTRF 0805 10µF Tantalum](https://www.mouser.com/ProductDetail/Vishay-Sprague/TMCP1A106KTRF?qs=sGAEpiMZZMtZ1n0r9vR22SXwTtNEhYRLS07jIX8iAlowPy%2FNlFow%252BA%3D%3D) 10V max ($0.34)
 
 ## Diodes
-* [757-CVJ10F30LF](https://www.mouser.com/ProductDetail/Toshiba/CVJ10F30LF?qs=F5EMLAvA7ID%2Foktwf3VUSg%3D%3D) Schottky dual 1A 32V [datasheet](https://www.mouser.com/datasheet/2/408/CVJ10F30_datasheet_en_20140407-1315971.pdf)
+* [NSR0530HT1G SOD-323-2](https://www.mouser.com/ProductDetail/onsemi/NSR0530HT1G?qs=raqtESnDWsD7hIBo7i2utQ%3D%3D) Schottky 500mA 30V [datasheet](https://www.mouser.com/datasheet/2/308/NSR0530H_D-1813426.pdf)
 * [SD0805S020S1R0 0805](https://www.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) Schottky 1A 20V [datasheet](https://www.mouser.com/datasheet/2/40/schottky-776407.pdf)
 
 ## IC Packages
