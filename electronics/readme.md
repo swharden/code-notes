@@ -49,6 +49,10 @@
 * [NSR0530HT1G SOD-323-2](https://www.mouser.com/ProductDetail/onsemi/NSR0530HT1G?qs=raqtESnDWsD7hIBo7i2utQ%3D%3D) Schottky 500mA 30V ($0.19) [datasheet](https://www.mouser.com/datasheet/2/308/NSR0530H_D-1813426.pdf)
 * [SD0805S020S1R0 0805](https://www.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S1R0?qs=jCA%252BPfw4LHbpkAoSnwrdjw%3D%3D) Schottky 1A 20V ($0.37) [datasheet](https://www.mouser.com/datasheet/2/40/schottky-776407.pdf)
 
+## Transistors
+* [MMBT2222A SOT23](https://www.mouser.com/ProductDetail/Diodes-Incorporated/MMBT2222A-7-F?qs=G7Qimwij5NgJLDBj1%2FHVqA%3D%3D) NPN BJT 40V 600mA ($0.14) [datasheet](https://www.mouser.com/datasheet/2/115/DIOD_S_A0011756665_1-2543625.pdf)
+* [MMBT2907A SOT23](https://www.mouser.com/ProductDetail/Diodes-Incorporated/MMBT2907A-7-F?qs=nzdy8YbEw1%252BnciVJrv5MLg%3D%3D) PNP BJT 60V 600 mA ($0.14) [datasheet](https://www.mouser.com/datasheet/2/115/DIOD_S_A0001839445_1-2541927.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
