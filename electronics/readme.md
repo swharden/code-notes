@@ -53,6 +53,9 @@
 * [MMBT2222A SOT23](https://www.mouser.com/ProductDetail/Diodes-Incorporated/MMBT2222A-7-F?qs=G7Qimwij5NgJLDBj1%2FHVqA%3D%3D) NPN BJT 40V 600mA ($0.14) [datasheet](https://www.mouser.com/datasheet/2/115/DIOD_S_A0011756665_1-2543625.pdf)
 * [MMBT2907A SOT23](https://www.mouser.com/ProductDetail/Diodes-Incorporated/MMBT2907A-7-F?qs=nzdy8YbEw1%252BnciVJrv5MLg%3D%3D) PNP BJT 60V 600 mA ($0.14) [datasheet](https://www.mouser.com/datasheet/2/115/DIOD_S_A0001839445_1-2541927.pdf)
 
+## Schmitt Triggers
+* [SN74LVC1G17 SOT-23](https://www.mouser.com/ProductDetail/Texas-Instruments/SN74LVC1G17DBVR?qs=fvkeCqCHl3BQIcdbAa1fbQ%3D%3D) Schmitt-Trigger Buffer claims over 100 MHz ($0.36) [datasheet](https://www.ti.com/lit/ds/symlink/sn74lvc1g17.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
