@@ -21,6 +21,13 @@ var controlPanelPath = System.IO.Path.Combine(Environment.SystemDirectory, "cont
 System.Diagnostics.Process.Start(controlPanelPath, "mmsys.cpl");
 ```
 
+## Launch a local file in the web browser
+```cs
+ProcessStartInfo psi = new(htmlFilePath) { UseShellExecute = true };
+Process p = new() { StartInfo = psi };
+p.Start();
+```
+
 ## Launch the default web browser
 ```cs
 private void LaunchBrowser(string url)
