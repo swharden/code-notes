@@ -15,3 +15,5 @@
 * apple touch icons
 * .htaccess (redirect, index, permission, rewrite, https, www)
 * meta theme color
+* [meta link to sitemap](https://stackoverflow.com/questions/13327527/how-to-make-a-sitemap-link-in-the-page-head-pass-the-w3c-validator)
+* [canonical URL](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
