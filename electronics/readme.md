@@ -19,9 +19,11 @@
 
 ## Microcontrollers
 * [Design Considerations](http://ww1.microchip.com/downloads/en/AppNotes/00002519A.pdf)
-* [ATMEGA1608 TQFP-32](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA1608-AFR?qs=u16ybLDytRYQyR4ETBcClg%3D%3D) well stocked ($1.55) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega808_09_1608_09_DataSheet_DS40002172C-2237586.pdf), 
-* [ATMEGA3208-XFR SSOP-28](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA3208-XFR?qs=y6ZabgHbY%252ByexExRqReahg%3D%3D) well stocked ($1.49) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega3208_09_DataSheet_DS40002174C-2237616.pdf)
-* [ATTINY826-XUR SSOP-20](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATTINY826-XUR?qs=pUKx8fyJudBqvAbCMR8k%252BQ%3D%3D) well stocked ($0.95) [datasheet](https://www.mouser.com/datasheet/2/268/ATtiny424_426_427_824_826_827_DataSheet_DS40002311-2887739.pdf)
+* [ATMEGA1608 TQFP-32](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA1608-AFR?qs=u16ybLDytRYQyR4ETBcClg%3D%3D) ($1.55) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega808_09_1608_09_DataSheet_DS40002172C-2237586.pdf), 
+* [ATMEGA3208-XFR SSOP-28](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATMEGA3208-XFR?qs=y6ZabgHbY%252ByexExRqReahg%3D%3D) ($1.49) [datasheet](https://www.mouser.com/datasheet/2/268/ATmega3208_09_DataSheet_DS40002174C-2237616.pdf)
+* [ATTINY826-XUR SSOP-20 (Mouser)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATTINY826-XUR?qs=pUKx8fyJudBqvAbCMR8k%252BQ%3D%3D) ($0.95) [datasheet](https://www.mouser.com/datasheet/2/268/ATtiny424_426_427_824_826_827_DataSheet_DS40002311-2887739.pdf)
+* [ATTiny826-XUR SSOP-20 (DigiKey)](https://www.digikey.com/en/products/detail/microchip-technology/ATTINY826-XUR/13415041) ($1.02)
+* [ATTiny826-SUR SOIC-20 (DigiKey)](https://www.digikey.com/en/products/detail/microchip-technology/ATTINY826-SUR/13415151) ($1.05)
 
 ## Oscillators
 * [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
