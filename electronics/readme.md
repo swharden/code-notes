@@ -31,6 +31,8 @@
 ## Oscillators
 * [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
 * [32.768 kHz TCXO (DigiKey)](https://www.digikey.com/en/products/detail/yic/TX324TK-3-3TI-32K-5/16673372) ($3.13) [datasheet](https://www.yic.com.tw/wp-content/uploads/2022/12/TCXO-TX324TK-32768KHz.pdf)
+* [32.768 kHz TCXO (Mouser $3.97)](https://www.mouser.com/ProductDetail/Epson-Timing/TG-3541CE-32.7680KXA0?qs=4qgZ1GHix0U6irmAZ90HaA%3D%3D) ±3.4 PPM [datasheet](https://www.mouser.com/datasheet/2/137/TG_3541CE_en-1601070.pdf)
+* [32.768 kHz XO (Mouser $1.10)](https://www.mouser.com/ProductDetail/ECS/ECS-327MVATX-3-CN-TR3?qs=7D1LtPJG0i3L3MR3fxRPfQ%3D%3D) ±25ppm [datasheet](https://www.mouser.com/datasheet/2/122/ECS_327MVATX-2580060.pdf)
 
 ## Counters
 * [SN74LV8154PW dual 16-bit](https://www.mouser.com/ProductDetail/Texas-Instruments/SN74LV8154PW?qs=UG%2F8xqv%2F6Wd2o8q7Jigq4Q%3D%3D) available ($1.32) [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=https://www.ti.com/lit/gpn/sn74lv8154)
