@@ -71,6 +71,9 @@
 ## Operational Amplifiers
 * [OPA356AIDR SOIC-8](https://www.mouser.com/ProductDetail/Texas-Instruments/OPA356AIDR?qs=7nS3%252BbEUL6vZMsggkVobdQ%3D%3D) 200MHz CMOS opamp ($1.73) [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=https://www.ti.com/lit/gpn/opa2356)
 
+## Buttons
+* [SMT tactile switch 5.2x5.2mm (Mouser $0.13)](https://www.mouser.com/ProductDetail/CK/PTS526-SM15-SMTR2-LFS?qs=UXgszm6BlbENivbslIA%252B5g%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/240/pts526-3050698.pdf)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
