@@ -27,6 +27,7 @@
 * [ATTINY826-XUR SSOP-20 (Mouser)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/ATTINY826-XUR?qs=pUKx8fyJudBqvAbCMR8k%252BQ%3D%3D) ($0.95) [datasheet](https://www.mouser.com/datasheet/2/268/ATtiny424_426_427_824_826_827_DataSheet_DS40002311-2887739.pdf)
 * [ATTiny826-XUR SSOP-20 (DigiKey)](https://www.digikey.com/en/products/detail/microchip-technology/ATTINY826-XUR/13415041) ($1.02)
 * [ATTiny826-SUR SOIC-20 (DigiKey)](https://www.digikey.com/en/products/detail/microchip-technology/ATTINY826-SUR/13415151) ($1.05)
+* [AVR64DD32-I/PT TQFP-32 (Mouser $1.53)](https://www.mouser.com/ProductDetail/Microchip-Technology/AVR64DD32-I-PT?qs=tlsG%2FOw5FFjuwvYsegdIqg%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/268/AVR64DD32_28_Prelim_DataSheet_DS40002315B-2950084.pdf)
 
 ## Oscillators
 * [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
