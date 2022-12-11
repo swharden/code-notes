@@ -71,6 +71,9 @@
 ## Operational Amplifiers
 * [OPA356AIDR SOIC-8](https://www.mouser.com/ProductDetail/Texas-Instruments/OPA356AIDR?qs=7nS3%252BbEUL6vZMsggkVobdQ%3D%3D) 200MHz CMOS opamp ($1.73) [datasheet](https://www.ti.com/general/docs/suppproductinfo.tsp?distId=26&gotoUrl=https://www.ti.com/lit/gpn/opa2356)
 
+## Comparators
+* [TLV3501 SOIC-8 (Mouser $3.15)](https://www.mouser.com/ProductDetail/Texas-Instruments/TLV3501AIDR?qs=sGAEpiMZZMuayl%2FEk2kXcT8MZOnZtBZvG%2Fd5o8PknII%3D) 4.5-ns [datasheet](https://www.ti.com/lit/ds/symlink/tlv3502.pdf?HQS=dis-mous-null-mousermode-dsf-pf-null-wwe&ts=1670758102788&ref_url=https%253A%252F%252Fwww.mouser.cn%252F)
+
 ## Buttons
 * [SMT tactile switch 5.2x5.2mm (Mouser $0.13)](https://www.mouser.com/ProductDetail/CK/PTS526-SM15-SMTR2-LFS?qs=UXgszm6BlbENivbslIA%252B5g%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/240/pts526-3050698.pdf)
 
