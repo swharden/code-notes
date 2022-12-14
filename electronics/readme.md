@@ -80,6 +80,10 @@
 ## Buttons
 * [SMT tactile switch 5.2x5.2mm (Mouser $0.13)](https://www.mouser.com/ProductDetail/CK/PTS526-SM15-SMTR2-LFS?qs=UXgszm6BlbENivbslIA%252B5g%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/240/pts526-3050698.pdf)
 
+## Standoffs
+* [M3 nylon screw (Mouser $0.13)](https://www.mouser.com/ProductDetail/Essentra/50M030050P010?qs=PzGy0jfpSMssAHiosPVAzg%3D%3D) 10mm
+* [M3 nylon standoff (Mouser $0.15)](https://www.mouser.com/ProductDetail/Essentra/35MHSP004?qs=PzGy0jfpSMvSqPGIjf8O2g%3D%3D) 20mm
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
