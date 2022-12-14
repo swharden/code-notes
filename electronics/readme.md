@@ -30,9 +30,12 @@
 * [AVR64DD32-I/PT TQFP-32 (Mouser $1.53)](https://www.mouser.com/ProductDetail/Microchip-Technology/AVR64DD32-I-PT?qs=tlsG%2FOw5FFjuwvYsegdIqg%3D%3D) [datasheet](https://www.mouser.com/datasheet/2/268/AVR64DD32_28_Prelim_DataSheet_DS40002315B-2950084.pdf)
 
 ## Oscillators
-* If you only need 1PPS: use RTC clock 32.768 kHz
-* If you need fast serial: use system clock 11.0592, 14.746, or 18.432 Mhz
+### 14.7456 MHz (good for fast serial and 1PPS)
 * [14.7456 MHz TCXO](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-3225MV-147.4-TR?qs=d0WKAl%252BL4KZtLcT1OEriAg%3D%3D) well stocked ($2.48) [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_3225MV-1634330.pdf)
+### 10 MHz (good for frequency reference)
+* [10 MHz XO (Mouser $1.17)](https://www.mouser.com/ProductDetail/ECS/ECS-3225MVLC-100-CN-TR?qs=Znm5pLBrcAKYv9tKy7x5XQ%3D%3D) 25ppm [datasheet](https://www.mouser.com/datasheet/2/122/ECS_3225MVLC-2935229.pdf)
+* [10 MHz TCXO (Mouser $2.36)](https://www.mouser.com/ProductDetail/ECS/ECS-TXO-2016-33-100-TR?qs=PzGy0jfpSMvd6OxkHIkpfg%3D%3D) 2.5ppm [datasheet](https://www.mouser.com/datasheet/2/122/ECS_TXO_2520-1064138.pdf)
+### 32.768 kHz (good for 1PPS)
 * [32.768 kHz TCXO (DigiKey)](https://www.digikey.com/en/products/detail/yic/TX324TK-3-3TI-32K-5/16673372) ($3.13) [datasheet](https://www.yic.com.tw/wp-content/uploads/2022/12/TCXO-TX324TK-32768KHz.pdf)
 * [32.768 kHz TCXO (Mouser $3.97)](https://www.mouser.com/ProductDetail/Epson-Timing/TG-3541CE-32.7680KXA0?qs=4qgZ1GHix0U6irmAZ90HaA%3D%3D) ±3.4 PPM [datasheet](https://www.mouser.com/datasheet/2/137/TG_3541CE_en-1601070.pdf)
 * [32.768 kHz XO (Mouser $1.10)](https://www.mouser.com/ProductDetail/ECS/ECS-327MVATX-3-CN-TR3?qs=7D1LtPJG0i3L3MR3fxRPfQ%3D%3D) ±25ppm [datasheet](https://www.mouser.com/datasheet/2/122/ECS_327MVATX-2580060.pdf)
