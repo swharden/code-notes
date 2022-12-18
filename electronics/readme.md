@@ -84,6 +84,9 @@
 * [M3 nylon screw (Mouser $0.13)](https://www.mouser.com/ProductDetail/Essentra/50M030050P010?qs=PzGy0jfpSMssAHiosPVAzg%3D%3D) 10mm
 * [M3 nylon standoff (Mouser $0.15)](https://www.mouser.com/ProductDetail/Essentra/35MHSP004?qs=PzGy0jfpSMvSqPGIjf8O2g%3D%3D) 20mm
 
+## Connectors
+* [9V battery snap connector (Mouser $1.43)](https://www.mouser.com/ProductDetail/Keystone-Electronics/968?qs=sOYabIlKNmdpi6IxrH%252BtCA%3D%3D)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
