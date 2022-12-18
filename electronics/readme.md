@@ -86,6 +86,7 @@
 
 ## Connectors
 * [9V battery snap connector (Mouser $1.43)](https://www.mouser.com/ProductDetail/Keystone-Electronics/968?qs=sOYabIlKNmdpi6IxrH%252BtCA%3D%3D)
+* [3.5mm audio socket (Mouser $0.86)](https://www.mouser.com/ProductDetail/CUI-Devices/SJ-3523-SMT-TR?qs=WyjlAZoYn51zOHzJ3r4ZRA%3D%3D)
 
 ## IC Packages
 
