@@ -89,6 +89,10 @@
 * [SMT 3.5mm audio socket (Mouser $0.86)](https://www.mouser.com/ProductDetail/CUI-Devices/SJ-3523-SMT-TR?qs=WyjlAZoYn51zOHzJ3r4ZRA%3D%3D)
 * [TH 3.5mm audio socket (Mouser $0.87)](https://www.mouser.com/ProductDetail/CUI-Devices/SJ1-3523N?qs=WyjlAZoYn50aNl0vAhb3Tg%3D%3D)
 
+## ADC
+[Analog-to-Digital Converter Design Guide](http://www.t-es-t.hu/download/microchip/ds21841c.pdf)
+* [MCP3421 SOT-23 (Mouser $3.14)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP3421A3T-E-CH?qs=hH%252BOa0VZEiCiOakdR18pNw%3D%3D) single differential voltage sensor with built-in voltage reference (similar parts have 2 or 4 channels)
+
 ## IC Packages
 
 ![image](https://user-images.githubusercontent.com/4165489/202861936-efe7e1ce-2568-43ab-b13f-e4dbdbc5d6b0.png)
