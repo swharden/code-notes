@@ -91,7 +91,8 @@
 
 ## ADC
 [Analog-to-Digital Converter Design Guide](http://www.t-es-t.hu/download/microchip/ds21841c.pdf)
-* [MCP3421 SOT-23 (Mouser $3.14)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP3421A3T-E-CH?qs=hH%252BOa0VZEiCiOakdR18pNw%3D%3D) single differential voltage sensor with built-in voltage reference (similar parts have 2 or 4 channels)
+* [MCP3201 SOIC-8 SPI (Mouser $3.04)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP3201T-CI-SN?qs=qUiwOUCta0dTf3u7iL%252BEkw%3D%3D) 100 kS/s
+* [MCP3421 SOT-23 I2C (Mouser $3.14)](https://www.mouser.com/ProductDetail/Microchip-Technology-Atmel/MCP3421A3T-E-CH?qs=hH%252BOa0VZEiCiOakdR18pNw%3D%3D) single differential voltage sensor with built-in voltage reference. Similar parts have 2 or 4 channels. Sample rate reduces by resolution (18-bit 3.75 S/s, 16-bit 15 S/s, 14-bit 60 S/s, 12-bit 240 S/s)
 
 ## IC Packages
 
