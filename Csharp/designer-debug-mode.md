@@ -1,9 +1,15 @@
 # Detecting Designer Mode
+
 ```cs
-bool isDesignerMode = DesignerProperties.GetIsInDesignMode(this);
+// this is the recommended way
+bool isDesignMode = Process.GetCurrentProcess().ProcessName == "devenv";
+```
+
+```cs
+bool isDesignMode = DesignerProperties.GetIsInDesignMode(this);
 ```
 ```cs
-bool designMode = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
+bool isDesignMode = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
 ```
 
 # Detecting Debug Mode
