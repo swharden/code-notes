@@ -18,3 +18,9 @@ The `-an` means no audio (otherwise it would be original-speed audio)
 ```sh
 ffmpeg -i input.mkv -vcodec h264 -vf "drawtext=timecode='00\:00\:00\:00':r=30:x=(w-tw)/2:y=0:fontcolor=white:fontsize=(h/15):box=1:boxcolor=0x00000099" output.mp4
 ```
+
+## Images to Video (MP4 supported by HTML5)
+
+```
+ffmpeg.exe -framerate 10 -y -i "./video2/video%%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
+```
