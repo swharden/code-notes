@@ -5,8 +5,6 @@
 Use these to get off the ground quickly!
 
 ```cs
-namespace CodeAnalysis.HtmlReports;
-
 public static class HtmlTemplate
 {
     public static string WrapInPico(string content, string title)
