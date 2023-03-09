@@ -1,5 +1,10 @@
 # Paths and Filenames
 
+## Application Directory
+```cs
+AppDomain.CurrentDomain.BaseDirectory
+```
+
 ## Absolute File Path
 ```cs
 System.IO.Path.GetFullPath(folder);
