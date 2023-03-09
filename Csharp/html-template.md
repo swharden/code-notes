@@ -7,7 +7,7 @@ Use these to get off the ground quickly!
 ```cs
 public static class HtmlTemplate
 {
-    public static string WrapInPico(string content, string title)
+    public static string WrapInPico(string content, string? title = null)
     {
         return @"<!doctype html>
 <html lang='en'>
