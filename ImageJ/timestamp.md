@@ -32,7 +32,7 @@ for (i = 1; i<=nSlices; i++){
 ```java
 // Draw the time on every frame of a time series stack.
 // To make a video file that plays in the browser, save as a BMP sequence then:
-// ffmpeg.exe -framerate 10 -y -i "./video%%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
+// ffmpeg.exe -framerate 10 -y -i "./video%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
 
 // SETTINGS ///////////////////////////////////////////////
 framesPerSecond = 1.53;
