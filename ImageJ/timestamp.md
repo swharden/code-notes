@@ -32,7 +32,7 @@ for (i = 1; i<=nSlices; i++){
 ```java
 // Draw the time on every frame of a time series stack.
 // To make a video file that plays in the browser, save as a BMP sequence then:
-// ffmpeg.exe -framerate 10 -y -i "./video%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
+// ffmpeg.exe -framerate 10 -y -i "./video%%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
 
 // SETTINGS ///////////////////////////////////////////////
 framesPerSecond = 1.53;
@@ -57,7 +57,11 @@ for (i=0;i<nSlices;i++){
 		msg="f"+IJ.pad(i+1,4)+" | "+frameTimeMsgWhole+"."+frameTimeMsgFrac+" min";
 	} else {
 		// f1234 1:23
-		frameTime=IJ.pad(framePeriodSec*i/60,2)+":"+IJ.pad(i%60,2)+'.'+IJ.pad(100*((framePeriodSec*i)%1),2);	
+		totalSeconds = framePeriodSec * i;
+		second = floor(totalSeconds % 60);
+		minute = floor((totalSeconds - second) / 60);
+		millisec = (totalSeconds - second - minute * 60) * 100;
+		frameTime=IJ.pad(minute,2)+":"+IJ.pad(second,2)+"."+IJ.pad(millisec,2);
 		msg="frame "+IJ.pad(i+1,4)+" "+frameTime;
 	}
 
