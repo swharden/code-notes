@@ -1,7 +1,13 @@
 # Detecting Designer Mode
 
+[Component.DesignMode Property](https://learn.microsoft.com/en-us/dotnet/api/system.componentmodel.component.designmode?view=net-7.0)
+
 ```cs
-// this is the recommended way
+[System.ComponentModel.Browsable(false)]
+protected bool DesignMode { get; }
+```
+
+```cs
 bool isDesignMode = Process.GetCurrentProcess().ProcessName == "devenv";
 ```
 
