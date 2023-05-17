@@ -78,3 +78,58 @@ void ScottDemo3(){
 	KickAnimals(animals); 
 }
 ```
+
+## Managing Collections of Custom Objects
+
+```cpp
+struct Hotmod
+{
+	string Name;
+	string Description;
+	
+	void Show(){
+		string isEnabledText = IsEnabled() ? "ON" : "OFF";
+		printf("\nHOTMOD: %s (%s)\n%s\n", Name, isEnabledText, Description);
+	}
+	
+	bool IsEnabled(){
+		double state;
+		LT_get_var(Name,&state);
+		return state != 0;
+	}
+};
+```
+
+```cpp
+class HotmodManager{
+public:
+	HotmodManager(){
+		hodmods.SetAsOwner(true);
+		
+		Define("deltaTTL", 
+			"Get new TTL times every sweep. " + 
+			"Allows for variable inter pulse interval protocols, " + 
+			"but still requires same total number of TTLs in each sweep.");
+			
+		Define("BasePerTTL", 
+			"baseline subtract each evoked signal from a period just before the TTL");
+	}
+	
+	void List(){
+		for (int i=0; i<hodmods.GetSize(); i++){
+			Hotmod& hm2 = hodmods.GetAt(i);
+			hm2.Show();
+		}
+	}
+	
+private:
+	Array<Hotmod&> hodmods;
+	
+	void Define(string name, string description){
+		Hotmod *p = new Hotmod();
+		p->Name = name;
+		p->Description = description;
+		hodmods.Add(*p);
+	}
+};
+```
