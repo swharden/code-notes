@@ -11,3 +11,17 @@ for (i=0; i<slices; i++){
 	break;
 }
 ```
+
+```java
+// Delete the highlighted area at this Z level from every frame
+
+getDimensions(w, h, channels, slices, frames);
+
+for (frame=1; frame<=frames; frame++){
+	Stack.setFrame(frame);
+	for (channel=1; channel<=channels; channel++){
+		Stack.setChannel(channel);
+		run("Cut");
+	}
+}
+```
