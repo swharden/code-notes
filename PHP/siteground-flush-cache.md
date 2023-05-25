@@ -22,3 +22,8 @@ if ($_POST['key'] == "PASSWORD123"){
 ```
 curl --data "key=PASSWORD123" https://swharden.com/purge/
 ```
+
+### .htaccess
+```
+Header set Cache-Control "private"
+```
