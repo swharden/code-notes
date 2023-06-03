@@ -30,3 +30,14 @@ function MyComponent() {
 
 export default MyComponent;
 ```
+
+## Routing in Apache
+
+### .htaccess
+
+```
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
+```
