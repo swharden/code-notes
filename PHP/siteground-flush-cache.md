@@ -1,5 +1,34 @@
 # SiteGround: Console Command to Flush Dynamic Cache
 
+## Login with SSH
+* Use web interface to create SSH key
+* Copy private key into key.txt locally
+* Load key.txt into bitvise client key manager
+* Configure bitvise to use publickey+password
+
+## Purge Cache over SSH
+```sh
+site-tools-client domain update id=1 flush_cache=1
+```
+
+Domain IDs can be listed using:
+```sh
+site-tools-client domain list -f id,name
+```
+
+## Purge Cache with PHP
+
+```php
+<?php
+header("Cache-Control: no-cache");
+exec("site-tools-client domain update id=1 flush_cache=1");
+$time = time();
+echo "[$time] Purge: Successful";
+```
+
+---
+
+## Purge via cURL (old method)
 This command executed on the surver will purge the dynamic cache:
 
 ```sh
