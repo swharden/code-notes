@@ -16,6 +16,11 @@ Domain IDs can be listed using:
 site-tools-client domain list -f id,name
 ```
 
+## Purge Cache from another host
+```sh
+ssh example.com@gcam1098.siteground.biz -p 18765 "site-tools-client domain update id=1 flush_cache=1"
+```
+
 ## Purge Cache with PHP
 
 ```php
