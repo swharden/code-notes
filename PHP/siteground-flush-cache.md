@@ -26,6 +26,7 @@ ssh example.com@gcam1098.siteground.biz -p 18765 "site-tools-client domain updat
 ```php
 <?php
 header("Cache-Control: no-cache");
+header("Content-Type: text/plain");
 exec("site-tools-client domain update id=1 flush_cache=1");
 $time = time();
 echo "[$time] Purge: Successful";
