@@ -1,5 +1,7 @@
 # How to `git push` in a GitHub Action
 
+This code example demonstrates how to update a git repo from inside a GitHub action.
+
 Note: The `GH_TOKEN` is a personal access token (generated from your account settings page) that has repo-level access
 
 ```yaml
