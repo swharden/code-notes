@@ -1,5 +1,11 @@
 # Deploy using FTP from GitHub Actions
 
+## Rsync is better than FTP!
+
+Rsync is much better and faster at deploying files to remote locations. It's smart enough to transfer only the files that are different.
+
+https://swharden.com/blog/2022-03-20-github-actions-hugo/
+
 ## Natively
 
 ```yaml
@@ -73,29 +79,4 @@ jobs:
 
       - name: 🧹 Clear Cache
         run: curl --user deploy:${{ secrets.CACHE_PASSWORD }} https://maui.graphics/admin/clear-cache.php
-```
-
-### Clear Cached Pages on SiteGround
-
-#### .htaccess
-```
-SetEnvIf Authorization .+ HTTP_AUTHORIZATION=$0
-```
-
-#### clear-cache.php
-```php
-<?php
-
-// This page won't work if it's cached
-header("Cache-Control: no-cache");
-
-// NOTE: see .htaccess to enable PHP_AUTH_PW
-if (empty($_SERVER['PHP_AUTH_PW'])) {
-    echo "ERROR: Password Required";
-} else if ($_SERVER['PHP_AUTH_PW'] == 'mYsEcReTpAsSwOrD') {
-	exec('curl -s -k -X PURGE -L https://maui.graphics/*');
-	echo("Purge: Successful");
-} else {
-    echo "ERROR: Incorrect Password";
-}
 ```
