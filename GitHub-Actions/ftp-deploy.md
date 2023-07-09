@@ -2,9 +2,28 @@
 
 ## Rsync is better than FTP!
 
-Rsync is much better and faster at deploying files to remote locations. It's smart enough to transfer only the files that are different.
+Rsync is much better and faster than FTP at deploying files to remote locations. It's smart enough to transfer only the files that are different.
 
 https://swharden.com/blog/2022-03-20-github-actions-hugo/
+
+```yaml
+jobs:
+  deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛒 Checkout
+        uses: actions/checkout@v3
+
+      # your build step goes here
+
+      - name: 🔐 Create Key File
+        run: install -m 600 -D /dev/null ~/.ssh/id_rsa
+      - name: 🔑 Populate Key
+        run: echo "${{ secrets.PRIVATE_SSH_KEY }}" > ~/.ssh/id_rsa
+      - name: 🚀 Upload
+        run: rsync --archive --stats -e 'ssh -p 18765 -o StrictHostKeyChecking=no' public/ swharden.com@ssh.swharden.com:~/www/swharden.com/public_html/
+```
 
 ## Natively
 
