@@ -68,7 +68,7 @@ public class Structures : INotifyPropertyChanged
 		}
 	}
 }
-``
+```
 
 ```cs
 InitializeComponent();
