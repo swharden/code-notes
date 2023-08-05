@@ -43,3 +43,8 @@ folderNames.Reverse();
 for (int i=0; i<folderNames.Count; i++)
     folderNames[i] = System.IO.Path.GetFileName(folderNames[i]);
 ```
+
+## Find files recursively
+```cs
+string[] files = Directory.GetFiles("./", "*.txt", SearchOption.AllDirectories);
+```
