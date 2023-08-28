@@ -42,3 +42,8 @@ def remove_frame(ax: matplotlib.axes._axes.Axes):
     ax.get_xaxis().set_ticks([])
     ax.get_yaxis().set_ticks([])
 ```
+
+## Error Bars with Markers
+```py
+plt.errorbar(times, means, yerr=errs, capsize=3, fmt='o-')
+```
