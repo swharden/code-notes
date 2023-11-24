@@ -4,17 +4,32 @@
 void ShowCopyMenu()
 {
     ContextMenuStrip cm = new();
-    cm.Items.Add("Watched Path");
-    cm.Items.Add("Displayed Image File Path");
-    cm.Items.Add("Displayed Image Folder Path");
-    cm.Items.Add("Displayed Image Data");
+    ToolStripItem watchedPathItem = cm.Items.Add("Watched Path");
+    ToolStripItem displayedImagePathItem = cm.Items.Add("Displayed Image File Path");
+    ToolStripItem displayedImageFolderPathItem = cm.Items.Add("Displayed Image Folder Path");
+    ToolStripItem displayedImageDataItem = cm.Items.Add("Displayed Image Data");
 
     cm.ItemClicked += (s, e) =>
     {
         if (e.ClickedItem is null)
             return;
 
-        Text = e.ClickedItem.Text;
+        if (e.ClickedItem == watchedPathItem)
+        {
+
+        }
+        else if (e.ClickedItem == displayedImagePathItem)
+        {
+
+        }
+        else if (e.ClickedItem == displayedImageFolderPathItem)
+        {
+
+        }
+        else if (e.ClickedItem == displayedImageDataItem)
+        {
+
+        }
     };
 
     cm.Show(Cursor.Position);
