@@ -1,27 +1,27 @@
 # Drag and Drop a File onto a Windows Forms Application
 
 ```cs
-InitializeComponent();
-AllowDrop = true;
-DragEnter += OnDragEnter;
-DragDrop += OnDragDrop;
-```
-
-```cs
-private void OnDragEnter(object sender, DragEventArgs e)
+void SetupDragDrop()
 {
-    if (e.Data.GetDataPresent(DataFormats.FileDrop))
-        e.Effect = DragDropEffects.Copy;
-}
-```
+    AllowDrop = true;
 
-```cs
-private void OnDragDrop(object sender, DragEventArgs e)
-{
-    string[] paths = (string[])e.Data.GetData(DataFormats.FileDrop);
-    foreach (string path in paths)
+    DragEnter += (o, e) =>
     {
-        Console.WriteLine(path);
-    }
+        if (e.Data is null) return;
+        if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            e.Effect = DragDropEffects.Copy;
+    };
+
+    DragDrop += (o, e) =>
+    {
+        if (e.Data is null) return;
+        string[]? paths = e.Data.GetData(DataFormats.FileDrop) as string[];
+        if (paths is null) return;
+
+        foreach (string path in paths)
+        {
+            System.Diagnostics.Debug.WriteLine(path);
+        }
+    };
 }
 ```
