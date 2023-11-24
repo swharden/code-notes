@@ -16,19 +16,19 @@ void ShowCopyMenu()
 
         if (e.ClickedItem == watchedPathItem)
         {
-
+            Clipboard.SetText(Manager.Watching);
         }
         else if (e.ClickedItem == displayedImagePathItem)
         {
-
+            Clipboard.SetText(Manager.Showing);
         }
         else if (e.ClickedItem == displayedImageFolderPathItem)
         {
-
+            Clipboard.SetText(Path.GetDirectoryName(Manager.Showing)!);
         }
         else if (e.ClickedItem == displayedImageDataItem)
         {
-
+            Clipboard.SetImage(pictureBox1.Image);
         }
     };
 
