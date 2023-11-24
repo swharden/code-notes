@@ -1,27 +1,22 @@
-# Menus
+## Right-click Menu
 
-## Right-click Menu with `ContextMenuStrip`
 ```c#
-private ContextMenuStrip cmRightClickMenu;
-
-private void RightClickMenuSetup()
+void ShowCopyMenu()
 {
-    cmRightClickMenu = new ContextMenuStrip();
-    cmRightClickMenu.Items.Add("Save Image");
-    cmRightClickMenu.Items.Add("Auto-Axis");
-    cmRightClickMenu.Items.Add("Help");
-    cmRightClickMenu.Items.Add("About ScottPlot");
-}
+    ContextMenuStrip cm = new();
+    cm.Items.Add("Watched Path");
+    cm.Items.Add("Displayed Image File Path");
+    cm.Items.Add("Displayed Image Folder Path");
+    cm.Items.Add("Displayed Image Data");
 
-private void RightClickMenu()
-{
-    cmRightClickMenu.Show(pbPlot, PointToClient(Cursor.Position));
-    cmRightClickMenu.ItemClicked += new ToolStripItemClickedEventHandler(RightClickMenu_SaveImage);
-}
+    cm.ItemClicked += (s, e) =>
+    {
+        if (e.ClickedItem is null)
+            return;
 
-private void RightClickMenuItemClicked(object sender, ToolStripItemClickedEventArgs e)
-{
-    ToolStripItem item = e.ClickedItem;
-    System.Console.WriteLine(item);
+        Text = e.ClickedItem.Text;
+    };
+
+    cm.Show(Cursor.Position);
 }
 ```
