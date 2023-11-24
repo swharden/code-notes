@@ -1,4 +1,4 @@
 # Messagebox (WinForms and WPF)
 ```cs
-MessageBox.Show($"detailed build error", "build error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+MessageBox.Show($"message body", "title", MessageBoxButtons.OK, MessageBoxIcon.Error);
 ```
