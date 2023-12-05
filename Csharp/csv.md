@@ -74,3 +74,85 @@ public static class CSV
     }
 }
 ```
+
+## CSV Builder
+```cs
+using System.Text;
+
+namespace ConvertCsv;
+
+public class CsvBuilder
+{
+    private readonly struct Column
+    {
+        public readonly string Title;
+        public readonly string[] Values;
+
+        public Column(string title, IEnumerable<double> values)
+        {
+            Title = title;
+            Values = values.Select(x => x.ToString()).ToArray();
+        }
+
+        public Column(string title, IEnumerable<string> values)
+        {
+            Title = title;
+            Values = values.Select(x => $"\"{x}\"").ToArray();
+        }
+    }
+
+    private readonly List<Column> Columns = [];
+
+    public int ColumnCount => Columns.Count;
+
+    public int RowCount => Columns.Select(x => x.Values.Length).Max();
+
+    public CsvBuilder()
+    {
+    }
+
+    public void Add(string title, IEnumerable<double> data)
+    {
+        Columns.Add(new Column(title, data));
+    }
+
+    public void Add(string title, IEnumerable<string> data)
+    {
+        Columns.Add(new Column(title, data));
+    }
+
+    public void SaveAs(string filePath, bool header = true)
+    {
+        StringBuilder sb = new();
+
+        if (header)
+        {
+            sb.AppendLine(string.Join(", ", Columns.Select(x => $"\"{x.Title}\"")));
+        }
+
+        for (int rowIndex = 0; rowIndex < RowCount; rowIndex++)
+        {
+            for (int colIndex = 0; colIndex < Columns.Count; colIndex++)
+            {
+                int rowsInThisColumn = Columns[colIndex].Values.Length;
+
+                if (rowIndex < rowsInThisColumn)
+                {
+                    sb.Append(Columns[colIndex].Values[rowIndex]);
+                }
+
+                if (colIndex < Columns.Count - 1)
+                {
+                    sb.Append(", ");
+                }
+                else
+                {
+                    sb.AppendLine();
+                }
+            }
+        }
+
+        System.IO.File.WriteAllText(filePath, sb.ToString());
+    }
+}
+```
