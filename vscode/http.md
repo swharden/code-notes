@@ -1,5 +1,7 @@
 # HTTP Files in VS Code
 
+Requries a `HTTP Client` plugin for VS Code
+
 ```
 ### Simple Request
 GET https://example.com/api
