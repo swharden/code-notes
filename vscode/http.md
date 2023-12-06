@@ -1,6 +1,6 @@
 # HTTP Files in VS Code
 
-Requries a `HTTP Client` plugin for VS Code
+Requries a plugin like https://www.thunderclient.com
 
 ```
 ### Simple Request
