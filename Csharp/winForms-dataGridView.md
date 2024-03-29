@@ -82,6 +82,11 @@ private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
 After filling rows with data:
 
 ```cs
+// this worked in 2024
+dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+```
+
+```cs
 // resize one column
 dataGridView1.AutoResizeColumn(0);
 ```
