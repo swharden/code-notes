@@ -1,6 +1,6 @@
 # Holy Grail HTML Layouts
 
-## Two Columns with Header
+### Two Columns with Header
 
 https://swharden.com/tmp/html-layouts/ColColHeader/
 
@@ -84,7 +84,7 @@ https://swharden.com/tmp/html-layouts/ColColHeader/
 </html>
 ```
 
-## Two Columns
+### Two Columns
 
 https://swharden.com/tmp/html-layouts/ColCol/
 
