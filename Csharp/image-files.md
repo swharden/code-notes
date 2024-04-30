@@ -1,8 +1,18 @@
 # Image Files
 
-## Open Any Image (fails at nonstandard bit depths)
+## Open Any Image
 ```cs
-Bitmap bmp = new Bitmap(filePath); // that's it!
+Bitmap bmp = new Bitmap(filePath);
+```
+
+## Open Any Image without locking it on the filesystem
+```cs
+private Bitmap LoadBitmapWithoutLockingFile(string filePath)
+{
+    byte[] bytes = File.ReadAllBytes(filePath);
+    using MemoryStream memoryStream = new(bytes);
+    return new Bitmap(memoryStream);
+}
 ```
 
 ## Convert Bitmap To/From Byte Arrays
