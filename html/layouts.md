@@ -1,5 +1,7 @@
 # Holy Grail HTML Layouts
 
+Draggable splitter: https://jsfiddle.net/Bek9L/1343/
+
 ### Two Columns with Header
 
 https://swharden.com/tmp/html-layouts/ColColHeader/
