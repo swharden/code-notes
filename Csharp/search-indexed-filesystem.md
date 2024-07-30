@@ -2,6 +2,8 @@
 
 Note: Only Windows is supported so edit the `.csproj` to target `-Windows`
 
+Install the [`System.Data.OleDb` NuGet Package](https://www.nuget.org/packages/System.Data.OleDb)
+
 OLE DB SQL Field definitions: https://learn.microsoft.com/en-us/windows/win32/properties/core-bumper
 
 ```cs
