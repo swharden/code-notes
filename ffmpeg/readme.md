@@ -24,3 +24,8 @@ ffmpeg -i input.mkv -vcodec h264 -vf "drawtext=timecode='00\:00\:00\:00':r=30:x=
 ```
 ffmpeg.exe -framerate 10 -y -i "./video2/video%%04d.bmp" -c:v libx264 -pix_fmt yuv420p "video.mp4"
 ```
+
+## Jamie Taylor Podcast WAV to FLAC
+```
+ffmpeg -i  input.wav -ar 44100 -ac 1 -sample_fmt s16 -vn output.flac
+```
