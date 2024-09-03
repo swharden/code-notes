@@ -1,5 +1,7 @@
 # Fast Moving Window Smoothing
 
+Unlike many common moving window averaging strategies which operate in O(N^2) time, this strategy operates in O(N) time
+
 ### Forward Smoothing (lagging)
 
 ```cs
