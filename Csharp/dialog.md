@@ -37,11 +37,15 @@ if (dialogResult == DialogResult.Yes)
 
 ## Save File
 ```cs
-SaveFileDialog savefile = new SaveFileDialog();
-savefile.FileName = "demo.png";
-savefile.Filter = "PNG Files (*.png)|*.png|All files (*.*)|*.*";
-if (savefile.ShowDialog() == DialogResult.OK) {
-    string saveFilePath = savefile.FileName;
+SaveFileDialog sfd = new()
+{
+    FileName = "data.csv",
+    Filter = "CSV Files (*.csv)|*.csv|All files (*.*)|*.*"
+};
+
+if (sfd.ShowDialog() == DialogResult.OK)
+{
+    File.WriteAllText(sfd.FileName, richTextBox1.Text);
 }
 ```
 
