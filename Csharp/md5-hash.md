@@ -1,5 +1,13 @@
 # MD5 Hash with C#
 
+## MD5 Hash of a String
+```
+static string GetMD5(string input)
+{
+    return string.Join("", MD5.HashData(Encoding.UTF8.GetBytes(input)).Select(x => x.ToString("x2")));
+}
+```
+
 ## MD5 Hash of Byte Array
 ```cs
 public static string MD5(byte[] bytes)
